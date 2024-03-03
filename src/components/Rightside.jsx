@@ -1,52 +1,64 @@
-import React, { useEffect, useState } from 'react'
-import {Tabs, Tab, Card, CardBody, CardHeader} from "@nextui-org/react";
-import useStore from '../Store/store';
+import React, { useEffect, useState } from "react";
+import { FiBold } from "react-icons/fi";
 
+import { Button } from "@nextui-org/react";
+import { FiItalic } from "react-icons/fi";
+import useResumeStore from "../Store/store";
 
 function Rightaside() {
-  const data = useStore((state) => state.resumeHTML)
-  
+  const data = useResumeStore((state) => state.resumeContent);
+  const setResumeContent = useResumeStore((state) => state.setResumeContent);
+  // const {setBold} = useResumeStore();
 
-  // useEffect(()=>{
-  //   if(data){
-  //     console.log(data)
-  //     data.className.add('text-red-500')
-     
-  //   }
-  // },[data])
-    
-      return (
-        <div className="flex w-[300px] flex-col bg-[#fff] fixed h-screen right-0 top-16">
-         
-        
-          <Tabs aria-label="Dynamic tabs" indicatorColor="success"   color="success" 
-        variant="underlined"  size="lg" fullWidth="true"  classNames={{
-            tabList: "gap-6 w-full relative rounded-none p-0 border-b border-divider",
-            cursor: "w-full bg-[#22d3ee]",
-            tab: "w-full px-0 h-12",
-            tabContent: "group-data-[selected=true]:text-[#06b6d4]"
-          }}>
-            
-              <Tab key="create" title="Create">
-                <Card>
-                  <CardBody>
-                    create
-                  </CardBody>
-                </Card>  
-              </Tab>
-              <Tab key="template" title="template">
-                <Card>
-                  <CardBody>
-                    template
-                  </CardBody>
-                </Card>  
-              </Tab>
-            
-          </Tabs>
-    
-        </div>  
-      );
+  const [editData, setEditData] = useState("");
+
+  useEffect(() => {
+    if (data) {
+      setEditData(data);
     }
-    
+  }, [data]);
 
-export default Rightaside
+  const handleEditChanges = (e) => {
+    
+   
+      setEditData(e.target.value);
+  
+    setResumeContent(e.target.value);
+    console.log()
+    console.log("after adding changes on textarea then store data ", data);
+  };
+
+  // const handleBold = () => {
+  //   setBold();
+  // }
+
+  return (
+    <div className="flex w-[300px] flex-col px-2 py-2 bg-[#fff] fixed h-screen right-0 top-16">
+      <div>
+        <h2 className="text-xl font-semibold">Edit Text</h2>
+        <textarea
+          value={editData}
+          onChange={(e) => handleEditChanges(e)}
+          className=" hidescroll w-full px-1 py-2 resize-y border-2 outline-none mt-2 rounded-md border-[#9e9d9d] border-solid"
+          rows="2"
+          placeholder="Click on text to edit"
+        ></textarea>
+       
+      </div>
+      <div className="mt-5">
+        <h2 className="text-xl font-semibold">Text Style</h2>
+        <div className="mt-2">
+        <Button size="md" isIconOnly radius="sm" variant="faded"  >
+          <FiBold className="text-xl" />
+        </Button>
+        <Button size="md" isIconOnly radius="sm" variant="faded">
+          <FiItalic className="text-xl" />
+        </Button>
+        
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Rightaside;
