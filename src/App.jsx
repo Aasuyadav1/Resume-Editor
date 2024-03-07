@@ -4,6 +4,7 @@ import Leftaside from './components/Lefttaside'
 import Rightaside from './components/Rightside'
 import Navbar from './components/Navbar'
 
+
 function App() {
   return (
     <div >
@@ -11,6 +12,7 @@ function App() {
        <div className='flex justify-center items-center'>
        <Leftaside/>
       <Resume1 />
+      
       <Rightaside/>
        </div>
      

@@ -3,12 +3,12 @@ import { useState } from "react";
 import useResumeStore from "../Store/store";
 
 function resume1() {
-  const setResumeContent = useResumeStore((state) => state.setResumeContent);
-  const resumeData = useResumeStore((state) => state.resumeContent);
-  // const { bold } = useResumeStore();
+  const {selectedElement, setSelectedElement} = useResumeStore();
+  
+  
 
   const [selectedDivContent, setSelectedDivContent] = useState(null);
-  const [selectedElement, setSelectedElement] = useState(null);
+  const [selectedElements, setSelectedElements] = useState(null);
 
   const [selectedImage, setSelectedImage] = useState(
     "https://media.istockphoto.com/id/1473711983/photo/university-tablet-and-campus-student-typing-internet-web-or-website-search-for-college.webp?b=1&s=170667a&w=0&k=20&c=LPhIpcyCjIweAILxehKYkyWehSzc4Uf8HM0rtfqgTIk="
@@ -46,34 +46,23 @@ function resume1() {
     event.preventDefault();
   };
 
-  const handleClick = (event) => {
-    const selectedDiv = event.target;
-    setSelectedDivContent(event.target);
-    setResumeContent(selectedDiv.textContent);
 
-    // logic for adding border on active elements
-    if (selectedElement) {
-      selectedElement.classList.remove("border-blue-800");
-    }
-
-    if (selectedElement !== selectedDiv) {
-      selectedDiv.classList.add("border-blue-800");
-      // if(bold){
-      //   selectedDiv.classList.add("font-bold");
-      // }else{
-      //   selectedDiv.classList.remove("font-bold");
-      // }
-      setSelectedElement(selectedDiv);
-    } else {
-      setSelectedElement(null);
-    }
+  const handleClick =  (e) => {
+    const element = e.target;
+    setSelectedElement(element);
+    console.log('selected el', selectedElement);
+   
   };
-
   useEffect(() => {
-    if (selectedDivContent) {
-      selectedDivContent.textContent = resumeData;
+    if (selectedElement) {
+      // const all = document.querySelectorAll('html')
+      // all.forEach(element => {
+      //   element.classList.remove('border-blue-700')
+      // })
+      selectedElement.classList.add('border-blue-700')
     }
-  }, [resumeData]);
+  }, [selectedElement]);
+ 
 
   return (
     <div className="max-w-2xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans">
@@ -122,7 +111,7 @@ function resume1() {
           <div className="mt-3">
             <p
               onClick={handleClick}
-              className="text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="text-sm border-solid  hover:border-blue-900 border-transparent border-[2px] "
             >
               2024-2025
             </p>
