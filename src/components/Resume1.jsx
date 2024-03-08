@@ -65,7 +65,7 @@ function resume1() {
  
 
   return (
-    <div className="max-w-2xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans">
+    <div className="max-w-2xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden">
       <div
         className="w-full h-fit flex items-center gap-10 px-5 py-1"
         onDrop={handleDrop}

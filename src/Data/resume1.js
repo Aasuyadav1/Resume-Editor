@@ -1,123 +1,49 @@
-
-import React from "react"
-
-export const resume1 = [
+export const resumeData = [
     {
-        title: "Name",
-        content : "Aasu Yadav",
-        id : 100,
-        style : ""
+      title: "Aasu Yadav",
+      subtitle: "Software Developer",
+      image: selectedImage,
     },
     {
-        title : "Profession",
-        content : "Software Developer",
-        id : 100,
-        style : ""
+      title: "Education",
+      items: [
+        { date: "2024-2025", degree: "B.Tech", university: "University Name" },
+        { date: "2024-2025", degree: "B.Tech", university: "University Name" }
+      ],
     },
     {
-        title : "image",
-        imageUrl : "",
-        id : 100,
-        style :""
+      title: "Contact",
+      items: [
+        { label: "Phone", value: "+91 1234567890" },
+        { label: "Email", value: "abcd@example.com" },
+      ],
     },
     {
-        education : [
-            {
-                title : "Education",
-                id : 100,
-                year : "2024-2025",
-                course : "B.Tech",
-                university : "University Name",
-                style : ""
-            },
-            {
-                title : "Education",
-                id : 100,
-                year : "2024-2025",
-                course : "B.Tech",
-                university : "University Name",
-                style : ""
-            },
-            {
-                title : "Education",
-                id : 100,
-                year : "2024-2025",
-                course : "B.Tech",
-                university : "University Name",
-                style : ""
-            },
-        ]
+      title: "Skills",
+      items: [
+        { category: "Frontend Developer", skills: "html, css, js, react.js, tailwind css" },
+        { category: "Backend Developer", skills: "Nodejs, Express.js, MongoDB, Appwrite" },
+      ],
     },
     {
-        contacts : [
-            {
-                title : "phone",
-                id : 100,
-                value : "1234567890",
-                style : ""
-            },
-            {
-                title : "email",
-                id : 100,
-                value : "abcd@xyz.com",
-                style : ""
-            }
-        ]
+      title: "Profile",
+      description:
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur illo qui deserunt vero repellat temporibus mollitia, sint eum praesentium voluptatem reprehenderit earum ullam nemo! Molestiae corrupti blanditiis ex iusto minus.",
     },
     {
-        skills : [
-            {
-                title : "fontend skills",
-                id : 100,
-                value : "html,css,js",
-                style : ""
-            },
-            {
-                title : "Backend skills",
-                id : 100,
-                value : "php,mysql,js",
-                style : ""
-            }
-        ]
+      title: "Experience",
+      items: [
+        { date: "2020-present", company: "Company Name", position: "Frontend Developer", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, beatae." },
+        { date: "2020-present", company: "Company Name", position: "Frontend Developer", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, beatae." },
+        { date: "2020-present", company: "Company Name", position: "Frontend Developer", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, beatae." }
+      ],
     },
     {
-        title: "Profile",
-        content : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur illo qui deserunt vero repellat temporibus mollitia, sint eum praesentium voluptatem reprehenderit earum ullam nemo! Molestiae corrupti blanditiis ex iusto minus.",
-        id : 100,
-        style : ""
+      title: "Projects",
+      items: [
+        { name: "E-commerce website", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, beatae.", link: "https://e-commerce-ready-apy.vercel.app" },
+        { name: "Whiteboard editor", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, beatae.", link: "https://e-commerce-ready-apy.vercel.app" },
+        { name: "Blog website", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, beatae.", link: "https://e-commerce-ready-apy.vercel.app" },
+      ],
     },
-    {
-        experience : [
-            {
-                date : "2024-2025",
-                id : 100,
-                companyName : "Company Name",
-                jobTitle : "fronted Developer",
-                description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, beatae."
-            },
-            {
-                date : "2024-2025",
-                id : 100,
-                companyName : "Company Name",
-                jobTitle : "fronted Developer",
-                description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, beatae."
-            }
-        ]
-    },
-    {
-        projects : [
-            {
-                title : "2024-2025",
-                id : 100,
-                description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, beatae.",
-                link : "https://google.com"
-            },
-            {
-                title : "2024-2025",
-                id : 100,
-                description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, beatae.",
-                link : "https://google.com"
-            },
-        ]
-    },
-]
+  ];
