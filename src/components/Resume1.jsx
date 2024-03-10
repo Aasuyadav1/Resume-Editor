@@ -1,18 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import useResumeStore from "../Store/store";
+import { resumeData } from "../Data/resume1";
 
 function resume1() {
   const {selectedElement, setSelectedElement} = useResumeStore();
-  
-  
-
   const [selectedDivContent, setSelectedDivContent] = useState(null);
   const [selectedElements, setSelectedElements] = useState(null);
-
   const [selectedImage, setSelectedImage] = useState(
     "https://media.istockphoto.com/id/1473711983/photo/university-tablet-and-campus-student-typing-internet-web-or-website-search-for-college.webp?b=1&s=170667a&w=0&k=20&c=LPhIpcyCjIweAILxehKYkyWehSzc4Uf8HM0rtfqgTIk="
-  ); // Default image path
+  ); 
 
   const handleImageClick = () => {
     // Trigger click event on hidden file input
@@ -46,13 +43,14 @@ function resume1() {
     event.preventDefault();
   };
 
-
   const handleClick =  (e) => {
     const element = e.target;
     setSelectedElement(element);
     console.log('selected el', selectedElement);
+    console.log(resumeData)
    
   };
+  
   useEffect(() => {
     if (selectedElement) {
       // const all = document.querySelectorAll('html')
@@ -72,7 +70,7 @@ function resume1() {
         onDragOver={handleDragOver}
       >
         <img
-          src={selectedImage}
+          src={resumeData.image}
           alt="Selected"
           className="w-[100px] rounded-full object-cover aspect-square  border-solid hover:border-blue-900 border-[2px] border-transparent cursor-pointer"
           onClick={handleImageClick}
@@ -89,13 +87,13 @@ function resume1() {
             className="text-6xl pb-2 w-full border-solid hover:border-blue-900 border-[2px] border-transparent text-black font-bold text-left break-words text-wrap"
             onClick={handleClick}
           >
-            Aasu Yadav
+            {resumeData.title}
           </p>
           <p
             className="text-2xl text-black font-normal border-solid hover:border-blue-900 border-transparent border-[2px]"
             onClick={handleClick}
           >
-            Software Developer
+            {resumeData.subtitle}
           </p>
         </div>
       </div>
@@ -108,64 +106,30 @@ function resume1() {
             Education
           </h2>
           <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
-          <div className="mt-3">
+         {
+          resumeData.Education.map((data)=>(
+            <div className="mt-3">
             <p
               onClick={handleClick}
               className="text-sm border-solid  hover:border-blue-900 border-transparent border-[2px] "
             >
-              2024-2025
+              {data.date}
             </p>
             <p
               onClick={handleClick}
               className="text-sm text-[#787777] border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
-              B.Tech
+              {data.degree}
             </p>
             <p
               onClick={handleClick}
               className="text-sm text-[#787777] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
-              university Name
+              {data.university}
             </p>
           </div>
-          <div className="mt-3">
-            <p
-              onClick={handleClick}
-              className="text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
-            >
-              2024-2025
-            </p>
-            <p
-              onClick={handleClick}
-              className="text-sm text-[#787777] border-solid hover:border-blue-900 border-transparent border-[2px]"
-            >
-              B.Tech
-            </p>
-            <p
-              onClick={handleClick}
-              className="text-sm text-[#787777] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
-            >
-              university Name
-            </p>
-          </div>
-          <div onClick={handleClick} className="mt-3">
-            <p className="text-sm border-solid hover:border-blue-900 border-transparent border-[2px]">
-              2024-2025
-            </p>
-            <p
-              onClick={handleClick}
-              className="text-sm text-[#787777] border-solid hover:border-blue-900 border-transparent border-[2px]"
-            >
-              B.Tech
-            </p>
-            <p
-              onClick={handleClick}
-              className="text-sm text-[#787777] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
-            >
-              university Name
-            </p>
-          </div>
-
+          ))
+         }
           <h2
             onClick={handleClick}
             className="text-lg font-semibold mt-10 border-solid hover:border-blue-900 border-transparent border-[2px]"
@@ -173,34 +137,25 @@ function resume1() {
             Contact
           </h2>
           <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
-          <div className="mt-3">
+          {
+            resumeData.Contact.map((data)=>(
+              <div className="mt-3">
             <h1
               onClick={handleClick}
               className="text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
-              Phone
+              {data.label}
             </h1>
             <p
               onClick={handleClick}
               className="text-[#868686] border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
             >
-              +91 1234567890
+              {data.value}
             </p>
           </div>
-          <div className="mt-3">
-            <h1
-              onClick={handleClick}
-              className="text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
-            >
-              Email
-            </h1>
-            <p
-              onClick={handleClick}
-              className="text-[#868686] border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
-            >
-              abcd@example.com
-            </p>
-          </div>
+            ))
+          }
+         
 
           <div>
             <h2
@@ -210,34 +165,24 @@ function resume1() {
               Skills
             </h2>
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
-            <div className="mt-3">
+           {
+            resumeData.Skills.map((data)=>(
+              <div className="mt-3">
               <h1
                 onClick={handleClick}
                 className="text-sm font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
               >
-                Frontend Developer
+                {data.category}
               </h1>
               <p
                 onClick={handleClick}
                 className=" border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
               >
-                html, css, js, react.js, tailwind css
+                {data.skills}
               </p>
             </div>
-            <div className="mt-4">
-              <h1
-                onClick={handleClick}
-                className="text-sm font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
-              >
-                Backend Developer
-              </h1>
-              <p
-                onClick={handleClick}
-                className=" border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
-              >
-                Nodejs, Express.js, MongoDB, Appwrite
-              </p>
-            </div>
+            ))
+           }
           </div>
         </div>
         <div className="max-w-[400px]">
@@ -253,10 +198,7 @@ function resume1() {
               onClick={handleClick}
               className="mt-2 text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur
-              illo qui deserunt vero repellat temporibus mollitia, sint eum
-              praesentium voluptatem reprehenderit earum ullam nemo! Molestiae
-              corrupti blanditiis ex iusto minus.
+              {resumeData.description}
             </p>
           </div>
 
@@ -269,16 +211,18 @@ function resume1() {
             </h2>
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
             <div>
-              <div className="flex gap-10 justify-between mt-3 ">
+             {
+              resumeData.Experience.map((data)=>(
+                <div className="flex gap-10 justify-between mt-6 ">
                 <div className="w-[180px] text-wrap">
                   <p
                     onClick={handleClick}
                     className="text-sm font-semibold text-[#868686] tracking-normal leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
                   >
-                    2020-present
+                    {data.date}
                   </p>
                   <p className=" text-sm text-[#868686] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]">
-                    Company Name
+                    {data.company}
                   </p>
                 </div>
                 <div>
@@ -286,79 +230,18 @@ function resume1() {
                     onClick={handleClick}
                     className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
                   >
-                    Frontend Developer
+                    {data.position}
                   </h1>
                   <p
                     onClick={handleClick}
                     className="text-[#868686] text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
                   >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores, beatae.
+                    {resumeData.description}
                   </p>
                 </div>
               </div>
-              <div className="flex gap-10 justify-between mt-8 ">
-                <div className="w-[180px] text-wrap">
-                  <p
-                    onClick={handleClick}
-                    className="text-sm font-semibold border-solid hover:border-blue-900 border-transparent border-[2px] text-[#868686] tracking-normal leading-snug"
-                  >
-                    2020-present
-                  </p>
-                  <p
-                    onClick={handleClick}
-                    className=" text-sm text-[#868686] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
-                  >
-                    Company Name
-                  </p>
-                </div>
-                <div>
-                  <h1
-                    onClick={handleClick}
-                    className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
-                  >
-                    Frontend Developer
-                  </h1>
-                  <p
-                    onClick={handleClick}
-                    className="text-[#868686] text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
-                  >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores, beatae.
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-10 justify-between mt-8 ">
-                <div className="w-[180px] text-wrap">
-                  <p
-                    onClick={handleClick}
-                    className="text-sm font-semibold text-[#868686] tracking-normal border-solid hover:border-blue-900 border-transparent border-[2px] leading-snug"
-                  >
-                    2020-present
-                  </p>
-                  <p
-                    onClick={handleClick}
-                    className="border-solid hover:border-blue-900 border-transparent border-[2px] text-sm text-[#868686] leading-snug"
-                  >
-                    Company Name
-                  </p>
-                </div>
-                <div>
-                  <h1
-                    onClick={handleClick}
-                    className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px] "
-                  >
-                    Frontend Developer
-                  </h1>
-                  <p
-                    onClick={handleClick}
-                    className="text-[#868686] text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
-                  >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores, beatae.
-                  </p>
-                </div>
-              </div>
+              ))
+             }           
             </div>
           </div>
 
@@ -371,69 +254,30 @@ function resume1() {
             </h2>
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
 
-            <div className="mt-3">
+            {
+              resumeData.Projects.map((data)=>(
+                <div className="mt-4">
               <h1
                 onClick={handleClick}
                 className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
               >
-                &#x2022; E-commerce website
+                &#x2022; {data.name}
               </h1>
               <p
                 onClick={handleClick}
                 className="text-[#868686] text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores, beatae.
+                {data.description}
               </p>
               <p
                 onClick={handleClick}
                 className="border-solid hover:border-blue-900 border-transparent border-[2px] block -mt-0 text-sm text-blue-400 leading-snug"
               >
-                https://e-commerce-ready-apy.vercel.app
+                {data.link}
               </p>
             </div>
-            <div className="mt-5">
-              <h1
-                onClick={handleClick}
-                className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
-              >
-                &#x2022; Whiteboard editor
-              </h1>
-              <p
-                onClick={handleClick}
-                className="text-[#868686] text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
-              >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores, beatae.
-              </p>
-              <p
-                onClick={handleClick}
-                className="border-solid hover:border-blue-900 border-transparent border-[2px] block -mt-0 text-sm text-blue-400 leading-snug"
-              >
-                https://e-commerce-ready-apy.vercel.app
-              </p>
-            </div>
-            <div className="mt-5">
-              <h1
-                onClick={handleClick}
-                className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
-              >
-                &#x2022; Blog website
-              </h1>
-              <p
-                onClick={handleClick}
-                className="text-[#868686] text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
-              >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores, beatae.
-              </p>
-              <p
-                onClick={handleClick}
-                className="border-solid hover:border-blue-900 border-transparent border-[2px] block -mt-0 text-sm text-blue-400 leading-snug"
-              >
-                https://e-commerce-ready-apy.vercel.app
-              </p>
-            </div>
+              ))
+            }
           </div>
         </div>
       </div>
