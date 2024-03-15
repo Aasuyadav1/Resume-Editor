@@ -66,43 +66,43 @@ function Rightaside() {
         setEditData(resumeData.description);
       } else if (selectedDataIndex == "resumeData.title") {
         setEditData(resumeData.title);
-      } else if (selectedEducationDateIndex) {
+      } else if (selectedEducationDateIndex == 0 || selectedEducationDateIndex) {
         setEditData(resumeData.Education[selectedEducationDateIndex].date);
-      } else if (selectedEducationDegreeIndex) {
+      } else if (selectedEducationDegreeIndex == 0 || selectedEducationDegreeIndex) {
         setEditData(resumeData.Education[selectedEducationDegreeIndex].degree);
-      } else if (selectedEducationUniversityIndex) {
+      } else if (selectedEducationUniversityIndex == 0 || selectedEducationUniversityIndex) {
         setEditData(
           resumeData.Education[selectedEducationUniversityIndex].university
         );
-      } else if (selectedSkillCatrgoryIndex) {
+      } else if (selectedSkillCatrgoryIndex == 0 || selectedSkillCatrgoryIndex) {
         setEditData(resumeData.Skills[selectedSkillCatrgoryIndex].category);
-      } else if (selectedSkillSkillsIndex) {
+      } else if (selectedSkillSkillsIndex == 0 || selectedSkillSkillsIndex) {
         setEditData(resumeData.Skills[selectedSkillSkillsIndex].skills);
-      } else if (selectedContectLabelIndex) {
+      } else if (selectedContectLabelIndex == 0 || selectedContectLabelIndex) {
         setEditData(resumeData.Contact[selectedContectLabelIndex].label);
-      } else if (selectedContectValueIndex) {
+      } else if (selectedContectValueIndex == 0 || selectedContectValueIndex) {
         setEditData(resumeData.Contact[selectedContectValueIndex].value);
-      } else if (selectedExperienceDateIndex) {
+      } else if (selectedExperienceDateIndex == 0 || selectedExperienceDateIndex) {
         setEditData(resumeData.Experience[selectedExperienceDateIndex].date);
-      } else if (selectedExperienceCompanyIndex) {
+      } else if (selectedExperienceCompanyIndex == 0 || selectedExperienceCompanyIndex) {
         setEditData(
           resumeData.Experience[selectedExperienceCompanyIndex].company
         );
-      } else if (selectedExperiencePositionIndex) {
+      } else if (selectedExperiencePositionIndex == 0 || selectedExperiencePositionIndex) {
         setEditData(
           resumeData.Experience[selectedExperiencePositionIndex].position
         );
-      } else if (selectedExperienceDescriptionIndex) {
+      } else if (selectedExperienceDescriptionIndex == 0 || selectedExperienceDescriptionIndex) {
         setEditData(
           resumeData.Experience[selectedExperienceDescriptionIndex].description
         );
-      } else if (selectedProjectNameIndex) {
+      } else if (selectedProjectNameIndex == 0 || selectedProjectNameIndex) {
         setEditData(resumeData.Projects[selectedProjectNameIndex].name);
-      } else if (selectedProjectdescriptionIndex) {
+      } else if (selectedProjectdescriptionIndex == 0 || selectedProjectdescriptionIndex) {
         setEditData(
           resumeData.Projects[selectedProjectdescriptionIndex].description
         );
-      } else if (selectedProjectlinkIndex) {
+      } else if (selectedProjectlinkIndex == 0 || selectedProjectlinkIndex) {
         setEditData(resumeData.Projects[selectedProjectlinkIndex].link);
       }
        else {
@@ -120,33 +120,33 @@ function Rightaside() {
       setResumedescription(e.target.value);
     } else if (selectedDataIndex == "resumeData.title") {
       setResumetitle(e.target.value);
-    } else if (selectedEducationDateIndex) {
+    } else if (selectedEducationDateIndex == 0 || selectedEducationDateIndex) {
       setEducationDate(e.target.value, selectedEducationDateIndex);
-    } else if (selectedEducationDegreeIndex) {
+    } else if (selectedEducationDegreeIndex == 0 || selectedEducationDegreeIndex) {
       setEducationDegree(e.target.value, selectedEducationDegreeIndex);
-    } else if (selectedEducationUniversityIndex) {
+    } else if (selectedEducationUniversityIndex == 0 || selectedEducationUniversityIndex) {
       setEducationUniversity(e.target.value, selectedEducationUniversityIndex);
-    } else if (selectedSkillCatrgoryIndex) {
+    } else if (selectedSkillCatrgoryIndex == 0 || selectedSkillCatrgoryIndex) {
       setSkillsCategory(e.target.value, selectedSkillCatrgoryIndex);
-    } else if (selectedSkillSkillsIndex) {
+    } else if (selectedSkillSkillsIndex == 0 || selectedSkillSkillsIndex) {
       setSkillsSkills(e.target.value, selectedSkillSkillsIndex);
-    } else if (selectedContectLabelIndex) {
+    } else if (selectedContectLabelIndex == 0 || selectedContectLabelIndex) {
       setContactLabel(e.target.value, selectedContectLabelIndex);
-    } else if (selectedContectValueIndex) {
+    } else if (selectedContectValueIndex == 0 || selectedContectValueIndex) {
       setContactValue(e.target.value, selectedContectValueIndex);
-    } else if (selectedExperienceDateIndex) {
+    } else if (selectedExperienceDateIndex == 0 || selectedExperienceDateIndex) {
       setExperienceDate(e.target.value, selectedExperienceDateIndex);
-    } else if (selectedExperienceCompanyIndex) {
+    } else if (selectedExperienceCompanyIndex == 0 || selectedExperienceCompanyIndex) {
       setExperienceCompany(e.target.value, selectedExperienceCompanyIndex);
-    } else if (selectedExperiencePositionIndex) {
+    } else if (selectedExperiencePositionIndex == 0 || selectedExperiencePositionIndex) {
       setExperiencePosition(e.target.value, selectedExperiencePositionIndex);
-    } else if (selectedExperienceDescriptionIndex) {
+    } else if (selectedExperienceDescriptionIndex == 0 || selectedExperienceDescriptionIndex) {
       setExperienceDescription(e.target.value, selectedExperienceDescriptionIndex);
-    } else if (selectedProjectNameIndex) {
+    } else if (selectedProjectNameIndex == 0 || selectedProjectNameIndex) {
       setProjectName(e.target.value, selectedProjectNameIndex);
-    } else if (selectedProjectdescriptionIndex) {
+    } else if (selectedProjectdescriptionIndex == 0 || selectedProjectdescriptionIndex) {
       setProjectDescription(e.target.value, selectedProjectdescriptionIndex);
-    } else if (selectedProjectlinkIndex) {
+    } else if (selectedProjectlinkIndex == 0 || selectedProjectlinkIndex) {
       setProjectLink(e.target.value, selectedProjectlinkIndex);
     }
     else {
