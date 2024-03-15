@@ -1,6 +1,6 @@
 import React from 'react'
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
-import CreateTab from '../CreateTab';
+import CreateTab from './CreateTab';
 
 function Tabes() {
   return (

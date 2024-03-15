@@ -11,20 +11,58 @@ import { CiTextAlignRight } from "react-icons/ci";
 import { CiTextAlignJustify } from "react-icons/ci";
 
 function Rightaside() {
-  const { selectedElement, setSelectedElement } = useResumeStore();
+  const {
+    selectedElement,
+    setSelectedElement,
+    resumeData,
+    selectedDataIndex,
+    setResumeSubtitle,
+    setResumetitle,
+    setResumedescription,
+    selectedEducationDateIndex,
+    setEducationDate
+
+  } = useResumeStore();
 
   const [editData, setEditData] = useState("");
   const [color, setColor] = useState("#61fff4");
 
   useEffect(() => {
     if (selectedElement) {
-      setEditData(selectedElement.innerHTML);
+      if (selectedDataIndex == "resumeData.subtitle") {
+        console.log(resumeData.subtitle);
+        setEditData(resumeData.subtitle);
+      } else if (selectedDataIndex == "resumeData.description") {
+        setEditData(resumeData.description);
+      } else if (selectedDataIndex == "resumeData.title") {
+        setEditData(resumeData.title);
+     } else if (selectedEducationDateIndex) {
+        setEditData(resumeData.Education[selectedEducationDateIndex].date);
+     }
+     else {
+       
+          setEditData(selectedElement.innerHTML);
+        console.log(selectedEducationDateIndex)
+       
+      }
     }
-  }, [selectedElement]);
+  }, [selectedElement, resumeData]);
 
   const handleEditChanges = (e) => {
     setEditData(e.target.value);
-    selectedElement.innerHTML = e.target.value;
+    if (selectedDataIndex == "resumeData.subtitle") {
+      setResumeSubtitle(e.target.value);
+    } else if (selectedDataIndex == "resumeData.description") {
+      setResumedescription(e.target.value);
+    } else if (selectedDataIndex == "resumeData.title") {
+      setResumetitle(e.target.value);
+    } else if (selectedEducationDateIndex) {
+      setEducationDate(e.target.value, selectedEducationDateIndex);
+    }
+     else {
+      selectedElement.innerHTML = e.target.value;
+    }
+
   };
 
   const handleBold = () => {
@@ -95,13 +133,17 @@ function Rightaside() {
 
   const handleTextColor = (e) => {
     setColor(e);
-    if(selectedElement){
-      selectedElement.style.color = e
+    if (selectedElement) {
+      selectedElement.style.color = e;
     }
-  }
+  };
+
+  // useEffect(() => {
+    
+  // },[resumeData])
 
   return (
-    <div className="flex w-[300px] flex-col px-2 py-2 bg-[#fff] fixed h-screen right-0 top-16">
+    <div className="flex w-[300px] flex-col px-2 py-2 bg-[#fff] fixed h-screen right-0 top-16 overflow-y-auto">
       <div>
         <h2 className="text-xl font-semibold">Edit Text</h2>
         <textarea
@@ -144,7 +186,12 @@ function Rightaside() {
               <option value="800">Extra Bold</option>
             </select>
             <div className="border-gray-300 border-2 flex justify-center mt-1.5 rounded-lg gap-2 items-center px-2 w-[150px]">
-              <input type="color" value={color} className="  w-[50px]  h-full  appearance-none" onChange={(e) => handleTextColor(e.target.value)} />
+              <input
+                type="color"
+                value={color}
+                className="  w-[50px]  h-full  appearance-none"
+                onChange={(e) => handleTextColor(e.target.value)}
+              />
               <span className="text-sm w-[100px] text-black">{color}</span>
             </div>
           </div>

@@ -1,7 +1,11 @@
 import React from "react";
-import Accordian from "./Accordian/Accordian";
-import PersonalDetails from "./PersonalDetails";
-import EduactionAcc from "./EduactionAcc";
+import Accordian from "../../Accordian/Accordian";
+import PersonalDetails from "../TabContent/PersonalDetails";
+import EduactionAcc from "../TabContent/EduactionAcc";
+import ContactAcc from "../TabContent/ContactAcc";
+import SkillsAcc from "../TabContent/SkillsAcc";
+import Experience from "../TabContent/Experience";
+import ProjectAcc from "../TabContent/ProjectAcc";
 
 function CreateTab() {
     const accordian = [
@@ -17,18 +21,23 @@ function CreateTab() {
         },
         {
             key:"3",
-            title:"Skills Details",
-            content:"Skills Details"
+            title:"Contact Details",
+            content:<ContactAcc/>
         },
         {
             key:"4",
-            title:"Experience Details",
-            content:"Experience Details"
+            title:"Skills Details",
+            content:<SkillsAcc/>
         },
         {
             key:"5",
+            title:"Experience Details",
+            content:<Experience/>
+        },
+        {
+            key:"6",
             title:"Project Details",
-            content:"Project Details"
+            content:<ProjectAcc/>
         }
 
 

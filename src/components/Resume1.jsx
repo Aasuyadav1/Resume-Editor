@@ -1,10 +1,20 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import useResumeStore from "../Store/store";
-import { resumeData } from "../Data/resume1";
+
 
 function resume1() {
-  const {selectedElement, setSelectedElement} = useResumeStore();
+  const { selectedElement,
+          setSelectedElement,
+          resumeData,
+          setSelectedDataIndex,
+          selectedDataIndex,
+          setselectedEducationDateIndex,
+          setselectedEducationDegreeIndex,
+          setselectedEducationUniversityIndex
+
+
+        } = useResumeStore();
   const [selectedDivContent, setSelectedDivContent] = useState(null);
   const [selectedElements, setSelectedElements] = useState(null);
   const [selectedImage, setSelectedImage] = useState(
@@ -44,13 +54,28 @@ function resume1() {
   };
 
   const handleClick =  (e) => {
+    setSelectedDataIndex(null)
+    setselectedEducationDateIndex(0)
     const element = e.target;
     setSelectedElement(element);
     console.log('selected el', selectedElement);
     console.log(resumeData)
    
   };
-  
+
+  const handleResumeInfoClick = (e, key) => {
+    const element = e.target;
+    setSelectedElement(element);
+    setSelectedDataIndex(key)
+  }
+
+  const handleEduactionDate = (e, index) => {
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedEducationDateIndex(index)
+  }
+
+
   useEffect(() => {
     if (selectedElement) {
       // const all = document.querySelectorAll('html')
@@ -85,13 +110,13 @@ function resume1() {
         <div className="flex-grow">
           <p
             className="text-6xl pb-2 w-full border-solid hover:border-blue-900 border-[2px] border-transparent text-black font-bold text-left break-words text-wrap"
-            onClick={handleClick}
+            onClick={(e)=>handleResumeInfoClick(e,"resumeData.title")}
           >
             {resumeData.title}
           </p>
           <p
             className="text-2xl text-black font-normal border-solid hover:border-blue-900 border-transparent border-[2px]"
-            onClick={handleClick}
+            onClick={(e)=>handleResumeInfoClick(e,"resumeData.subtitle")}
           >
             {resumeData.subtitle}
           </p>
@@ -107,10 +132,11 @@ function resume1() {
           </h2>
           <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
          {
-          resumeData.Education.map((data)=>(
+         // education map
+          resumeData.Education.map((data,i)=>(
             <div className="mt-3">
             <p
-              onClick={handleClick}
+              onClick={(e)=>handleEduactionDate(e,i)}
               className="text-sm border-solid  hover:border-blue-900 border-transparent border-[2px] "
             >
               {data.date}
@@ -195,7 +221,7 @@ function resume1() {
             </h2>
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
             <p
-              onClick={handleClick}
+              onClick={(e)=>handleResumeInfoClick(e,"resumeData.description")}
               className="mt-2 text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               {resumeData.description}

@@ -1,21 +1,24 @@
 import React, { useEffect } from 'react'
-import InputField from './InputField/InputField'
+import InputField from '../../InputField/InputField'
 import { useState } from 'react'
-import useResumeStore from '../Store/store'
+import useResumeStore from '../../../Store/store'
 
 function PersonalDetails() {
     const [name, setName] = useState('')
     const [profession, setProfession] = useState('')
     const [description, setDescription] = useState('')
-    const {resumeData} = useResumeStore()
+    const {resumeData,setResumetitle,setResumeSubtitle, setResumedescription} = useResumeStore()
     const handleName = (e) => {
         setName(e.target.value)
+        setResumetitle(e.target.value)
     }
     const handleProfession = (e) => {
         setProfession(e.target.value)
+        setResumeSubtitle(e.target.value)
     }
     const handleDescription = (e) => {
         setDescription(e.target.value)
+        setResumedescription(e.target.value)
     }
     useEffect(() => {
         setName(resumeData.title)
