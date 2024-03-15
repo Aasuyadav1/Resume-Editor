@@ -19,9 +19,39 @@ function Rightaside() {
     setResumeSubtitle,
     setResumetitle,
     setResumedescription,
+    selectedProjectNameIndex,
+    selectedProjectdescriptionIndex,
+    selectedProjectlinkIndex,
     selectedEducationDateIndex,
-    setEducationDate
+    selectedEducationDegreeIndex,
+    selectedEducationUniversityIndex,
+    selectedSkillCatrgoryIndex,
+    selectedSkillSkillsIndex,
+    selectedContectLabelIndex,
+    selectedContectValueIndex,
+    selectedExperienceDateIndex,
+    selectedExperienceCompanyIndex,
+    selectedExperiencePositionIndex,
+    selectedExperienceDescriptionIndex,
 
+    setEducationDate,
+    setEducationDegree,
+    setEducationUniversity,
+
+    setContactLabel,
+    setContactValue,
+
+    setSkillsCategory,
+    setSkillsSkills,
+
+    setExperienceDate,
+    setExperienceCompany,
+    setExperiencePosition,
+    setExperienceDescription,
+
+    setProjectName,
+    setProjectDescription,
+    setProjectLink,
   } = useResumeStore();
 
   const [editData, setEditData] = useState("");
@@ -36,14 +66,48 @@ function Rightaside() {
         setEditData(resumeData.description);
       } else if (selectedDataIndex == "resumeData.title") {
         setEditData(resumeData.title);
-     } else if (selectedEducationDateIndex) {
+      } else if (selectedEducationDateIndex) {
         setEditData(resumeData.Education[selectedEducationDateIndex].date);
-     }
-     else {
-       
-          setEditData(selectedElement.innerHTML);
-        console.log(selectedEducationDateIndex)
-       
+      } else if (selectedEducationDegreeIndex) {
+        setEditData(resumeData.Education[selectedEducationDegreeIndex].degree);
+      } else if (selectedEducationUniversityIndex) {
+        setEditData(
+          resumeData.Education[selectedEducationUniversityIndex].university
+        );
+      } else if (selectedSkillCatrgoryIndex) {
+        setEditData(resumeData.Skills[selectedSkillCatrgoryIndex].category);
+      } else if (selectedSkillSkillsIndex) {
+        setEditData(resumeData.Skills[selectedSkillSkillsIndex].skills);
+      } else if (selectedContectLabelIndex) {
+        setEditData(resumeData.Contact[selectedContectLabelIndex].label);
+      } else if (selectedContectValueIndex) {
+        setEditData(resumeData.Contact[selectedContectValueIndex].value);
+      } else if (selectedExperienceDateIndex) {
+        setEditData(resumeData.Experience[selectedExperienceDateIndex].date);
+      } else if (selectedExperienceCompanyIndex) {
+        setEditData(
+          resumeData.Experience[selectedExperienceCompanyIndex].company
+        );
+      } else if (selectedExperiencePositionIndex) {
+        setEditData(
+          resumeData.Experience[selectedExperiencePositionIndex].position
+        );
+      } else if (selectedExperienceDescriptionIndex) {
+        setEditData(
+          resumeData.Experience[selectedExperienceDescriptionIndex].description
+        );
+      } else if (selectedProjectNameIndex) {
+        setEditData(resumeData.Projects[selectedProjectNameIndex].name);
+      } else if (selectedProjectdescriptionIndex) {
+        setEditData(
+          resumeData.Projects[selectedProjectdescriptionIndex].description
+        );
+      } else if (selectedProjectlinkIndex) {
+        setEditData(resumeData.Projects[selectedProjectlinkIndex].link);
+      }
+       else {
+        setEditData(selectedElement.innerHTML);
+        console.log(selectedEducationDateIndex);
       }
     }
   }, [selectedElement, resumeData]);
@@ -58,11 +122,36 @@ function Rightaside() {
       setResumetitle(e.target.value);
     } else if (selectedEducationDateIndex) {
       setEducationDate(e.target.value, selectedEducationDateIndex);
+    } else if (selectedEducationDegreeIndex) {
+      setEducationDegree(e.target.value, selectedEducationDegreeIndex);
+    } else if (selectedEducationUniversityIndex) {
+      setEducationUniversity(e.target.value, selectedEducationUniversityIndex);
+    } else if (selectedSkillCatrgoryIndex) {
+      setSkillsCategory(e.target.value, selectedSkillCatrgoryIndex);
+    } else if (selectedSkillSkillsIndex) {
+      setSkillsSkills(e.target.value, selectedSkillSkillsIndex);
+    } else if (selectedContectLabelIndex) {
+      setContactLabel(e.target.value, selectedContectLabelIndex);
+    } else if (selectedContectValueIndex) {
+      setContactValue(e.target.value, selectedContectValueIndex);
+    } else if (selectedExperienceDateIndex) {
+      setExperienceDate(e.target.value, selectedExperienceDateIndex);
+    } else if (selectedExperienceCompanyIndex) {
+      setExperienceCompany(e.target.value, selectedExperienceCompanyIndex);
+    } else if (selectedExperiencePositionIndex) {
+      setExperiencePosition(e.target.value, selectedExperiencePositionIndex);
+    } else if (selectedExperienceDescriptionIndex) {
+      setExperienceDescription(e.target.value, selectedExperienceDescriptionIndex);
+    } else if (selectedProjectNameIndex) {
+      setProjectName(e.target.value, selectedProjectNameIndex);
+    } else if (selectedProjectdescriptionIndex) {
+      setProjectDescription(e.target.value, selectedProjectdescriptionIndex);
+    } else if (selectedProjectlinkIndex) {
+      setProjectLink(e.target.value, selectedProjectlinkIndex);
     }
-     else {
+    else {
       selectedElement.innerHTML = e.target.value;
     }
-
   };
 
   const handleBold = () => {
@@ -139,7 +228,7 @@ function Rightaside() {
   };
 
   // useEffect(() => {
-    
+
   // },[resumeData])
 
   return (

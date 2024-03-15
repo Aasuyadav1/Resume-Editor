@@ -44,11 +44,11 @@ const useResumeStore = create(
     setselectedEducationDegreeIndex : (index) => set({ selectedEducationDegreeIndex: index }),
     setselectedEducationUniversityIndex : (index) => set({ selectedEducationUniversityIndex: index }),
 
-    setselectedSkillCatrgoryIndex : (index) => set({ selectedSkillCatrgoryIndex: index }),
+    setselectedSkillCategoryIndex : (index) => set({ selectedSkillCatrgoryIndex: index }),
     setselectedSkillSkillsIndex : (index) => set({ selectedSkillSkillsIndex: index }),
 
-    setselectedContectLabelIndex : (index) => set({ selectedContectLabelIndex: index }),
-    setselectedContectValueIndex : (index) => set({ selectedContectValueIndex: index }),
+    setselectedContactLabelIndex : (index) => set({ selectedContectLabelIndex: index }),
+    setselectedContactValueIndex : (index) => set({ selectedContectValueIndex: index }),
 
     setselectedExperienceDateIndex : (index) => set({ selectedExperienceDateIndex: index }),
     setselectedExperienceCompanyIndex : (index) => set({ selectedExperienceCompanyIndex: index }),  

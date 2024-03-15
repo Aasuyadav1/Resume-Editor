@@ -9,11 +9,25 @@ function resume1() {
           resumeData,
           setSelectedDataIndex,
           selectedDataIndex,
+
           setselectedEducationDateIndex,
           setselectedEducationDegreeIndex,
-          setselectedEducationUniversityIndex
+          setselectedEducationUniversityIndex,
 
+          setselectedSkillCategoryIndex,
+          setselectedSkillSkillsIndex,
 
+          setselectedContactLabelIndex,
+          setselectedContactValueIndex,
+
+          setselectedExperienceDateIndex,
+          setselectedExperienceCompanyIndex,
+          setselectedExperiencePositionIndex,
+          setselectedExperienceDescriptionIndex,
+
+          setselectedProjectNameIndex,
+          setselectedProjectdescriptionIndex,
+          setselectedProjectlinkIndex,
         } = useResumeStore();
   const [selectedDivContent, setSelectedDivContent] = useState(null);
   const [selectedElements, setSelectedElements] = useState(null);
@@ -53,9 +67,26 @@ function resume1() {
     event.preventDefault();
   };
 
-  const handleClick =  (e) => {
+  const setNull = () => {
     setSelectedDataIndex(null)
-    setselectedEducationDateIndex(0)
+    setselectedEducationDateIndex(null)
+    setselectedEducationDegreeIndex(null)
+    setselectedEducationUniversityIndex(null)
+    setselectedSkillCategoryIndex(null)
+    setselectedSkillSkillsIndex(null)
+    setselectedContactLabelIndex(null)
+    setselectedContactValueIndex(null)
+    setselectedExperienceDateIndex(null)
+    setselectedExperienceCompanyIndex(null)
+    setselectedExperiencePositionIndex(null)
+    setselectedExperienceDescriptionIndex(null)
+    setselectedProjectNameIndex(null)
+    setselectedProjectdescriptionIndex(null)
+    setselectedProjectlinkIndex(null)
+  }
+
+  const handleClick =  (e) => {
+    setNull()
     const element = e.target;
     setSelectedElement(element);
     console.log('selected el', selectedElement);
@@ -64,16 +95,112 @@ function resume1() {
   };
 
   const handleResumeInfoClick = (e, key) => {
+    setNull()
     const element = e.target;
     setSelectedElement(element);
     setSelectedDataIndex(key)
   }
 
-  const handleEduactionDate = (e, index) => {
+  const handleEducationDate = (e, index) => {
+    setNull()
     const element = e.target;
     setSelectedElement(element);
     setselectedEducationDateIndex(index)
   }
+
+  const handleEducationDegree = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedEducationDegreeIndex(index)
+  }
+
+  const handleEducationUniversity = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedEducationUniversityIndex(index)
+  }
+
+  const handleContactLabel = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedContactLabelIndex(index)
+  }
+
+  const handleContactValue = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedContactValueIndex(index)
+  }
+
+  const handleSkillCategory = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedSkillCategoryIndex(index)
+  }
+
+  const handleSkillSkills = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedSkillSkillsIndex(index)
+  }
+
+  const handleExperienceDate = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedExperienceDateIndex(index)
+  }
+
+  const handleExperienceCompany = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedExperienceCompanyIndex(index)
+  }
+
+  const handleExperiencePosition = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedExperiencePositionIndex(index)
+  }
+
+  const handleExperienceDescription = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedExperienceDescriptionIndex(index)
+  }
+
+  const handleProjectsName = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedProjectNameIndex(index)
+  }
+
+  const handleProjectsDescription = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedProjectdescriptionIndex(index)
+  }
+
+  const handleProjectsLink = (e, index) => {
+    setNull()
+    const element = e.target;
+    setSelectedElement(element);
+    setselectedProjectlinkIndex(index)
+  }
+
+
+
 
 
   useEffect(() => {
@@ -136,19 +263,19 @@ function resume1() {
           resumeData.Education.map((data,i)=>(
             <div className="mt-3">
             <p
-              onClick={(e)=>handleEduactionDate(e,i)}
+              onClick={(e)=>handleEducationDate(e,i)}
               className="text-sm border-solid  hover:border-blue-900 border-transparent border-[2px] "
             >
               {data.date}
             </p>
             <p
-              onClick={handleClick}
+              onClick={(e)=>handleEducationDegree(e,i)}
               className="text-sm text-[#787777] border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               {data.degree}
             </p>
             <p
-              onClick={handleClick}
+              onClick={(e)=>handleEducationUniversity(e,i)}
               className="text-sm text-[#787777] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               {data.university}
@@ -164,16 +291,16 @@ function resume1() {
           </h2>
           <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
           {
-            resumeData.Contact.map((data)=>(
+            resumeData.Contact.map((data,i)=>(
               <div className="mt-3">
             <h1
-              onClick={handleClick}
+              onClick={(e)=>handleContactLabel(e,i)}
               className="text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               {data.label}
             </h1>
             <p
-              onClick={handleClick}
+              onClick={(e)=>handleContactValue(e,i)}
               className="text-[#868686] border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
             >
               {data.value}
@@ -192,16 +319,16 @@ function resume1() {
             </h2>
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
            {
-            resumeData.Skills.map((data)=>(
+            resumeData.Skills.map((data,i)=>(
               <div className="mt-3">
               <h1
-                onClick={handleClick}
+                onClick={(e)=>handleSkillCategory(e,i)}
                 className="text-sm font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
               >
                 {data.category}
               </h1>
               <p
-                onClick={handleClick}
+                onClick={(e)=>handleSkillSkills(e,i)}
                 className=" border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
               >
                 {data.skills}
@@ -238,31 +365,31 @@ function resume1() {
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
             <div>
              {
-              resumeData.Experience.map((data)=>(
+              resumeData.Experience.map((data,i)=>(
                 <div className="flex gap-10 justify-between mt-6 ">
                 <div className="w-[180px] text-wrap">
                   <p
-                    onClick={handleClick}
+                    onClick={(e)=>handleExperienceDate(e,i)}
                     className="text-sm font-semibold text-[#868686] tracking-normal leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
                   >
                     {data.date}
                   </p>
-                  <p className=" text-sm text-[#868686] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]">
+                  <p onClick={(e)=>handleExperienceCompany(e,i)} className=" text-sm text-[#868686] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]">
                     {data.company}
                   </p>
                 </div>
                 <div>
                   <h1
-                    onClick={handleClick}
+                    onClick={(e)=>handleExperiencePosition(e,i)}
                     className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
                   >
                     {data.position}
                   </h1>
                   <p
-                    onClick={handleClick}
+                    onClick={(e)=>handleExperienceDescription(e,i)}
                     className="text-[#868686] text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
                   >
-                    {resumeData.description}
+                    {data.description}
                   </p>
                 </div>
               </div>
@@ -281,22 +408,22 @@ function resume1() {
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
 
             {
-              resumeData.Projects.map((data)=>(
+              resumeData.Projects.map((data,i)=>(
                 <div className="mt-4">
               <h1
-                onClick={handleClick}
+                onClick={(e)=>handleProjectsName(e,i)}
                 className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
               >
                 &#x2022; {data.name}
               </h1>
               <p
-                onClick={handleClick}
+                onClick={(e)=>handleProjectsDescription(e,i)}
                 className="text-[#868686] text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
               >
                 {data.description}
               </p>
               <p
-                onClick={handleClick}
+                onClick={(e)=>handleProjectsLink(e,i)}
                 className="border-solid hover:border-blue-900 border-transparent border-[2px] block -mt-0 text-sm text-blue-400 leading-snug"
               >
                 {data.link}
