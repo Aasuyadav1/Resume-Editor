@@ -60,10 +60,11 @@ function EduactionAcc() {
     }
   }, [resumeData]);
   return (
-    <div>
+    <div className="-mt-8 py-2">
       {resumeData &&
         resumeData.Education.map((data, i) => (
-          <div className="mt-4" key={i}>
+          <div className="mt-6" key={i}>
+            <p className=" text-[#4f4e4e] text-[1rem]"> Education - {i + 1}</p>
             <InputField
               label="Year"
               type="text"
@@ -88,14 +89,14 @@ Remove this</span>
         ))}
       {trackAdd && (
         <p
-          className="mt-4 font-semibold cursor-pointer text-blue-600 text-[0.9rem]"
+          className="mt-6 mb-4 font-semibold cursor-pointer text-blue-600 text-[0.9rem]"
           onClick={() => setAddNew(!addNew)}
         >
           {addNew ? "- Cancel" : "+ Add One More"}
         </p>
       )}
       {addNew && (
-        <div className="mt-4 w-full">
+        <div className="mt-4 mb-4  w-full">
           <InputField
             label="Year"
             type="text"

@@ -34,10 +34,11 @@ function ProjectAcc() {
         }
       }, [resumeData]);
   return (
-    <div>
+    <div className='-mt-8 py-2'>
         {
             resumeData && resumeData.Projects.map((data, i)=>
-                <div className='mt-3' key={i}>
+                <div className='mt-6' key={i}>
+                  <p className=" text-[#4f4e4e] text-[1rem]"> Project - {i + 1}</p>
                     <InputField
                         label="Name"
                         type="text"

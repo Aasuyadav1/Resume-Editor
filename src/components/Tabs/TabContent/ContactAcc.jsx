@@ -38,10 +38,11 @@ function ContactAcc() {
     }
   }, [resumeData]);
   return (
-    <div>
+    <div className="-mt-8 py-2">
       {resumeData &&
         resumeData.Contact.map((data, i) => (
-          <div key={i} className="mt-3">
+          <div key={i} className="mt-6">
+             <p className=" text-[#4f4e4e] text-[1rem]"> Contact - {i + 1}</p>
             <InputField
               label="Label"
               type="text"

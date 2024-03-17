@@ -233,7 +233,7 @@ function Rightaside() {
   // },[resumeData])
 
   return (
-    <div className="flex w-[300px] flex-col px-2 py-2 bg-[#fff] fixed h-screen right-0 top-16 overflow-y-auto">
+    <div className="flex shadow-sm max-w-[305px] w-full flex-col px-2 py-2 bg-[#fff] fixed h-screen right-0 border-l-2 border-solid top-16 overflow-y-auto">
       <div>
         <h2 className="text-xl font-semibold">Edit Text</h2>
         <textarea

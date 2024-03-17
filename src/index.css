@@ -5,6 +5,12 @@ body{
   background-color: #F0F0F0;
   
 }
-.hidescroll::-webkit-scrollbar {
-  width: 10px;
+::-webkit-scrollbar {
+  
+  background-color: white;
 }
+/* ::-webkit-scrollbar-thumb{
+  background-color: #F0F0F0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+} */
