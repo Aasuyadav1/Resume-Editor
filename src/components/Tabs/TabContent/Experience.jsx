@@ -1,9 +1,42 @@
 import React from 'react'
 import InputField from '../../InputField/InputField'
 import useResumeStore from '../../../Store/store'
+import Button from '../../Button';
+import { LuTrash } from "react-icons/lu";
+import { useState, useEffect } from 'react';
 
 function Experience() {
-    const { resumeData, setExperienceCompany, setExperiencePosition, setExperienceDate, setExperienceDescription } = useResumeStore();
+    const { resumeData, setExperienceCompany,removeExperience, setExperiencePosition, setExperienceDate, setExperienceDescription, addNewExperience } = useResumeStore();
+    const [newExperience, setNewExperience] = useState({
+        date: "",
+        company: "",
+        position: "",
+        description: "",
+    })
+    const [trackAdd, setTrackAdd] = useState(true);
+    const [addNew, setAddNew] = useState(false);
+    const handleAddExperience = () => {
+        if (newExperience.date && newExperience.company && newExperience.position && newExperience.description) {
+          addNewExperience(
+            newExperience.date,
+            newExperience.company,
+            newExperience.position,
+            newExperience.description
+          );
+          setNewExperience({ date: "", company: "", position: "", description: "" });
+          setAddNew(false);
+        }
+      };
+      useEffect(() => {
+        if (resumeData) {
+          const totalIndex = resumeData.Experience.length;
+          if (totalIndex === 5) {
+            setTrackAdd(false);
+          } else {
+            setTrackAdd(true);
+          }
+        }
+      }, [resumeData]);
   return (
     <div>
         {
@@ -36,9 +69,64 @@ function Experience() {
                         onChange={(e) => setExperienceDescription(e.target.value, i)}
 
                     />
+                    <span onClick={() => removeExperience(i)} className="mt-1 w-fit justify-center flex gap-1 items-center font-semibold cursor-pointer text-red-600 text-[0.9rem]"><LuTrash />
+Remove this</span>
                 </div>
             )
         }
+         {trackAdd && (
+        <p
+          className="mt-4 font-semibold cursor-pointer text-blue-600 text-[0.9rem]"
+          onClick={() => setAddNew(!addNew)}
+        >
+          {addNew ? "- Cancel" : "+ Add One More"}
+        </p>
+      )}
+      {addNew && (
+        <div className="mt-4 w-full">
+          <InputField
+            label="Date"
+            type="text"
+            value={newExperience.date}
+            onChange={(e) =>
+              setNewExperience({ ...newExperience, date: e.target.value })
+            }
+          />
+          <InputField
+            label="Company"
+            type="text"
+            value={newExperience.company}
+            onChange={(e) =>
+              setNewExperience({ ...newExperience, company: e.target.value })
+            }
+          />
+          <InputField
+            label="Position"
+            type="text"
+            value={newExperience.position}
+            onChange={(e) =>
+              setNewExperience({ ...newExperience, position: e.target.value })
+            }
+          />
+          <InputField
+            label="Description"
+            type="text"
+            value={newExperience.description}
+            onChange={(e) =>
+              setNewExperience({ ...newExperience, description: e.target.value })
+            }
+          />
+          <div className="flex justify-end">
+            <Button
+              label="Add Now"
+              bgColor="bg-black"
+              color=" text-white"
+              onClick={handleAddExperience}
+              classes="mt-4 px-3 py-[8px] rounded-md text-sm"
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

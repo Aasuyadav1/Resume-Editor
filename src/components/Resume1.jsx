@@ -261,7 +261,7 @@ function resume1() {
          {
          // education map
           resumeData.Education.map((data,i)=>(
-            <div className="mt-3">
+            <div className="mt-3" key={i}>
             <p
               onClick={(e)=>handleEducationDate(e,i)}
               className="text-sm border-solid  hover:border-blue-900 border-transparent border-[2px] "
@@ -292,7 +292,7 @@ function resume1() {
           <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
           {
             resumeData.Contact.map((data,i)=>(
-              <div className="mt-3">
+              <div className="mt-3" key={i}>
             <h1
               onClick={(e)=>handleContactLabel(e,i)}
               className="text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
@@ -320,7 +320,7 @@ function resume1() {
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
            {
             resumeData.Skills.map((data,i)=>(
-              <div className="mt-3">
+              <div className="mt-3" key={i}>
               <h1
                 onClick={(e)=>handleSkillCategory(e,i)}
                 className="text-sm font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
@@ -366,7 +366,7 @@ function resume1() {
             <div>
              {
               resumeData.Experience.map((data,i)=>(
-                <div className="flex gap-10 justify-between mt-6 ">
+                <div className="flex gap-10 justify-between mt-6 " key={i}>
                 <div className="w-[180px] text-wrap">
                   <p
                     onClick={(e)=>handleExperienceDate(e,i)}
@@ -409,7 +409,7 @@ function resume1() {
 
             {
               resumeData.Projects.map((data,i)=>(
-                <div className="mt-4">
+                <div className="mt-4" key={i}>
               <h1
                 onClick={(e)=>handleProjectsName(e,i)}
                 className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"

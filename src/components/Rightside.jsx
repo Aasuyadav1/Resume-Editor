@@ -106,8 +106,8 @@ function Rightaside() {
         setEditData(resumeData.Projects[selectedProjectlinkIndex].link);
       }
        else {
-        setEditData(selectedElement.innerHTML);
-        console.log(selectedEducationDateIndex);
+        // setEditData(selectedElement.innerHTML);
+        console.log(selectedElement);
       }
     }
   }, [selectedElement, resumeData]);
@@ -150,7 +150,8 @@ function Rightaside() {
       setProjectLink(e.target.value, selectedProjectlinkIndex);
     }
     else {
-      selectedElement.innerHTML = e.target.value;
+      // selectedElement.innerHTML = e.target.value;
+      console.log("on change", selectedElement);
     }
   };
 

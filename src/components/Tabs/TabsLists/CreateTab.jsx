@@ -46,7 +46,7 @@ function CreateTab() {
     <div>
       {
         accordian.map((data)=>(
-            <Accordian key={data.key} title={data.title} content={data.content} />
+            <Accordian key={data.key} accordionKey={data.key} title={data.title} content={data.content} />
         ))
       }
       

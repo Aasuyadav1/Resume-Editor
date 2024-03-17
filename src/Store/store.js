@@ -5,35 +5,22 @@ import { resumeData } from '../Data/resume1';
 const useResumeStore = create(
   devtools((set) => ({
     resumeData: resumeData,
-
     selectedElement: null,
-
     selectedDataIndex: null,
-
-    // projects index
     selectedProjectNameIndex : null,
     selectedProjectdescriptionIndex : null,
     selectedProjectlinkIndex : null,
-
-    // education index
     selectedEducationDateIndex : null,
     selectedEducationDegreeIndex : null,
     selectedEducationUniversityIndex : null,
-
-    // skills index
     selectedSkillCatrgoryIndex : null,
     selectedSkillSkillsIndex : null,
-
-    // contact index
     selectedContectLabelIndex : null,
     selectedContectValueIndex : null,
-
-    // set experience index
     selectedExperienceDateIndex : null,
     selectedExperienceCompanyIndex : null,
     selectedExperiencePositionIndex : null,
     selectedExperienceDescriptionIndex : null,
-
 
     // functions to set selected elements index
     setselectedProjectNameIndex : (index) => set({ selectedProjectNameIndex: index }),
@@ -83,96 +70,173 @@ const useResumeStore = create(
     })),
     
     setEducationDate: (date, index) => {
-      const updatedEducation = [...resumeData.Education];
-      updatedEducation[index].date = date;
-      set({ resumeData: { ...resumeData, Education: updatedEducation } });
+      set((prevState) => {
+        const updatedEducation = [...prevState.resumeData.Education];
+        if (updatedEducation[index]) {
+          updatedEducation[index].date = date;
+          return { resumeData: { ...prevState.resumeData, Education: updatedEducation } };
+        } else {
+          // Handle error or fallback behavior if index is out of bounds
+          console.error(`Index ${index} is out of bounds.`);
+          return prevState;
+        }
+      });
     },
 
-    setEducationDegree : (degree, index) => {
-      const updateDegree = [...resumeData.Education];
-      updateDegree[index].degree = degree;
-      set({resumeData : {...resumeData, Education:updateDegree}})
+    setEducationDegree: (degree, index) => {
+      set((state) => {
+        const updatedEducation = [...state.resumeData.Education];
+        if (updatedEducation[index]) {
+          updatedEducation[index].degree = degree;
+          return { resumeData: { ...state.resumeData, Education: updatedEducation } };
+        } else {
+          console.error(`Index ${index} is out of bounds.`);
+          return state;
+        }
+      });
     },
 
-    setEducationUniversity : (university, index) => {
-      const updateUniversity = [...resumeData.Education];
-      updateUniversity[index].university = university;
-      set({resumeData : {...resumeData, Education:updateUniversity}})
+    setEducationUniversity: (university, index) => {
+      set((state) => {
+        const updatedEducation = [...state.resumeData.Education];
+        if (updatedEducation[index]) {
+          updatedEducation[index].university = university;
+          return { resumeData: { ...state.resumeData, Education: updatedEducation } };
+        } else {
+          console.error(`Index ${index} is out of bounds.`);
+          return state;
+        }
+      });
     },
 
-    setContactLabel : (label, index) => {
-      const updateLabel = [...resumeData.Contact];
-      updateLabel[index].label = label;
-      set({resumeData : {...resumeData, Contact:updateLabel}})
-    },
+    setContactLabel : (label, index) => set((prevState) => {
+      const updatedContact = [...prevState.resumeData.Contact];
+      if (updatedContact[index]) {
+        updatedContact[index].label = label;
+        return { resumeData: { ...prevState.resumeData, Contact: updatedContact } };
+      } else {
+        console.error(`Index ${index} is out of bounds.`);
+        return prevState;
+      }
+    }),
 
-    setContactValue : (value, index) => {
-      const updateValue = [...resumeData.Contact];
-      updateValue[index].value = value;
-      set({resumeData : {...resumeData, Contact:updateValue}})
-    },
+    setContactValue : (value, index) => set((prevState) => {
+      const updatedContact = [...prevState.resumeData.Contact];
+      if (updatedContact[index]) {
+        updatedContact[index].value = value;
+        return { resumeData: { ...prevState.resumeData, Contact: updatedContact } };
+      } else {
+        console.error(`Index ${index} is out of bounds.`);
+        return prevState;
+      }
+    }),
 
-    setSkillsCategory : (category, index) => {
-      const updateCategory = [...resumeData.Skills];
-      updateCategory[index].category = category;
-      set({resumeData : {...resumeData, Skills:updateCategory}})
-    },
+    setSkillsCategory: (category, index) => set((prevState) => {
+    const updatedSkills = [...prevState.resumeData.Skills];
+    if (updatedSkills[index]) {
+      updatedSkills[index].category = category;
+      return { resumeData: { ...prevState.resumeData, Skills: updatedSkills } };
+    } else {
+      console.error(`Index ${index} is out of bounds.`);
+      return prevState;
+    }
+  }),
 
-    setSkillsSkills : (skills, index) => {
-      const updateSkills = [...resumeData.Skills];
-      updateSkills[index].skills = skills;
-      set({resumeData : {...resumeData, Skills:updateSkills}})
-    },
+    setSkillsSkills: (skills, index) => set((prevState) => {
+    const updatedSkills = [...prevState.resumeData.Skills];
+    if (updatedSkills[index]) {
+      updatedSkills[index].skills = skills;
+      return { resumeData: { ...prevState.resumeData, Skills: updatedSkills } };
+    } else {
+      console.error(`Index ${index} is out of bounds.`);
+      return prevState;
+    }
+    }),
 
-    setExperienceDate : (date, index) => {
-      const updateDate = [...resumeData.Experience];
-      updateDate[index].date = date;
-      set({resumeData : {...resumeData, Experience:updateDate}})
-    },
+    setExperienceDate : (date, index) => set((prevState) => {
+      const updatedExperience = [...prevState.resumeData.Experience];
+      if (updatedExperience[index]) {
+        updatedExperience[index].date = date;
+        return { resumeData: { ...prevState.resumeData, Experience: updatedExperience } };
+      } else {
+        console.error(`Index ${index} is out of bounds.`);
+        return prevState;
+      }
+    }),
 
-    setExperienceCompany : (company, index) => {
-      const updateCompany = [...resumeData.Experience];
-      updateCompany[index].company = company;
-      set({resumeData : {...resumeData, Experience:updateCompany}})
-    },
+    setExperienceCompany : (company, index) => set((prevState) => {
+      const updatedExperience = [...prevState.resumeData.Experience];
+      if (updatedExperience[index]) {
+        updatedExperience[index].company = company;
+        return { resumeData: { ...prevState.resumeData, Experience: updatedExperience } };
+      } else {
+        console.error(`Index ${index} is out of bounds.`);
+        return prevState;
+      }
+    }),
 
-    setExperiencePosition : (position, index) => {
-      const updatePosition = [...resumeData.Experience];
-      updatePosition[index].position = position;
-      set({resumeData : {...resumeData, Experience:updatePosition}})
-    },
+    setExperiencePosition : (position, index) => set((prevState) => {
+      const updatedExperience = [...prevState.resumeData.Experience];
+      if (updatedExperience[index]) {
+        updatedExperience[index].position = position;
+        return { resumeData: { ...prevState.resumeData, Experience: updatedExperience } };
+      } else {
+        console.error(`Index ${index} is out of bounds.`);
+        return prevState;
+      }
+    }),
 
-    setExperienceDescription : (description, index) => {
-      const updateDescription = [...resumeData.Experience];
-      updateDescription[index].description = description;
-      set({resumeData : {...resumeData, Experience:updateDescription}})
-    },
+    setExperienceDescription : (description, index) => set((prevState) => {
+      const updatedExperience = [...prevState.resumeData.Experience];
+      if (updatedExperience[index]) {
+        updatedExperience[index].description = description;
+        return { resumeData: { ...prevState.resumeData, Experience: updatedExperience } };
+      } else {
+        console.error(`Index ${index} is out of bounds.`);
+        return prevState;
+      }
+    }),
 
-    setProjectName : (name, index) => {
-      const updateName = [...resumeData.Projects];
-      updateName[index].name = name;
-      set({resumeData : {...resumeData, Projects:updateName}})
-    },
+    setProjectName : (name, index) => set((prevState) => {
+      const updatedProject = [...prevState.resumeData.Projects];
+      if (updatedProject[index]) {
+        updatedProject[index].name = name;
+        return { resumeData: { ...prevState.resumeData, Projects: updatedProject } };
+      } else {
+        console.error(`Index ${index} is out of bounds.`);
+        return prevState;
+      }
+    }),
 
-    setProjectDescription : (description, index) => {
-      const updateDescription = [...resumeData.Projects];
-      updateDescription[index].description = description;
-      set({resumeData : {...resumeData, Projects:updateDescription}})
-    },
+    setProjectDescription : (description, index) => set((prevState) => {
+      const updatedProject = [...prevState.resumeData.Projects];
+      if (updatedProject[index]) {
+        updatedProject[index].description = description;
+        return { resumeData: { ...prevState.resumeData, Projects: updatedProject } };
+      } else {
+        console.error(`Index ${index} is out of bounds.`);
+        return prevState;
+      }
+    }),
 
-    setProjectLink : (link, index) => {
-      const updateLink = [...resumeData.Projects];
-      updateLink[index].link = link;
-      set({resumeData : {...resumeData, Projects:updateLink}})
-    },
+    setProjectLink : (link, index) => set((prevState) => {
+      const updatedProject = [...prevState.resumeData.Projects];
+      if (updatedProject[index]) {
+        updatedProject[index].link = link;
+        return { resumeData: { ...prevState.resumeData, Projects: updatedProject } };
+      } else {
+        console.error(`Index ${index} is out of bounds.`);
+        return prevState;
+      }
+    }),
 
     // adding new data 
-    addNewEducation : (date, degree, university) => {
-      set((state) => ({
+    addNewEducation: (date, degree, university) => {
+      set((prevState) => ({
         resumeData: {
-          ...state.resumeData,
+          ...prevState.resumeData,
           Education: [
-            ...state.resumeData.Education,
+            ...prevState.resumeData.Education,
             { date: date, degree: degree, university: university },
           ],
         },
@@ -220,8 +284,54 @@ const useResumeStore = create(
         }
       }))
     },
+
+    // removing data
+    removeEducation : (index) => {
+      set((state) => ({
+        resumeData: {
+          ...state.resumeData,
+          Education: state.resumeData.Education.filter((education, i) => i !== index),
+        },
+      }))
+    },
+
+    removeContact : (index) => {
+      set((state) => ({
+        resumeData: {
+          ...state.resumeData,
+          Contact: state.resumeData.Contact.filter((contact, i) => i !== index),
+        },
+      }))
+    },
     
+    removeSkills : (index) => {
+      set((state) => ({
+        resumeData: {
+          ...state.resumeData,
+          Skills: state.resumeData.Skills.filter((skill, i) => i !== index),
+        },
+      }))
+    },
+    
+    removeExperience : (index) => {
+      set((state) => ({
+        resumeData: {
+          ...state.resumeData,
+          Experience: state.resumeData.Experience.filter((experience, i) => i !== index),
+        },
+      }))
+    },
+    
+    removeProject : (index) => {
+      set((state) => ({
+        resumeData: {
+          ...state.resumeData,
+          Projects: state.resumeData.Projects.filter((project, i) => i !== index),
+        },
+      }))
+    }
+
   })),
- );
+);
 
 export default useResumeStore;
