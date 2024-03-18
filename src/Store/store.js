@@ -285,51 +285,41 @@ const useResumeStore = create(
       }))
     },
 
-    // removing data
     removeEducation : (index) => {
-      set((state) => ({
-        resumeData: {
-          ...state.resumeData,
-          Education: state.resumeData.Education.filter((education, i) => i !== index),
-        },
-      }))
+      set((prevState) => {
+        const updatedEducation = prevState.resumeData.Education.filter((_, i) => i !== index);
+        return { resumeData: { ...prevState.resumeData, Education: updatedEducation } };
+      })
     },
 
     removeContact : (index) => {
-      set((state) => ({
-        resumeData: {
-          ...state.resumeData,
-          Contact: state.resumeData.Contact.filter((contact, i) => i !== index),
-        },
-      }))
+      set((prevState) => {
+        const updatedContact = prevState.resumeData.Contact.filter((_, i) => i !== index);
+        return { resumeData: { ...prevState.resumeData, Contact: updatedContact } };
+      })
     },
     
     removeSkills : (index) => {
-      set((state) => ({
-        resumeData: {
-          ...state.resumeData,
-          Skills: state.resumeData.Skills.filter((skill, i) => i !== index),
-        },
-      }))
+      set((prevState) => {
+        const updatedSkills = prevState.resumeData.Skills.filter((_, i) => i !== index);
+        return { resumeData: { ...prevState.resumeData, Skills: updatedSkills } };
+      })
     },
     
     removeExperience : (index) => {
-      set((state) => ({
-        resumeData: {
-          ...state.resumeData,
-          Experience: state.resumeData.Experience.filter((experience, i) => i !== index),
-        },
-      }))
+      set((prevState) => {
+        const updatedExperience = prevState.resumeData.Experience.filter((_, i) => i !== index);
+        return { resumeData: { ...prevState.resumeData, Experience: updatedExperience } };
+      })
     },
     
-    removeProject : (index) => {
-      set((state) => ({
-        resumeData: {
-          ...state.resumeData,
-          Projects: state.resumeData.Projects.filter((project, i) => i !== index),
-        },
-      }))
+    removeProject: (index) => {
+      set((prevState) => {
+        const updatedProjects = prevState.resumeData.Projects.filter((_, i) => i !== index);
+        return { resumeData: { ...prevState.resumeData, Projects: updatedProjects } };
+      });
     }
+    
 
   })),
 );

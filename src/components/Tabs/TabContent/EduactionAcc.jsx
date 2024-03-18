@@ -58,6 +58,7 @@ function EduactionAcc() {
         setTrackAdd(true);
       }
     }
+    console.log("resume education", resumeData.Education);
   }, [resumeData]);
   return (
     <div className="-mt-8 py-2">
