@@ -60,7 +60,12 @@ const useResumeStore = create(
       }
     })),
 
-    setResumeimage : (image) => set({ resumeData: {...resumeData,image:image} }),
+    setResumeimage : (image) => set((prevState) => ({
+      resumeData: { 
+        ...prevState.resumeData, 
+        image: image 
+      }
+    })),
 
     setResumeSubtitle: (subtitle) => set((prevState) => ({
       resumeData: { 

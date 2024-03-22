@@ -3,6 +3,7 @@ import { useState } from "react";
 import useResumeStore from "../Store/store";
 
 
+
 function resume1() {
   const { selectedElement,
           setSelectedElement,
@@ -28,6 +29,8 @@ function resume1() {
           setselectedProjectNameIndex,
           setselectedProjectdescriptionIndex,
           setselectedProjectlinkIndex,
+
+          setResumeimage,
         } = useResumeStore();
   const [selectedDivContent, setSelectedDivContent] = useState(null);
   const [selectedElements, setSelectedElements] = useState(null);
@@ -45,7 +48,7 @@ function resume1() {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setSelectedImage(e.target.result); // Update selected image
+        setResumeimage(e.target.result); // Update selected image
       };
       reader.readAsDataURL(file);
     }
@@ -216,16 +219,18 @@ function resume1() {
 
   return (
     <div className="flex flex-col gap-20">
-    <div className="max-w-2xl shadow-xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden">
+    <div id="resumepdf" className="max-w-2xl shadow-xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden">
       <div
-        className="w-full h-fit flex items-center gap-10 px-5 py-1"
+        // className="w-full h-fit flex items-center gap-10 px-5 py-1"
         onDrop={handleDrop}
         onDragOver={handleDragOver}
+        style={{width : '100%', height : '100%', display : 'flex', alignItems : 'center', gap : '40px', paddingBlock : '20px' , paddingInline : '4px'}}
       >
         <img
           src={resumeData.image}
           alt="Selected"
-          className="w-[100px] rounded-full object-cover aspect-square  border-solid hover:border-blue-900 border-[2px] border-transparent cursor-pointer"
+          className= " imgess border-solid hover:border-blue-900 border-[2px] border-transparent cursor-pointer"
+          style={{width : '100px', height : '100px', objectFit : 'cover', borderRadius : '50%', cursor : 'pointer',}}
           onClick={handleImageClick}
           draggable="true"
         />
@@ -237,7 +242,8 @@ function resume1() {
         />
         <div className="flex-grow">
           <p
-            className="text-6xl pb-2 w-full border-solid hover:border-blue-900 border-[2px] border-transparent text-black font-bold text-left break-words text-wrap"
+            className=" border-solid hover:border-blue-900 border-[2px] border-transparent text-black"
+            style={{fontSize : '60px', lineHeight : '1', paddingBottom : '8px', width : '100%', fontStyle : 'bold', textAlign : 'left', wordWrap : 'break-word'}}
             onClick={(e)=>handleResumeInfoClick(e,"resumeData.title")}
           >
             {resumeData.title}
