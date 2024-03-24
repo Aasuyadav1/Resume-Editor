@@ -1,24 +1,19 @@
-import React from 'react'
-import Resume1 from './components/Resume1'
-import Leftaside from './components/Lefttaside'
-import Rightaside from './components/Rightside'
-import Navbar from './components/Navbar'
-
-
+import React from "react";
+import ResumeLanding from "./Pages/ResumeLanding";
+import ResumeEditor from "./Pages/ResumeEditor";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Error from "./Pages/Error";
 
 function App() {
   return (
-    <div >
-      <Navbar/>
-       <div className='flex justify-center items-center'>
-       <Leftaside/>
-      <Resume1 />
-      
-      <Rightaside/>
-       </div>
-     
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ResumeLanding />} />
+        <Route path="/editor" element={<ResumeEditor />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
