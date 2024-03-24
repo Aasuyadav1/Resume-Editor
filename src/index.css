@@ -8,10 +8,10 @@ body{
 *{
   box-sizing: border-box;
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   
   background-color: white;
-}
+} */
 /* ::-webkit-scrollbar-thumb{
   background-color: #F0F0F0;
   border-bottom-left-radius: 10px;

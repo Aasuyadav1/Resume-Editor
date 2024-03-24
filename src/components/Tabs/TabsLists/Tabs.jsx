@@ -1,6 +1,7 @@
 import React from 'react'
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
 import CreateTab from './CreateTab';
+import Template from './Template';
 
 function Tabes() {
   return (
@@ -12,20 +13,15 @@ function Tabes() {
         tabContent: "group-data-[selected=true]:text-[#06b6d4]"
       }}>
         
-          <Tab key="create" title="Create">
-            <Card>
-              <CardBody>
+          <Tab key="create" title="Create" >
+            
                 <CreateTab/>
-              </CardBody>
-            </Card>  
+              
           </Tab>
           <Tab key="template" title="template">
-            <Card>
-              <CardBody>
-                template 
-                {/* here html file render jo display karvana hai template mein */}
-              </CardBody>
-            </Card>  
+            
+               <Template/>
+             
           
           </Tab>
         

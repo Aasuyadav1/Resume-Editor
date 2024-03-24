@@ -21,6 +21,9 @@ const useResumeStore = create(
     selectedExperienceCompanyIndex : null,
     selectedExperiencePositionIndex : null,
     selectedExperienceDescriptionIndex : null,
+    selectedTemplateId: 1,
+
+    setSelectedTemplateId : (id) => set({ selectedTemplateId: id }),
 
     // functions to set selected elements index
     setselectedProjectNameIndex : (index) => set({ selectedProjectNameIndex: index }),

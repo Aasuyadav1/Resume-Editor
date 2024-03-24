@@ -43,7 +43,7 @@ function CreateTab() {
 
     ]
   return (
-    <div className="pb-12">
+    <div className="pb-12 flex flex-col items-center h-full w-full  ">
       {
         accordian.map((data)=>(
             <Accordian key={data.key} accordionKey={data.key} title={data.title} content={data.content} />
