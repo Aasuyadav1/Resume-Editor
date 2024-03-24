@@ -182,6 +182,10 @@ function Rightaside() {
   }, [selectedElement, resumeData]);
 
   const handleEditChanges = (e) => {
+    if(selectedElement == null){
+      alert("Please select an element to edit");
+      return
+    }
     setEditData(e.target.value);
     if (selectedDataIndex == "resumeData.subtitle") {
       setResumeSubtitle(e.target.value);

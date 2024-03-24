@@ -222,7 +222,7 @@ function resume1() {
     <div className="flex break-words flex-col gap-20 text-wrap">
     {
       selectedTemplateId === 1 && 
-      <div id="resumepdf" className=" w-[672px]  shadow-xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden text-wrap break-words">
+      <div id="resume1pdf" className=" w-[672px]  shadow-xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden text-wrap break-words">
       <div
         // className="w-full h-fit flex items-center gap-10 px-5 py-1"
         onDrop={handleDrop}
@@ -450,7 +450,7 @@ function resume1() {
 
      {
       selectedTemplateId === 2 && 
-      <div id="2" className=" w-[672px]  shadow-xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden text-wrap break-words">
+      <div id="resume2pdf" className=" w-[672px]  shadow-xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden text-wrap break-words">
         <div
         // className="w-full h-fit flex items-center gap-10 px-5 py-1"
         onDrop={handleDrop}

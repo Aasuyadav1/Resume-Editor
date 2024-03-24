@@ -29,7 +29,7 @@ function Template() {
         <div className='flex gap-4 flex-col w-full items-center mx-auto  h-full '>
             {
                 template.map((data)=>(
-                    <div key={data.id} className='group hover:cursor-pointer relative'>
+                    <div key={data.id} className='group hover:cursor-pointer relative' onClick={() => handleSelectId(data.id)}>
               <img src={data.image} alt={data.name}className='w-[200px]  h-[300px] shadow-sm object-contain border-solid border-2 border-blue-700' />
                 <Button bgColor="bg-blue-700" color="text-white" label={`${selectedTemplateId == data.id ? "Selected Template" : "Select Template"}`} classes={`w-full group-hover:opacity-100 ${selectedTemplateId == data.id ? "opacity-100" : "opacity-0"} transition-all duration-[3s] delay-75 ease-in-out`} onClick={() => handleSelectId(data.id)}/>
                 {

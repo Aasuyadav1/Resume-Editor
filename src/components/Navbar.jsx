@@ -2,13 +2,16 @@ import React from 'react'
 import Button from './Button'
 import html2canvas from 'html2canvas';
 import { BsDownload } from "react-icons/bs";
+import useResumeStore from '../Store/store';
 function Navbar() {
+  const {selectedTemplateId} = useResumeStore();
   const handleDownload = () => {
-    const main = document.getElementById('resumepdf');
-    const profileImage = document.querySelector('.imgess');
-  
-    if(!profileImage){
-      alert("Please add a profile image");
+    let main;
+    if(selectedTemplateId == 1){
+       main = document.getElementById('resume1pdf');
+        
+    } else if(selectedTemplateId == 2){
+     main = document.getElementById('resume2pdf');
     }
     // Wait for the profile image to load completely
  
