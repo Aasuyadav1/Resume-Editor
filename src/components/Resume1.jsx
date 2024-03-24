@@ -218,8 +218,8 @@ function resume1() {
  
 
   return (
-    <div className="flex flex-col gap-20">
-    <div id="resumepdf" className="max-w-2xl shadow-xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden">
+    <div className="flex break-words flex-col gap-20 text-wrap">
+    <div id="resumepdf" className=" w-[672px]  shadow-xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden text-wrap break-words">
       <div
         // className="w-full h-fit flex items-center gap-10 px-5 py-1"
         onDrop={handleDrop}
@@ -240,7 +240,7 @@ function resume1() {
           className="hidden"
           onChange={handleImageChange}
         />
-        <div className="flex-grow">
+        <div className="w-[450px]  text-wrap break-words">
           <p
             className=" border-solid hover:border-blue-900 border-[2px] border-transparent text-black"
             style={{fontSize : '60px', lineHeight : '1', paddingBottom : '8px', width : '100%', fontStyle : 'bold', textAlign : 'left', wordWrap : 'break-word'}}
@@ -249,18 +249,18 @@ function resume1() {
             {resumeData.title}
           </p>
           <p
-            className="text-2xl text-black font-normal border-solid hover:border-blue-900 border-transparent border-[2px]"
+            className="text-2xl text-black text-wrap  font-normal border-solid hover:border-blue-900 border-transparent border-[2px]"
             onClick={(e)=>handleResumeInfoClick(e,"resumeData.subtitle")}
           >
             {resumeData.subtitle}
           </p>
         </div>
       </div>
-      <div className="flex gap-12 justify-center  mt-4 px-3 py-1">
-        <div className="w-[500px]">
+      <div className="flex  break-words  gap-8   mt-4 px-5">
+        <div className="w-[150px]  text-wrap break-words">
           <h2
             onClick={handleClick}
-            className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+            className="text-md w-[150px] font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
           >
             Education
           </h2>
@@ -345,11 +345,11 @@ function resume1() {
            }
           </div>
         </div>
-        <div className="max-w-[400px]">
+        <div className="w-[388px]  text-wrap break-words">
           <div>
             <h2
               onClick={handleClick}
-              className="text-lg font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="text-lg w-[388px] font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               Profile
             </h2>
@@ -373,11 +373,11 @@ function resume1() {
             <div>
              {
               resumeData.Experience.map((data,i)=>(
-                <div className="flex gap-10 justify-between mt-6 " key={i}>
-                <div className="w-[180px] text-wrap">
+                <div className="flex gap-8  mt-6 " key={i}>
+                <div className="w-[130px] text-wrap">
                   <p
                     onClick={(e)=>handleExperienceDate(e,i)}
-                    className="text-sm font-semibold text-[#868686] tracking-normal leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
+                    className="text-sm w-[130px] font-semibold text-[#868686] tracking-normal leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
                   >
                     {data.date}
                   </p>
@@ -385,10 +385,10 @@ function resume1() {
                     {data.company}
                   </p>
                 </div>
-                <div>
+                <div className="w-[225px] text-wrap">
                   <h1
                     onClick={(e)=>handleExperiencePosition(e,i)}
-                    className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+                    className="text-md w-[225px] font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
                   >
                     {data.position}
                   </h1>

@@ -304,14 +304,14 @@ function Rightaside() {
   },[resumeData])
 
   return (
-    <div className="flex shadow-sm max-w-[305px] w-full flex-col px-2 py-2 bg-[#fff] fixed h-screen right-0 border-l-2 border-solid top-16 overflow-y-auto">
+    <div className="flex shadow-sm max-w-[305px] w-full flex-col px-2 pb-10 pt-2 overflow-y-auto bg-[#fff] fixed h-screen right-0 border-l-2 border-solid top-16 ">
       <div>
         <h2 className="text-xl font-semibold">Edit Text</h2>
         <textarea
           value={ resumeData && editData}
           onChange={(e) => handleEditChanges(e)}
           className=" hidescroll w-full px-1 py-2 resize-y border-2 outline-none mt-2 rounded-md border-[#9e9d9d] border-solid"
-          rows="2"
+          rows="4"
           placeholder="Click on text to edit"
         ></textarea>
       </div>
@@ -336,7 +336,7 @@ function Rightaside() {
             <select
               name="bold"
               id=""
-              className="mt-1.5 w-full rounded-lg border-gray-300 border-2 py-2 text-black sm:text-sm"
+              className="mt-1.5 w-full rounded-l-lg border-gray-300 border-2 py-2 text-black sm:text-sm"
               onChange={(e) => handleMultipleBold(e.target.value)}
             >
               <option value="300">Light</option>
@@ -346,7 +346,7 @@ function Rightaside() {
               <option value="700">Bold</option>
               <option value="800">Extra Bold</option>
             </select>
-            <div className="border-gray-300 border-2 flex justify-center mt-1.5 rounded-lg gap-2 items-center px-2 w-[150px]">
+            <div className="border-gray-300 border-2 border-l-0 flex justify-center mt-1.5 rounded-r-lg gap-2 items-center px-2 w-[150px]">
               <input
                 type="color"
                 value={color}
@@ -358,25 +358,25 @@ function Rightaside() {
           </div>
           <div className="mt-3">
             <button
-              className="px-6 py-2 rounded-sm bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2 rounded-l-sm bg-white border-2 border-solid border-gray-300 "
               onClick={handleBold}
             >
               <FiBold className="text-xl" />
             </button>
             <button
-              className="px-6 py-2 rounded-sm bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2  bg-white border-2 border-solid border-l-0 border-gray-300 "
               onClick={handleItalic}
             >
               <FiItalic className="text-xl" />
             </button>
             <button
-              className="px-6 py-2 rounded-sm bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2 bg-white border-2 border-solid border-l-0 border-gray-300 "
               onClick={handleUnderline}
             >
               <AiOutlineUnderline className="text-xl" />
             </button>
             <button
-              className="px-6 py-2 rounded-sm bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2 rounded-r-sm bg-white border-2 border-l-0 border-solid border-gray-300 "
               onClick={handleStrikethrough}
             >
               <ImStrikethrough className="text-xl" />
@@ -384,25 +384,25 @@ function Rightaside() {
           </div>
           <div className="mt-2">
             <button
-              className="px-6 py-2 rounded-sm bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2 rounded-l-sm bg-white border-2 border-solid border-gray-300 "
               onClick={() => handleTestAlign("center")}
             >
               <CiTextAlignCenter className="text-xl" />
             </button>
             <button
-              className="px-6 py-2 rounded-sm bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2  border-l-0 bg-white border-2 border-solid border-gray-300 "
               onClick={() => handleTestAlign("left")}
             >
               <CiTextAlignLeft className="text-xl" />
             </button>
             <button
-              className="px-6 py-2 rounded-sm bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2 border-l-0 bg-white border-2 border-solid border-gray-300 "
               onClick={() => handleTestAlign("right")}
             >
               <CiTextAlignRight className="text-xl" />
             </button>
             <button
-              className="px-6 py-2 rounded-sm bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2 rounded-r-sm border-l-0 bg-white border-2 border-solid border-gray-300 "
               onClick={() => handleTestAlign("justify")}
             >
               <CiTextAlignJustify className="text-xl" />

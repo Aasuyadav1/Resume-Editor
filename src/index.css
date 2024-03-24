@@ -5,6 +5,9 @@ body{
   background-color: #F0F0F0;
   
 }
+*{
+  box-sizing: border-box;
+}
 ::-webkit-scrollbar {
   
   background-color: white;
