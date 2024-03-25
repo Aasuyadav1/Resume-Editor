@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import useResumeStore from "../Store/store";
+import { Tailwind,  compile } from "@onedoc/react-print";
 
 
 
@@ -222,8 +223,9 @@ function resume1() {
   }, [selectedElement]);
  
 
-  return (
-    <div className="flex break-words flex-col gap-20 text-wrap">
+  return  (
+    <Tailwind>
+      <div className="flex break-words flex-col gap-20 text-wrap">
     {
       selectedTemplateId === 1 && 
       <div id="resume1pdf" className=" w-[672px]  shadow-xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden text-wrap break-words">
@@ -374,7 +376,7 @@ function resume1() {
               onClick={handleClick}
               className="text-lg clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
-              Experiance
+              Experience
             </h2>
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
             <div>
@@ -512,7 +514,7 @@ function resume1() {
               onClick={handleClick}
               className="text-lg font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
-              Experiance
+              Experience
             </h2>
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
             <div>
@@ -652,6 +654,7 @@ function resume1() {
      }
  
     </div>
+    </Tailwind>
   );
 }
 

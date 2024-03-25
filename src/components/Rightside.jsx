@@ -60,131 +60,195 @@ function Rightaside() {
   useEffect(() => {
     if (selectedElement) {
       if (selectedDataIndex == "resumeData.subtitle") {
-        
-        if(resumeData && resumeData.subtitle){
+        if (resumeData && resumeData.subtitle) {
           setEditData(resumeData.subtitle);
         }
       } else if (selectedDataIndex == "resumeData.description") {
-        if(resumeData && resumeData.description){
+        if (resumeData && resumeData.description) {
           setEditData(resumeData.description);
         }
       } else if (selectedDataIndex == "resumeData.title") {
-       if(resumeData && resumeData.title){
-        setEditData(resumeData.title);
-       }
-      } else if (selectedEducationDateIndex == 0 || selectedEducationDateIndex) {
-        if (resumeData &&
-            resumeData.Education &&
-            resumeData.Education[selectedEducationDateIndex] &&
-            resumeData.Education[selectedEducationDateIndex].date) {
+        if (resumeData && resumeData.title) {
+          setEditData(resumeData.title);
+        }
+      } else if (
+        selectedEducationDateIndex == 0 ||
+        selectedEducationDateIndex
+      ) {
+        if (
+          resumeData &&
+          resumeData.Education &&
+          resumeData.Education[selectedEducationDateIndex] &&
+          resumeData.Education[selectedEducationDateIndex].date
+        ) {
           setEditData(resumeData.Education[selectedEducationDateIndex].date);
         }
-      } else if (selectedEducationDegreeIndex == 0 || selectedEducationDegreeIndex) {
-        if (resumeData &&
-            resumeData.Education &&
-            resumeData.Education[selectedEducationDegreeIndex] &&
-            resumeData.Education[selectedEducationDegreeIndex].degree) {
-
-          setEditData(resumeData.Education[selectedEducationDegreeIndex].degree);}
-      } else if (selectedEducationUniversityIndex == 0 || selectedEducationUniversityIndex) {
-        if (resumeData &&
-            resumeData.Education &&
-            resumeData.Education[selectedEducationUniversityIndex] &&
-            resumeData.Education[selectedEducationUniversityIndex].university) {
-        
-  setEditData(resumeData.Education[selectedEducationUniversityIndex].university);
+      } else if (
+        selectedEducationDegreeIndex == 0 ||
+        selectedEducationDegreeIndex
+      ) {
+        if (
+          resumeData &&
+          resumeData.Education &&
+          resumeData.Education[selectedEducationDegreeIndex] &&
+          resumeData.Education[selectedEducationDegreeIndex].degree
+        ) {
+          setEditData(
+            resumeData.Education[selectedEducationDegreeIndex].degree
+          );
         }
-      } else if (selectedSkillCatrgoryIndex == 0 || selectedSkillCatrgoryIndex) {
-       if (resumeData &&
-            resumeData.Skills &&
-            resumeData.Skills[selectedSkillCatrgoryIndex] &&
-            resumeData.Skills[selectedSkillCatrgoryIndex].category) {
+      } else if (
+        selectedEducationUniversityIndex == 0 ||
+        selectedEducationUniversityIndex
+      ) {
+        if (
+          resumeData &&
+          resumeData.Education &&
+          resumeData.Education[selectedEducationUniversityIndex] &&
+          resumeData.Education[selectedEducationUniversityIndex].university
+        ) {
+          setEditData(
+            resumeData.Education[selectedEducationUniversityIndex].university
+          );
+        }
+      } else if (
+        selectedSkillCatrgoryIndex == 0 ||
+        selectedSkillCatrgoryIndex
+      ) {
+        if (
+          resumeData &&
+          resumeData.Skills &&
+          resumeData.Skills[selectedSkillCatrgoryIndex] &&
+          resumeData.Skills[selectedSkillCatrgoryIndex].category
+        ) {
           setEditData(resumeData.Skills[selectedSkillCatrgoryIndex].category);
         }
       } else if (selectedSkillSkillsIndex == 0 || selectedSkillSkillsIndex) {
-        if (resumeData &&
-            resumeData.Skills &&
-            resumeData.Skills[selectedSkillSkillsIndex] &&
-            resumeData.Skills[selectedSkillSkillsIndex].skills) {
+        if (
+          resumeData &&
+          resumeData.Skills &&
+          resumeData.Skills[selectedSkillSkillsIndex] &&
+          resumeData.Skills[selectedSkillSkillsIndex].skills
+        ) {
           setEditData(resumeData.Skills[selectedSkillSkillsIndex].skills);
         }
       } else if (selectedContectLabelIndex == 0 || selectedContectLabelIndex) {
-        if(resumeData &&
-            resumeData.Contact &&
-            resumeData.Contact[selectedContectLabelIndex] &&
-            resumeData.Contact[selectedContectLabelIndex].label) {
+        if (
+          resumeData &&
+          resumeData.Contact &&
+          resumeData.Contact[selectedContectLabelIndex] &&
+          resumeData.Contact[selectedContectLabelIndex].label
+        ) {
           setEditData(resumeData.Contact[selectedContectLabelIndex].label);
         }
       } else if (selectedContectValueIndex == 0 || selectedContectValueIndex) {
-        if(resumeData &&
-            resumeData.Contact &&
-            resumeData.Contact[selectedContectValueIndex] &&
-            resumeData.Contact[selectedContectValueIndex].value) {
+        if (
+          resumeData &&
+          resumeData.Contact &&
+          resumeData.Contact[selectedContectValueIndex] &&
+          resumeData.Contact[selectedContectValueIndex].value
+        ) {
           setEditData(resumeData.Contact[selectedContectValueIndex].value);
         }
-      } else if (selectedExperienceDateIndex == 0 || selectedExperienceDateIndex) {
-        if(resumeData &&
-            resumeData.Experience &&
-            resumeData.Experience[selectedExperienceDateIndex] &&
-            resumeData.Experience[selectedExperienceDateIndex].date) {
+      } else if (
+        selectedExperienceDateIndex == 0 ||
+        selectedExperienceDateIndex
+      ) {
+        if (
+          resumeData &&
+          resumeData.Experience &&
+          resumeData.Experience[selectedExperienceDateIndex] &&
+          resumeData.Experience[selectedExperienceDateIndex].date
+        ) {
           setEditData(resumeData.Experience[selectedExperienceDateIndex].date);
         }
-      } else if (selectedExperienceCompanyIndex == 0 || selectedExperienceCompanyIndex) {
-        if(resumeData &&
-            resumeData.Experience &&
-            resumeData.Experience[selectedExperienceCompanyIndex] &&
-            resumeData.Experience[selectedExperienceCompanyIndex].company) {
-          setEditData(resumeData.Experience[selectedExperienceCompanyIndex].company);
+      } else if (
+        selectedExperienceCompanyIndex == 0 ||
+        selectedExperienceCompanyIndex
+      ) {
+        if (
+          resumeData &&
+          resumeData.Experience &&
+          resumeData.Experience[selectedExperienceCompanyIndex] &&
+          resumeData.Experience[selectedExperienceCompanyIndex].company
+        ) {
+          setEditData(
+            resumeData.Experience[selectedExperienceCompanyIndex].company
+          );
         }
-      } else if (selectedExperiencePositionIndex == 0 || selectedExperiencePositionIndex) {
-        if(resumeData &&
-            resumeData.Experience &&
-            resumeData.Experience[selectedExperiencePositionIndex] &&
-            resumeData.Experience[selectedExperiencePositionIndex].position) {
-          setEditData(resumeData.Experience[selectedExperiencePositionIndex].position);
+      } else if (
+        selectedExperiencePositionIndex == 0 ||
+        selectedExperiencePositionIndex
+      ) {
+        if (
+          resumeData &&
+          resumeData.Experience &&
+          resumeData.Experience[selectedExperiencePositionIndex] &&
+          resumeData.Experience[selectedExperiencePositionIndex].position
+        ) {
+          setEditData(
+            resumeData.Experience[selectedExperiencePositionIndex].position
+          );
         }
-      } else if (selectedExperienceDescriptionIndex == 0 || selectedExperienceDescriptionIndex) {
-        if(resumeData &&
-            resumeData.Experience &&
-            resumeData.Experience[selectedExperienceDescriptionIndex] &&
-            resumeData.Experience[selectedExperienceDescriptionIndex].description) {
-          setEditData(resumeData.Experience[selectedExperienceDescriptionIndex].description);
+      } else if (
+        selectedExperienceDescriptionIndex == 0 ||
+        selectedExperienceDescriptionIndex
+      ) {
+        if (
+          resumeData &&
+          resumeData.Experience &&
+          resumeData.Experience[selectedExperienceDescriptionIndex] &&
+          resumeData.Experience[selectedExperienceDescriptionIndex].description
+        ) {
+          setEditData(
+            resumeData.Experience[selectedExperienceDescriptionIndex]
+              .description
+          );
         }
       } else if (selectedProjectNameIndex == 0 || selectedProjectNameIndex) {
-        if(resumeData &&
-            resumeData.Projects &&
-            resumeData.Projects[selectedProjectNameIndex] &&
-            resumeData.Projects[selectedProjectNameIndex].name) {
+        if (
+          resumeData &&
+          resumeData.Projects &&
+          resumeData.Projects[selectedProjectNameIndex] &&
+          resumeData.Projects[selectedProjectNameIndex].name
+        ) {
           setEditData(resumeData.Projects[selectedProjectNameIndex].name);
         }
-      } else if (selectedProjectdescriptionIndex == 0 || selectedProjectdescriptionIndex) {
-        if(resumeData &&
-            resumeData.Projects &&
-            resumeData.Projects[selectedProjectdescriptionIndex] &&
-            resumeData.Projects[selectedProjectdescriptionIndex].description) {
-          setEditData(resumeData.Projects[selectedProjectdescriptionIndex].description);
+      } else if (
+        selectedProjectdescriptionIndex == 0 ||
+        selectedProjectdescriptionIndex
+      ) {
+        if (
+          resumeData &&
+          resumeData.Projects &&
+          resumeData.Projects[selectedProjectdescriptionIndex] &&
+          resumeData.Projects[selectedProjectdescriptionIndex].description
+        ) {
+          setEditData(
+            resumeData.Projects[selectedProjectdescriptionIndex].description
+          );
         }
       } else if (selectedProjectlinkIndex == 0 || selectedProjectlinkIndex) {
-        if(resumeData &&
-            resumeData.Projects &&
-            resumeData.Projects[selectedProjectlinkIndex] &&
-            resumeData.Projects[selectedProjectlinkIndex].link) {
+        if (
+          resumeData &&
+          resumeData.Projects &&
+          resumeData.Projects[selectedProjectlinkIndex] &&
+          resumeData.Projects[selectedProjectlinkIndex].link
+        ) {
           setEditData(resumeData.Projects[selectedProjectlinkIndex].link);
         }
-      }
-       else {
-        if(resumeData){
+      } else {
+        if (resumeData) {
           setEditData(selectedElement.innerHTML);
         }
-        
       }
     }
   }, [selectedElement, resumeData]);
 
   const handleEditChanges = (e) => {
-    if(selectedElement == null){
+    if (selectedElement == null) {
       alert("Please select an element to edit");
-      return
+      return;
     }
     setEditData(e.target.value);
     if (selectedDataIndex == "resumeData.subtitle") {
@@ -194,12 +258,24 @@ function Rightaside() {
     } else if (selectedDataIndex == "resumeData.title") {
       setResumetitle(e.target.value);
     } else if (selectedEducationDateIndex == 0 || selectedEducationDateIndex) {
-      console.log("before set", resumeData.Education[selectedEducationDateIndex].date)
+      console.log(
+        "before set",
+        resumeData.Education[selectedEducationDateIndex].date
+      );
       setEducationDate(e.target.value, selectedEducationDateIndex);
-      console.log("after set", resumeData.Education[selectedEducationDateIndex].date)
-    } else if (selectedEducationDegreeIndex == 0 || selectedEducationDegreeIndex) {
+      console.log(
+        "after set",
+        resumeData.Education[selectedEducationDateIndex].date
+      );
+    } else if (
+      selectedEducationDegreeIndex == 0 ||
+      selectedEducationDegreeIndex
+    ) {
       setEducationDegree(e.target.value, selectedEducationDegreeIndex);
-    } else if (selectedEducationUniversityIndex == 0 || selectedEducationUniversityIndex) {
+    } else if (
+      selectedEducationUniversityIndex == 0 ||
+      selectedEducationUniversityIndex
+    ) {
       setEducationUniversity(e.target.value, selectedEducationUniversityIndex);
     } else if (selectedSkillCatrgoryIndex == 0 || selectedSkillCatrgoryIndex) {
       setSkillsCategory(e.target.value, selectedSkillCatrgoryIndex);
@@ -209,24 +285,40 @@ function Rightaside() {
       setContactLabel(e.target.value, selectedContectLabelIndex);
     } else if (selectedContectValueIndex == 0 || selectedContectValueIndex) {
       setContactValue(e.target.value, selectedContectValueIndex);
-    } else if (selectedExperienceDateIndex == 0 || selectedExperienceDateIndex) {
+    } else if (
+      selectedExperienceDateIndex == 0 ||
+      selectedExperienceDateIndex
+    ) {
       setExperienceDate(e.target.value, selectedExperienceDateIndex);
-    } else if (selectedExperienceCompanyIndex == 0 || selectedExperienceCompanyIndex) {
+    } else if (
+      selectedExperienceCompanyIndex == 0 ||
+      selectedExperienceCompanyIndex
+    ) {
       setExperienceCompany(e.target.value, selectedExperienceCompanyIndex);
-    } else if (selectedExperiencePositionIndex == 0 || selectedExperiencePositionIndex) {
+    } else if (
+      selectedExperiencePositionIndex == 0 ||
+      selectedExperiencePositionIndex
+    ) {
       setExperiencePosition(e.target.value, selectedExperiencePositionIndex);
-    } else if (selectedExperienceDescriptionIndex == 0 || selectedExperienceDescriptionIndex) {
-      setExperienceDescription(e.target.value, selectedExperienceDescriptionIndex);
+    } else if (
+      selectedExperienceDescriptionIndex == 0 ||
+      selectedExperienceDescriptionIndex
+    ) {
+      setExperienceDescription(
+        e.target.value,
+        selectedExperienceDescriptionIndex
+      );
     } else if (selectedProjectNameIndex == 0 || selectedProjectNameIndex) {
       setProjectName(e.target.value, selectedProjectNameIndex);
-    } else if (selectedProjectdescriptionIndex == 0 || selectedProjectdescriptionIndex) {
+    } else if (
+      selectedProjectdescriptionIndex == 0 ||
+      selectedProjectdescriptionIndex
+    ) {
       setProjectDescription(e.target.value, selectedProjectdescriptionIndex);
     } else if (selectedProjectlinkIndex == 0 || selectedProjectlinkIndex) {
       setProjectLink(e.target.value, selectedProjectlinkIndex);
-    }
-    else {
+    } else {
       selectedElement.innerHTML = e.target.value;
-      
     }
   };
 
@@ -303,16 +395,37 @@ function Rightaside() {
     }
   };
 
+  const handleBgColor = (color) => {
+    document.getElementById("resume1pdf").style = `background-color: ${color};`;
+    console.log(color)
+  }
+
   useEffect(() => {
-    console.log(resumeData)
-  },[resumeData])
+    console.log(resumeData);
+  }, [resumeData]);
+
+  const colors = [
+    {
+      bg: "#2563EB",
+      ring: "ring-[#2563EB]",
+      tailbg : "bg-[#2563EB]",
+    },
+    {
+      bg: "#8B5CF6",
+      ring: "ring-[#8B5CF6]",
+      tailbg : "bg-[#8B5CF6]",
+    },
+    { bg: "#DB2777", ring: "ring-[#DB2777]", tailbg : "bg-[#DB2777]" },
+    { bg: "#475569", ring: "ring-[#475569]", tailbg : "bg-[#475569]" },
+    { bg: "#EA580C", ring: "ring-[#EA580C]", tailbg : "bg-[#EA580C]" },
+  ];
 
   return (
     <div className="flex shadow-sm max-w-[305px] w-full flex-col px-2 pb-10 pt-2 overflow-y-auto bg-[#fff] fixed h-screen right-0 border-l-2 border-solid top-16 ">
       <div>
         <h2 className="text-xl font-semibold">Edit Text</h2>
         <textarea
-          value={ resumeData && editData}
+          value={resumeData && editData}
           onChange={(e) => handleEditChanges(e)}
           className=" hidescroll w-full px-1 py-2 resize-y border-2 outline-none mt-2 rounded-md border-[#9e9d9d] border-solid"
           rows="4"
@@ -412,6 +525,45 @@ function Rightaside() {
               <CiTextAlignJustify className="text-xl" />
             </button>
           </div>
+        </div>
+      </div>
+      <div className="mt-5">
+        <h2 className="text-xl font-semibold">Resume Style</h2>
+        <div className="max-w-md mx-auto px-4">
+          <ul className="mt-4 flex items-center flex-wrap gap-4">
+            {colors.map((item, idx) => (
+              /* Color box */
+              <li key={idx} className="flex-none">
+                <label htmlFor={item.bg} className="block relative w-8 h-8">
+                  <input
+                    id={item.bg}
+                    type="radio"
+                    defaultChecked={idx == 1 ? true : false}
+                    name="color"
+                    className="sr-only peer"
+                    onChange={(e) => handleBgColor(item.bg)}
+                  />
+                  <span
+                    className={`inline-flex justify-center items-center w-full h-full rounded-full peer-checked:ring ring-offset-2 cursor-pointer duration-150 ${item.tailbg} ${item.ring}`}
+                  ></span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-5 h-5 text-white absolute inset-0 m-auto z-0 pointer-events-none hidden peer-checked:block duration-150"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
+                    />
+                  </svg>
+                </label>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

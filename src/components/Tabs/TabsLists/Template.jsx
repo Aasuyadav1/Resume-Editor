@@ -31,10 +31,10 @@ function Template() {
                 template.map((data)=>(
                     <div key={data.id} className='group hover:cursor-pointer relative' onClick={() => handleSelectId(data.id)}>
               <img src={data.image} alt={data.name}className='w-[200px]  h-[300px] shadow-sm object-contain border-solid border-2 border-blue-700' />
-                <Button bgColor="bg-blue-700" color="text-white" label={`${selectedTemplateId == data.id ? "Selected Template" : "Select Template"}`} classes={`w-full group-hover:opacity-100 ${selectedTemplateId == data.id ? "opacity-100" : "opacity-0"} transition-all duration-[3s] delay-75 ease-in-out`} onClick={() => handleSelectId(data.id)}/>
+                <Button color="text-white" label={`${selectedTemplateId == data.id ? "Selected Template" : "Select Template"}`} classes={`w-full group-hover:opacity-100 ${selectedTemplateId == data.id ? "opacity-100" : "opacity-0"} bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 transition-all duration-[3s] delay-75 ease-in-out`} onClick={() => handleSelectId(data.id)}/>
                 {
                     selectedTemplateId == data.id && 
-                    <FaCheckCircle className='absolute opacity-100 text-blue-700 text-4xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-[3s] delay-75 ease-in-out'/>
+                    <FaCheckCircle className='absolute opacity-100 text-indigo-600  hover:text-indigo-500 active:text-indigo-700 text-4xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-[3s] delay-75 ease-in-out'/>
                 }
                 </div>
                 ))

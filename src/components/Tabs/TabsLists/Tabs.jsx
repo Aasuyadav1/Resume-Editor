@@ -7,10 +7,10 @@ function Tabes() {
   return (
     <Tabs aria-label="Dynamic tabs" indicatorColor="success"   color="success" 
     variant="underlined"  size="lg" fullWidth="true"  classNames={{
-        tabList: "gap-6 w-full relative rounded-none p-0 border-b border-divider",
-        cursor: "w-full bg-[#22d3ee]",
-        tab: "w-full px-0 h-12",
-        tabContent: "group-data-[selected=true]:text-[#06b6d4]"
+        tabList: "gap-6  w-full relative rounded-none p-0 border-b border-divider",
+        cursor: "w-full bg-indigo-600 ",
+        tab: "w-full  px-0 h-12",
+        tabContent: "group-data-[selected=true]:text-indigo-600"
       }}>
         
           <Tab key="create" title="Create" >
