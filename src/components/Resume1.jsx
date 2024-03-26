@@ -209,22 +209,22 @@ function resume1() {
 
 
   useEffect(() => {
-    if (selectedElement) {
-      const elements = document.querySelectorAll(".clickable-element");
+    // if (selectedElement) {
+    //   const elements = document.querySelectorAll(".clickable-element");
 
-      elements.forEach((element) => {
-        if (element === selectedElement) {
-          element.style.border = "2px solid blue";
-        } else {
-          element.style.border = "2px solid transparent";
-        }
-      });
-    }
+    //   elements.forEach((element) => {
+    //     if (element === selectedElement) {
+    //       element.style.border = "2px solid blue";
+    //     } else {
+    //       element.style.border = "2px solid transparent";
+    //     }
+    //   });
+    // }
   }, [selectedElement]);
  
 
   return  (
-    <Tailwind>
+   
       <div className="flex break-words flex-col gap-20 text-wrap">
     {
       selectedTemplateId === 1 && 
@@ -269,7 +269,7 @@ function resume1() {
         <div className="w-[150px]  text-wrap break-words">
           <h2
             onClick={handleClick}
-            className="text-md w-[150px] clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+            className="heading text-md w-[150px] clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
           >
             Education
           </h2>
@@ -301,7 +301,7 @@ function resume1() {
          }
           <h2
             onClick={handleClick}
-            className="text-lg clickable-element font-semibold mt-10 border-solid hover:border-blue-900 border-transparent border-[2px]"
+            className="heading text-lg clickable-element font-semibold mt-10 border-solid hover:border-blue-900 border-transparent border-[2px]"
           >
             Contact
           </h2>
@@ -329,7 +329,7 @@ function resume1() {
           <div>
             <h2
               onClick={handleClick}
-              className="text-lg clickable-element font-semibold mt-10 border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg clickable-element font-semibold mt-10 border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               Skills
             </h2>
@@ -358,7 +358,7 @@ function resume1() {
           <div>
             <h2
               onClick={handleClick}
-              className="text-lg clickable-element w-[388px] font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg clickable-element w-[388px] font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               Profile
             </h2>
@@ -374,7 +374,7 @@ function resume1() {
           <div className="mt-10">
             <h2
               onClick={handleClick}
-              className="text-lg clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               Experience
             </h2>
@@ -417,7 +417,7 @@ function resume1() {
           <div className="mt-10">
             <h2
               onClick={handleClick}
-              className="text-lg clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               Projects
             </h2>
@@ -479,16 +479,11 @@ function resume1() {
           </p>
         </div>
 
-        <div>
+        <div className="mt-3">
         {
             resumeData.Contact.map((data,i)=>(
-              <div className="mt-3" key={i}>
-            <h1
-              onClick={(e)=>handleContactLabel(e,i)}
-              className="text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
-            >
-              {data.label}
-            </h1>
+              <div  key={i}>
+            
             <p
               onClick={(e)=>handleContactValue(e,i)}
               className="text-[#868686] border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
@@ -512,7 +507,7 @@ function resume1() {
           <div className="mt-10">
             <h2
               onClick={handleClick}
-              className="text-lg font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               Experience
             </h2>
@@ -554,7 +549,7 @@ function resume1() {
           <div className="mt-10">
           <h2
             onClick={handleClick}
-            className="text-md w-[150px] font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+            className="heading text-md w-[150px] font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
           >
             Education
           </h2>
@@ -586,11 +581,11 @@ function resume1() {
          }
           </div>
         </div>
-        <div className="flex gsp-8 mt-10">
+        <div className="flex gap-8 mt-10">
             <div>
         <h2
               onClick={handleClick}
-              className="text-lg font-semibold mt-10 border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg font-semibold mt-10 border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               Skills
             </h2>
@@ -617,7 +612,7 @@ function resume1() {
             <div >
             <h2
               onClick={handleClick}
-              className="text-lg font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
             >
               Projects
             </h2>
@@ -654,7 +649,7 @@ function resume1() {
      }
  
     </div>
-    </Tailwind>
+    
   );
 }
 

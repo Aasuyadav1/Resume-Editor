@@ -55,7 +55,7 @@ function Rightaside() {
   } = useResumeStore();
 
   const [editData, setEditData] = useState("");
-  const [color, setColor] = useState("#61fff4");
+  const [color, setColor] = useState("#4F46E5");
 
   useEffect(() => {
     if (selectedElement) {
@@ -396,7 +396,10 @@ function Rightaside() {
   };
 
   const handleBgColor = (color) => {
-    document.getElementById("resume1pdf").style = `background-color: ${color};`;
+    let elements = document.querySelectorAll('.heading');
+    elements.forEach((element) => {
+      element.style.color = color
+    })
     console.log(color)
   }
 
@@ -416,7 +419,7 @@ function Rightaside() {
       tailbg : "bg-[#8B5CF6]",
     },
     { bg: "#DB2777", ring: "ring-[#DB2777]", tailbg : "bg-[#DB2777]" },
-    { bg: "#475569", ring: "ring-[#475569]", tailbg : "bg-[#475569]" },
+    { bg: "#000000", ring: "ring-[#000000]", tailbg : "bg-[#000000]" },
     { bg: "#EA580C", ring: "ring-[#EA580C]", tailbg : "bg-[#EA580C]" },
   ];
 
@@ -538,7 +541,7 @@ function Rightaside() {
                   <input
                     id={item.bg}
                     type="radio"
-                    defaultChecked={idx == 1 ? true : false}
+                    defaultChecked={idx == 3 ? true : false}
                     name="color"
                     className="sr-only peer"
                     onChange={(e) => handleBgColor(item.bg)}
