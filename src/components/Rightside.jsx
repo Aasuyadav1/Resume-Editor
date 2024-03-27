@@ -9,6 +9,7 @@ import { CiTextAlignCenter } from "react-icons/ci";
 import { CiTextAlignLeft } from "react-icons/ci";
 import { CiTextAlignRight } from "react-icons/ci";
 import { CiTextAlignJustify } from "react-icons/ci";
+import ColorPicker from 'react-best-gradient-color-picker'
 
 function Rightaside() {
   const {
@@ -56,6 +57,7 @@ function Rightaside() {
 
   const [editData, setEditData] = useState("");
   const [color, setColor] = useState("#4F46E5");
+  const [colorPicker, setColorPicker] = useState(false);
 
   useEffect(() => {
     if (selectedElement) {
@@ -246,6 +248,7 @@ function Rightaside() {
   }, [selectedElement, resumeData]);
 
   const handleEditChanges = (e) => {
+    setColorPicker(false);
     if (selectedElement == null) {
       alert("Please select an element to edit");
       return;
@@ -323,6 +326,7 @@ function Rightaside() {
   };
 
   const handleBold = () => {
+    setColorPicker(false);
     if (selectedElement.style.fontWeight === "bold") {
       // If already bold, remove the bold style
       selectedElement.style.fontWeight = "normal";
@@ -333,6 +337,7 @@ function Rightaside() {
   };
 
   const handleItalic = () => {
+    setColorPicker(false);
     if (selectedElement.style.fontStyle === "italic") {
       selectedElement.style.fontStyle = "normal";
     } else {
@@ -341,6 +346,7 @@ function Rightaside() {
   };
 
   const handleUnderline = () => {
+    setColorPicker(false);
     if (selectedElement.style.textDecoration === "underline") {
       selectedElement.style.textDecoration = "none";
     } else {
@@ -349,6 +355,7 @@ function Rightaside() {
   };
 
   const handleStrikethrough = () => {
+    setColorPicker(false);
     if (selectedElement.style.textDecoration === "line-through") {
       selectedElement.style.textDecoration = "none";
     } else {
@@ -357,6 +364,7 @@ function Rightaside() {
   };
 
   const handleTestAlign = (c) => {
+    setColorPicker(false);
     switch (c) {
       case "left": {
         selectedElement.style.textAlign = "left";
@@ -381,21 +389,26 @@ function Rightaside() {
   };
 
   const handleFontFamily = (e) => {
+   
     selectedElement.style.fontFamily = e;
+
   };
 
   const handleMultipleBold = (e) => {
     selectedElement.style.fontWeight = e;
+    
   };
 
   const handleTextColor = (e) => {
     setColor(e);
+    
     if (selectedElement) {
       selectedElement.style.color = e;
     }
   };
 
   const handleBgColor = (color) => {
+    setColorPicker(false);
     let elements = document.querySelectorAll('.heading');
     elements.forEach((element) => {
       element.style.color = color
@@ -424,7 +437,7 @@ function Rightaside() {
   ];
 
   return (
-    <div className="flex shadow-sm max-w-[305px] w-full flex-col px-2 pb-10 pt-2 overflow-y-auto bg-[#fff] fixed h-screen right-0 border-l-2 border-solid top-16 ">
+    <div className="flex shadow-sm max-w-[305px] w-full flex-col px-2 pb-10 pt-2  bg-[#fff] fixed h-screen right-0 border-l-2 border-solid top-16 ">
       <div>
         <h2 className="text-xl font-semibold">Edit Text</h2>
         <textarea
@@ -466,14 +479,28 @@ function Rightaside() {
               <option value="700">Bold</option>
               <option value="800">Extra Bold</option>
             </select>
-            <div className="border-gray-300 border-2 border-l-0 flex justify-center mt-1.5 rounded-r-lg gap-2 items-center px-2 w-[150px]">
-              <input
-                type="color"
-                value={color}
-                className="  w-[50px]  h-full  appearance-none"
-                onChange={(e) => handleTextColor(e.target.value)}
+            <div className="border-gray-300 relative border-2 border-l-0 flex justify-center mt-1.5 rounded-r-lg gap-2 items-center px-2 h-[40px]  w-[150px]">
+              <ColorPicker value={color} onChange={() => handleTextColor} hideAdvancedSliders="true"
+              hideColorGuide="true"
+              hideInputType="true"
+              hideColorTypeBtns="true"
+              hideGradientType="true"
+              hideGradientAngle="true"
+              hideGradientStops="true"
+              hideGradientControls="true"
+              hidePresets="true"
+              hideEyeDrop="true"
+              width={280}
+              height={200}
+              valueHex={color}
+              style={{
+                background : 'black',
+                borderRadius : '10px',
+              }}
+              className={`absolute transition-all duration-300 ease-in-out overflow-hidden py-4 w-full rounded-sm px-2 top-50 -left-[300px] z-[9999]  ${colorPicker ? 'scale-1 opacity-1 ' : ' opacity-0 scale-95'}`}
               />
-              <span className="text-sm w-[100px] text-black">{color}</span>
+              <div className={`w-[50px] h-[30px] rounded-sm cursor-pointer `} style={{backgroundColor : color}} onClick={()=>setColorPicker(!colorPicker)}></div>
+              <span className="text-sm w-[100px] text-black">Color Pick</span>
             </div>
           </div>
           <div className="mt-3">
