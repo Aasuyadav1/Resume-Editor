@@ -9,7 +9,7 @@ import { CiTextAlignCenter } from "react-icons/ci";
 import { CiTextAlignLeft } from "react-icons/ci";
 import { CiTextAlignRight } from "react-icons/ci";
 import { CiTextAlignJustify } from "react-icons/ci";
-import ColorPicker from 'react-best-gradient-color-picker'
+
 
 function Rightaside() {
   const {
@@ -248,7 +248,7 @@ function Rightaside() {
   }, [selectedElement, resumeData]);
 
   const handleEditChanges = (e) => {
-    setColorPicker(false);
+   
     if (selectedElement == null) {
       alert("Please select an element to edit");
       return;
@@ -326,7 +326,7 @@ function Rightaside() {
   };
 
   const handleBold = () => {
-    setColorPicker(false);
+    
     if (selectedElement.style.fontWeight === "bold") {
       // If already bold, remove the bold style
       selectedElement.style.fontWeight = "normal";
@@ -337,7 +337,7 @@ function Rightaside() {
   };
 
   const handleItalic = () => {
-    setColorPicker(false);
+  
     if (selectedElement.style.fontStyle === "italic") {
       selectedElement.style.fontStyle = "normal";
     } else {
@@ -346,7 +346,7 @@ function Rightaside() {
   };
 
   const handleUnderline = () => {
-    setColorPicker(false);
+   
     if (selectedElement.style.textDecoration === "underline") {
       selectedElement.style.textDecoration = "none";
     } else {
@@ -355,7 +355,7 @@ function Rightaside() {
   };
 
   const handleStrikethrough = () => {
-    setColorPicker(false);
+    
     if (selectedElement.style.textDecoration === "line-through") {
       selectedElement.style.textDecoration = "none";
     } else {
@@ -364,7 +364,7 @@ function Rightaside() {
   };
 
   const handleTestAlign = (c) => {
-    setColorPicker(false);
+   
     switch (c) {
       case "left": {
         selectedElement.style.textAlign = "left";
