@@ -57,7 +57,7 @@ function Rightaside() {
 
   const [editData, setEditData] = useState("");
   const [color, setColor] = useState("#4F46E5");
-  const [colorPicker, setColorPicker] = useState(false);
+  // const [colorPicker, setColorPicker] = useState(true);
 
   useEffect(() => {
     if (selectedElement) {
@@ -401,14 +401,14 @@ function Rightaside() {
 
   const handleTextColor = (e) => {
     setColor(e);
-    
+    console.log(color)
     if (selectedElement) {
       selectedElement.style.color = e;
     }
   };
 
   const handleBgColor = (color) => {
-    setColorPicker(false);
+   
     let elements = document.querySelectorAll('.heading');
     elements.forEach((element) => {
       element.style.color = color
@@ -480,7 +480,7 @@ function Rightaside() {
               <option value="800">Extra Bold</option>
             </select>
             <div className="border-gray-300 relative border-2 border-l-0 flex justify-center mt-1.5 rounded-r-lg gap-2 items-center px-2 h-[40px]  w-[150px]">
-              <ColorPicker value={color} onChange={() => handleTextColor} hideAdvancedSliders="true"
+              {/* <ColorPicker value={color} onChange={(e) => handleTextColor(e)} hideAdvancedSliders="true"
               hideColorGuide="true"
               hideInputType="true"
               hideColorTypeBtns="true"
@@ -494,12 +494,14 @@ function Rightaside() {
               height={200}
               valueHex={color}
               style={{
-                background : 'black',
+                background : 'grey',
                 borderRadius : '10px',
               }}
-              className={`absolute transition-all duration-300 ease-in-out overflow-hidden py-4 w-full rounded-sm px-2 top-50 -left-[300px] z-[9999]  ${colorPicker ? 'scale-1 opacity-1 ' : ' opacity-0 scale-95'}`}
-              />
-              <div className={`w-[50px] h-[30px] rounded-sm cursor-pointer `} style={{backgroundColor : color}} onClick={()=>setColorPicker(!colorPicker)}></div>
+              className={`absolute transition-all duration-300 ease-in-out overflow-hidden py-4 w-full rounded-sm px-2 top-50 -left-[300px] z-[9999]  ${colorPicker ? 'block opacity-1 ' : ' hidden scale-95'}`}
+              /> */}
+              <input type="color" value={color} onChange={(e) => handleTextColor(e.target.value)} className={`w-[50px] h-[35px] border-none outline-none shadow-none rounded-sm cursor-pointer`} />
+
+              {/* <div className={`w-[50px] h-[30px] rounded-sm cursor-pointer `} style={{backgroundColor : color}} onClick={()=>setColorPicker(!colorPicker)}></div> */}
               <span className="text-sm w-[100px] text-black">Color Pick</span>
             </div>
           </div>
