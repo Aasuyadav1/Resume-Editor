@@ -9,6 +9,13 @@ function Navbar() {
   const { selectedTemplateId } = useResumeStore();
 
   const handleDownload = () => {
+  
+      const elements = document.querySelectorAll(".clickable-element");
+      elements.forEach((element)=>{
+        
+          element.classList.remove('activeelement');
+        })
+      
     let main;
     if (selectedTemplateId === 1) {
       main = document.getElementById('resume1pdf');

@@ -209,17 +209,17 @@ function resume1() {
 
 
   useEffect(() => {
-    // if (selectedElement) {
-    //   const elements = document.querySelectorAll(".clickable-element");
-
-    //   elements.forEach((element) => {
-    //     if (element === selectedElement) {
-    //       element.style.border = "2px solid blue";
-    //     } else {
-    //       element.style.border = "2px solid transparent";
-    //     }
-    //   });
-    // }
+    if (selectedElement) {
+      const elements = document.querySelectorAll(".clickable-element");
+      elements.forEach((element)=>{
+        if(element === selectedElement){
+          selectedElement.classList.add('activeelement');
+        } else{
+          element.classList.remove('activeelement');
+        }
+      })
+      
+     }
   }, [selectedElement]);
  
 
@@ -238,7 +238,7 @@ function resume1() {
         <img
           src={resumeData.image}
           alt="Selected"
-          className= " imgess border-solid hover:border-blue-900 border-[2px] border-transparent cursor-pointer"
+          className= " imgess border-solid hover:border-indigo-600 border-[2px] border-transparent cursor-pointer"
           style={{width : '100px', height : '100px', objectFit : 'cover', borderRadius : '50%', cursor : 'pointer',}}
           onClick={handleImageClick}
           draggable="true"
@@ -251,14 +251,14 @@ function resume1() {
         />
         <div className="w-[450px]  text-wrap break-words">
           <p
-            className=" border-solid clickable-element hover:border-blue-900 border-[2px] border-transparent text-black"
+            className=" border-solid  clickable-element hover:border-indigo-600 border-[2px] border-transparent text-black"
             style={{fontSize : '60px', lineHeight : '1', paddingBottom : '8px', width : '100%', fontStyle : 'bold', textAlign : 'left', wordWrap : 'break-word'}}
             onClick={(e)=>handleResumeInfoClick(e,"resumeData.title")}
           >
             {resumeData.title}
           </p>
           <p
-            className="text-2xl clickable-element text-black text-wrap  font-normal border-solid hover:border-blue-900 border-transparent border-[2px]"
+            className="text-2xl   clickable-element text-black text-wrap  font-normal border-solid hover:border-indigo-600 border-transparent border-[2px]"
             onClick={(e)=>handleResumeInfoClick(e,"resumeData.subtitle")}
           >
             {resumeData.subtitle}
@@ -269,7 +269,7 @@ function resume1() {
         <div className="w-[150px]  text-wrap break-words">
           <h2
             onClick={handleClick}
-            className="heading text-md w-[150px] clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+            className="heading    text-md w-[150px] clickable-element font-semibold border-solid hover:border-indigo-600 border-transparent border-[2px]"
           >
             Education
           </h2>
@@ -280,19 +280,19 @@ function resume1() {
             <div className="mt-3" key={i}>
             <p
               onClick={(e)=>handleEducationDate(e,i)}
-              className="text-sm border-solid clickable-element  hover:border-blue-900 border-transparent border-[2px] "
+              className="text-sm   border-solid clickable-element  hover:border-indigo-600 border-transparent border-[2px] "
             >
               {data.date}
             </p>
             <p
               onClick={(e)=>handleEducationDegree(e,i)}
-              className="text-sm clickable-element text-[#787777] border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="text-sm  clickable-element text-[#787777] border-solid hover:border-indigo-600 border-transparent border-[2px]"
             >
               {data.degree}
             </p>
             <p
               onClick={(e)=>handleEducationUniversity(e,i)}
-              className="text-sm clickable-element text-[#787777] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="text-sm   clickable-element text-[#787777] leading-snug border-solid hover:border-indigo-600 border-transparent border-[2px]"
             >
               {data.university}
             </p>
@@ -301,7 +301,7 @@ function resume1() {
          }
           <h2
             onClick={handleClick}
-            className="heading text-lg clickable-element font-semibold mt-10 border-solid hover:border-blue-900 border-transparent border-[2px]"
+            className="heading   text-lg clickable-element font-semibold mt-10 border-solid hover:border-indigo-600 border-transparent border-[2px]"
           >
             Contact
           </h2>
@@ -311,13 +311,13 @@ function resume1() {
               <div className="mt-3" key={i}>
             <h1
               onClick={(e)=>handleContactLabel(e,i)}
-              className="text-sm clickable-element border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="text-sm   clickable-element border-solid hover:border-indigo-600 border-transparent border-[2px]"
             >
               {data.label}
             </h1>
             <p
               onClick={(e)=>handleContactValue(e,i)}
-              className="text-[#868686] clickable-element border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
+              className="text-[#868686]   clickable-element border-solid hover:border-indigo-600 border-transparent border-[2px] text-sm leading-snug"
             >
               {data.value}
             </p>
@@ -329,7 +329,7 @@ function resume1() {
           <div>
             <h2
               onClick={handleClick}
-              className="heading text-lg clickable-element font-semibold mt-10 border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading  text-lg clickable-element font-semibold mt-10 border-solid hover:border-indigo-600 border-transparent border-[2px]"
             >
               Skills
             </h2>
@@ -339,13 +339,13 @@ function resume1() {
               <div className="mt-3" key={i}>
               <h1
                 onClick={(e)=>handleSkillCategory(e,i)}
-                className="text-sm clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+                className="text-sm  clickable-element font-semibold border-solid hover:border-indigo-600  border-transparent border-[2px]"
               >
                 {data.category}
               </h1>
               <p
                 onClick={(e)=>handleSkillSkills(e,i)}
-                className="clickable-element border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
+                className="clickable-element  border-solid hover:border-indigo-600 border-transparent border-[2px] text-sm leading-snug"
               >
                 {data.skills}
               </p>
@@ -358,14 +358,14 @@ function resume1() {
           <div>
             <h2
               onClick={handleClick}
-              className="heading text-lg clickable-element w-[388px] font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading   text-lg clickable-element w-[388px] font-semibold border-solid hover:border-indigo-600 border-transparent border-[2px]"
             >
               Profile
             </h2>
             <hr className="border-[1.5px] border-[#6580ec] mt-1 w-16 rounded-md" />
             <p
               onClick={(e)=>handleResumeInfoClick(e,"resumeData.description")}
-              className="mt-2 clickable-element text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="mt-2   clickable-element text-sm border-solid hover:border-indigo-600 border-transparent border-[2px]"
             >
               {resumeData.description}
             </p>
@@ -374,7 +374,7 @@ function resume1() {
           <div className="mt-10">
             <h2
               onClick={handleClick}
-              className="heading text-lg clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading   text-lg clickable-element font-semibold border-solid hover:border-indigo-600 border-transparent border-[2px]"
             >
               Experience
             </h2>
@@ -386,24 +386,24 @@ function resume1() {
                 <div className="w-[130px] text-wrap">
                   <p
                     onClick={(e)=>handleExperienceDate(e,i)}
-                    className="clickable-element text-sm w-[130px] font-semibold text-[#868686] tracking-normal leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
+                    className="clickable-element   text-sm w-[130px] font-semibold text-[#868686] tracking-normal leading-snug border-solid hover:border-indigo-600 border-transparent border-[2px]"
                   >
                     {data.date}
                   </p>
-                  <p onClick={(e)=>handleExperienceCompany(e,i)} className="clickable-element text-sm text-[#868686] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]">
+                  <p onClick={(e)=>handleExperienceCompany(e,i)} className="clickable-element   text-sm text-[#868686] leading-snug border-solid hover:border-indigo-600 border-transparent border-[2px]">
                     {data.company}
                   </p>
                 </div>
                 <div className="w-[225px] text-wrap">
                   <h1
                     onClick={(e)=>handleExperiencePosition(e,i)}
-                    className="text-md w-[225px] clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+                    className="text-md w-[225px]   clickable-element font-semibold border-solid hover:border-indigo-600 border-transparent border-[2px]"
                   >
                     {data.position}
                   </h1>
                   <p
                     onClick={(e)=>handleExperienceDescription(e,i)}
-                    className="text-[#868686] clickable-element text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
+                    className="text-[#868686]   clickable-element text-sm leading-snug border-solid hover:border-indigo-600 border-transparent border-[2px]"
                   >
                     {data.description}
                   </p>
@@ -417,7 +417,7 @@ function resume1() {
           <div className="mt-10">
             <h2
               onClick={handleClick}
-              className="heading text-lg clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg   clickable-element font-semibold border-solid hover:border-indigo-600 border-transparent border-[2px]"
             >
               Projects
             </h2>
@@ -428,19 +428,19 @@ function resume1() {
                 <div className="mt-4" key={i}>
               <h1
                 onClick={(e)=>handleProjectsName(e,i)}
-                className="text-md clickable-element font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+                className="text-md   clickable-element font-semibold border-solid hover:border-indigo-600 border-transparent border-[2px]"
               >
                 &#x2022; {data.name}
               </h1>
               <p
                 onClick={(e)=>handleProjectsDescription(e,i)}
-                className="text-[#868686] clickable-element text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
+                className="text-[#868686]   clickable-element text-sm leading-snug border-solid hover:border-indigo-600 border-transparent border-[2px]"
               >
                 {data.description}
               </p>
               <p
                 onClick={(e)=>handleProjectsLink(e,i)}
-                className="border-solid clickable-element hover:border-blue-900 border-transparent border-[2px] block -mt-0 text-sm text-blue-400 leading-snug"
+                className="border-solid   clickable-element hover:border-indigo-600 border-transparent border-[2px] block -mt-0 text-sm text-blue-400 leading-snug"
               >
                 {data.link}
               </p>
@@ -456,7 +456,7 @@ function resume1() {
 
      {
       selectedTemplateId === 2 && 
-      <div id="resume2pdf" className=" w-[672px]  shadow-xl mx-auto cursor-pointer bg-white mt-20 mb-20  py-8 px-10 font-sans overflow-hidden text-wrap break-words">
+      <div id="resume2pdf" className=" w-[672px]  shadow-xl mx-auto cursor-pointer bg-white mb-20 mt-20 pb-8 px-10 font-sans overflow-hidden text-wrap break-words">
         <div
         // className="w-full h-fit flex items-center gap-10 px-5 py-1"
         onDrop={handleDrop}
@@ -465,14 +465,14 @@ function resume1() {
       >
          <div className="w-[550px]  text-wrap break-words">
           <p
-            className=" border-solid hover:border-blue-900 border-[2px] border-transparent text-black"
+            className="border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px] text-black"
             style={{fontSize : '60px', lineHeight : '1', paddingBottom : '8px', width : '100%', fontStyle : 'bold', textAlign : 'left', wordWrap : 'break-word'}}
             onClick={(e)=>handleResumeInfoClick(e,"resumeData.title")}
           >
             {resumeData.title}
           </p>
           <p
-            className="text-2xl text-black text-wrap  font-normal border-solid hover:border-blue-900 border-transparent border-[2px]"
+            className="text-2xl text-black text-wrap  font-normal border-solid clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
             onClick={(e)=>handleResumeInfoClick(e,"resumeData.subtitle")}
           >
             {resumeData.subtitle}
@@ -486,7 +486,7 @@ function resume1() {
             
             <p
               onClick={(e)=>handleContactValue(e,i)}
-              className="text-[#868686] border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
+              className="text-[#868686] border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px] text-sm leading-snug"
             >
               {data.value}
             </p>
@@ -499,7 +499,7 @@ function resume1() {
         </div> 
         <p
               onClick={(e)=>handleResumeInfoClick(e,"resumeData.description")}
-              className="mt-2 text-sm border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="mt-2 text-sm border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
             >
               {resumeData.description}
         </p>
@@ -507,7 +507,7 @@ function resume1() {
           <div className="mt-10">
             <h2
               onClick={handleClick}
-              className="heading text-lg font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg font-semibold border-solid clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
             >
               Experience
             </h2>
@@ -519,24 +519,24 @@ function resume1() {
                 <div className="w-[130px] text-wrap">
                   <p
                     onClick={(e)=>handleExperienceDate(e,i)}
-                    className="text-sm w-[130px] font-semibold text-[#868686] tracking-normal leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
+                    className="text-sm w-[130px] font-semibold text-[#868686] tracking-normal leading-snug border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
                   >
                     {data.date}
                   </p>
-                  <p onClick={(e)=>handleExperienceCompany(e,i)} className=" text-sm text-[#868686] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]">
+                  <p onClick={(e)=>handleExperienceCompany(e,i)} className=" text-sm text-[#868686] leading-snug border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]">
                     {data.company}
                   </p>
                 </div>
                 <div className="w-[225px] text-wrap">
                   <h1
                     onClick={(e)=>handleExperiencePosition(e,i)}
-                    className="text-md w-[225px] font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+                    className="text-md w-[225px] font-semibold border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
                   >
                     {data.position}
                   </h1>
                   <p
                     onClick={(e)=>handleExperienceDescription(e,i)}
-                    className="text-[#868686] text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
+                    className="text-[#868686] text-sm leading-snug border-solid clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
                   >
                     {data.description}
                   </p>
@@ -549,7 +549,7 @@ function resume1() {
           <div className="mt-10">
           <h2
             onClick={handleClick}
-            className="heading text-md w-[150px] font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+            className="heading text-md w-[150px] font-semibold border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
           >
             Education
           </h2>
@@ -560,19 +560,19 @@ function resume1() {
             <div className="mt-3" key={i}>
             <p
               onClick={(e)=>handleEducationDate(e,i)}
-              className="text-sm border-solid  hover:border-blue-900 border-transparent border-[2px] "
+              className="text-sm border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
             >
               {data.date}
             </p>
             <p
               onClick={(e)=>handleEducationDegree(e,i)}
-              className="text-sm text-[#787777] border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="text-sm text-[#787777] border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
             >
               {data.degree}
             </p>
             <p
               onClick={(e)=>handleEducationUniversity(e,i)}
-              className="text-sm text-[#787777] leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="text-sm text-[#787777] leading-snug border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
             >
               {data.university}
             </p>
@@ -585,7 +585,7 @@ function resume1() {
             <div>
         <h2
               onClick={handleClick}
-              className="heading text-lg font-semibold mt-10 border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg font-semibold mt-10 border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
             >
               Skills
             </h2>
@@ -595,13 +595,13 @@ function resume1() {
               <div className="mt-3" key={i}>
               <h1
                 onClick={(e)=>handleSkillCategory(e,i)}
-                className="text-sm font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+                className="text-sm font-semibold border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
               >
                 {data.category}
               </h1>
               <p
                 onClick={(e)=>handleSkillSkills(e,i)}
-                className=" border-solid hover:border-blue-900 border-transparent border-[2px] text-sm leading-snug"
+                className=" hover:border-indigo-600 border-solid border-2 border-transparent clickable-element text-sm leading-snug"
               >
                 {data.skills}
               </p>
@@ -612,7 +612,7 @@ function resume1() {
             <div >
             <h2
               onClick={handleClick}
-              className="heading text-lg font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+              className="heading text-lg font-semibold border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
             >
               Projects
             </h2>
@@ -623,19 +623,19 @@ function resume1() {
                 <div className="mt-4" key={i}>
               <h1
                 onClick={(e)=>handleProjectsName(e,i)}
-                className="text-md font-semibold border-solid hover:border-blue-900 border-transparent border-[2px]"
+                className="text-md font-semibold border-solid clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
               >
                 &#x2022; {data.name}
               </h1>
               <p
                 onClick={(e)=>handleProjectsDescription(e,i)}
-                className="text-[#868686] text-sm leading-snug border-solid hover:border-blue-900 border-transparent border-[2px]"
+                className="text-[#868686] text-sm leading-snug border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px]"
               >
                 {data.description}
               </p>
               <p
                 onClick={(e)=>handleProjectsLink(e,i)}
-                className="border-solid hover:border-blue-900 border-transparent border-[2px] block -mt-0 text-sm text-blue-400 leading-snug"
+                className="border-solid  clickable-element  hover:border-indigo-600 border-transparent border-[2px] block -mt-0 text-sm text-blue-400 leading-snug"
               >
                 {data.link}
               </p>
