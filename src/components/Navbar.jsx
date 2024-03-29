@@ -37,7 +37,7 @@ function Navbar() {
   return (
     <div className='flex shadow-sm items-center border-b-2 z-50 border-solid justify-between gap-4 px-1 py-3 bg-white sticky top-0 left-0 w-full'>
      <div className='max-w-[300px] w-full text-center'>
-     <p onClick={() => window.location.reload()} className='text-2xl font-[Roboto] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5] cursor-pointer'>Resume editor</p>
+     <p onClick={() => window.location.reload()} className='text-2xl font-[Roboto] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5] cursor-pointer'>Resume Editor</p>
      </div>
       <Button
         label='Download'

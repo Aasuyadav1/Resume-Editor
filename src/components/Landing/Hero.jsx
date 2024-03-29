@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Hero() {
   return (
     <section className="bg-[rgb(250,247,254)]">
-    <div className="max-w-screen-xl mx-auto px-4 py-28 gap-12 text-gray-600 bg-[rgb(250,247,254)] md:px-8">
+    <div className="max-w-screen-xl mx-auto px-4 py-14 md:py-28 gap-12 text-gray-600 bg-[rgb(250,247,254)] md:px-8">
         <div className="space-y-5 max-w-4xl mx-auto text-center">
             <h1 className="text-sm text-indigo-600 font-medium">
                 Build products for everyone
@@ -22,8 +22,8 @@ function Hero() {
                
             </div>
         </div>
-        <div className="mt-14">
-            <img src="./images/editortest.png" className="w-full shadow-lg rounded-lg border" alt="" />
+        <div className="mt-10 md:mt-20 flex justify-center">
+            <img src="./images/ResumeEditor.png" className="w-full max-w-[1000px] shadow-2xl rounded-lg border" alt="" />
         </div>
     </div>
 </section>
