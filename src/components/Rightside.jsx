@@ -505,53 +505,53 @@ function Rightaside() {
               <span className="text-sm w-[100px] text-black">Color Pick</span>
             </div>
           </div>
-          <div className="mt-3">
+          <div className="mt-3 grid grid-cols-4  ">
             <button
-              className="px-6 py-2 rounded-l-sm bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2 hover:bg-[#f5f4f7] active:bg-[#efebf6] transition-all rounded-l-sm bg-white border-2 border-solid border-gray-300 "
               onClick={handleBold}
             >
               <FiBold className="text-xl" />
             </button>
             <button
-              className="px-6 py-2  bg-white border-2 border-solid border-l-0 border-gray-300 "
+              className="px-6 py-2 hover:bg-[#f5f4f7] active:bg-[#efebf6] transition-all  bg-white border-2 border-solid border-l-0 border-gray-300 "
               onClick={handleItalic}
             >
               <FiItalic className="text-xl" />
             </button>
             <button
-              className="px-6 py-2 bg-white border-2 border-solid border-l-0 border-gray-300 "
+              className="px-6 py-2 hover:bg-[#f5f4f7] active:bg-[#efebf6] transition-all bg-white border-2 border-solid border-l-0 border-gray-300 "
               onClick={handleUnderline}
             >
               <AiOutlineUnderline className="text-xl" />
             </button>
             <button
-              className="px-6 py-2 rounded-r-sm bg-white border-2 border-l-0 border-solid border-gray-300 "
+              className="px-6 hover:bg-[#f5f4f7] active:bg-[#efebf6] transition-all py-2 rounded-r-sm bg-white border-2 border-l-0 border-solid border-gray-300 "
               onClick={handleStrikethrough}
             >
               <ImStrikethrough className="text-xl" />
             </button>
           </div>
-          <div className="mt-2">
+          <div className="mt-2 grid grid-cols-4">
             <button
-              className="px-6 py-2 rounded-l-sm bg-white border-2 border-solid border-gray-300 "
+              className="px-6 hover:bg-[#f5f4f7] active:bg-[#efebf6] transition-all py-2 rounded-l-sm bg-white border-2 border-solid border-gray-300 "
               onClick={() => handleTestAlign("center")}
             >
               <CiTextAlignCenter className="text-xl" />
             </button>
             <button
-              className="px-6 py-2  border-l-0 bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2 hover:bg-[#f5f4f7] active:bg-[#efebf6] transition-all  border-l-0 bg-white border-2 border-solid border-gray-300 "
               onClick={() => handleTestAlign("left")}
             >
               <CiTextAlignLeft className="text-xl" />
             </button>
             <button
-              className="px-6 py-2 border-l-0 bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2 hover:bg-[#f5f4f7] active:bg-[#efebf6] transition-all border-l-0 bg-white border-2 border-solid border-gray-300 "
               onClick={() => handleTestAlign("right")}
             >
               <CiTextAlignRight className="text-xl" />
             </button>
             <button
-              className="px-6 py-2 rounded-r-sm border-l-0 bg-white border-2 border-solid border-gray-300 "
+              className="px-6 py-2 hover:bg-[#f5f4f7] active:bg-[#efebf6] transition-all rounded-r-sm border-l-0 bg-white border-2 border-solid border-gray-300 "
               onClick={() => handleTestAlign("justify")}
             >
               <CiTextAlignJustify className="text-xl" />
