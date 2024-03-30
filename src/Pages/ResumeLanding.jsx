@@ -5,7 +5,9 @@ import Contact from '../components/Landing/Contact'
 import Footer from '../components/Landing/Footer'
 import Nav from '../components/Landing/Nav'
 
+
 function ResumeLanding() {
+  
   return (
     <div>
       <Nav/>
