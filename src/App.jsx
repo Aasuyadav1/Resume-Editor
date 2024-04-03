@@ -5,11 +5,13 @@ import 'react-toastify/dist/ReactToastify.css'; // Import CSS for styling toast 
 import ResumeLanding from "./Pages/ResumeLanding";
 import ResumeEditor from "./Pages/ResumeEditor";
 import Error from "./Pages/Error";
+import SignUp from "./Pages/SignUp";
+import Login from "./Pages/Login";
+import useAppwriteStore from "./Store/AppwriteStore";
 
 function App() {
-  useEffect(() => {
-    toast.success('Welcome to Resume Builder'); // Correct usage of toast object
-  }, []) // Empty dependency array to run the effect only once
+
+
 
   return (
     <>
@@ -17,7 +19,9 @@ function App() {
         <Routes>
           <Route path="/" element={<ResumeLanding />} />
           <Route path="/editor" element={<ResumeEditor />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<Error />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer /> {/* Correct component name */}

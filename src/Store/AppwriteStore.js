@@ -1,78 +1,119 @@
-import zustand from "zustand";
+import create from "zustand";
 import { account } from "../Appwrite/Conf";
 import { databases } from "../Appwrite/Conf";
 import { ID } from "../Appwrite/Conf";
 
 const useAppwriteStore = create((set) => ({
-    isloggedIn : false,
-    user : null,
-    userId : null,
+    // initial state
+    userData: {
+        userStatus: false,
+        userID: "",
+        userEmail: "",
+        userName: "",
+     },
     singleData : null,
     allData : null,
 
-    setUserId : (value) => set({userId : value}),
-    setUser : (value) => set({user : value}),
-    setLoggedIn : (value) => set({isloggedIn : value}),
+    // functions to set states
+    // setUserId : (value) => set({userId : value}),
+    // setUser : (value) => set({user : value}),
+    // setLoggedIn : (value) => set({isloggedIn : value}),
      
+    // functions for authentications
     getCurrentUser : async () => {
         try {
-           const user = await account.get();
-           setUser(user);
-           setUserId(user.$id); 
-           setLoggedIn(true);
+           const res = await account.get();
+            if(res){
+                console.log(res)
+                 set({
+                    userData: {
+                      userStatus: res.status,
+                      userID: res.$id,
+                      userEmail: res.email,
+                      userName: res.name,
+                    },
+                  });
+            }
         } catch (error) {
-            setLoggedIn(false);
             console.log("error on getting current user ",error)
         }
     },
 
     signUp : async (email, password, name) => {
         try {
-           const user = await account.create(ID.unique(), email, password, name);
-           setUser(user);
-           setUserId(user.$id);
-           setLoggedIn(true);
+           const res = await account.create(ID.unique(), email, password, name);
+            if(res){
+                set({
+                    userData: {
+                      userStatus: res.status,
+                      userID: res.$id,
+                      userEmail: res.email,
+                      userName: res.name,
+                    },
+                  });
+            }
         } catch (error) {
-            setLoggedIn(false);
             console.log('signup error',error)
         }
     },
 
     login : async (email, password) => {
         try {
-           const user = await account.createEmailSession(email, password);
-           setUser(user);
-           setUserId(user.$id);
-           setLoggedIn(true);
+            // Remember use createemailpassowrdsessin instead of createemailsession
+           const res = await account.createEmailPasswordSession(email, password);
+           if(res){
+             set({
+            userData: {
+              userStatus: res.status,
+              userID: res.$id,
+              userEmail: res.email,
+              userName: res.name,
+            },
+          });
+           }
         } catch (error) {
-            setLoggedIn(false);
+
             console.log('normal login error',error)
         }
     },
 
     googleLogin : async () => {
         try {
-            const user = await account.createOAuth2Session("google");
-            setUser(user);
-            setUserId(user.$id);
-            setLoggedIn(true);
+            const res = await account.createOAuth2Session("google");
+            if(res){
+                 set({
+                    userData: {
+                      userStatus: res.status,
+                      userID: res.$id,
+                      userEmail: res.email,
+                      userName: res.name,
+                    },
+                  });
+            }
         } catch (error) {
-            setLoggedIn(false);
             console.log('error on login with google ',error)
         }
     },
 
     logOut : async () => {
         try {
-            await account.deleteSession("current");
-            setLoggedIn(false);
-            setUserId(null);
-            setUser(null);
+           const res = await account.deleteSession("current");
+            if(res){
+                 set({
+                    userData: {
+                      userStatus: false,
+                      userID: null,
+                      userEmail: null,
+                      userName: null,
+                    },
+                  });
+            }
         } catch (error) {
             console.log('error on logout',error)
         }
     },
 
+    // functions for Databases Operations
     addNewResume : async (data, userId, templateId) => {
         try {
             const newResume = await databases.createDocument(
@@ -139,4 +180,4 @@ const useAppwriteStore = create((set) => ({
 
 }))
 
-
+export default useAppwriteStore;

@@ -1,4 +1,4 @@
-import { Client, Account } from 'appwrite';
+import { Client, Account, Databases, Storage } from 'appwrite';
 
 export const client = new Client();
 
@@ -7,8 +7,8 @@ client
     .setProject(`${process.env.API_PROJECT_ID}`); 
 
 export const account = new Account(client);
-export const databases = new Client.Databases(client);
-export const storage = new Client.Storage(client);
+export const databases = new Databases(client);
+export const storage = new Storage(client);
 export { ID } from 'appwrite';
 
 // the config for appwrite 
