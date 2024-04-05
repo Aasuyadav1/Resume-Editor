@@ -94,9 +94,6 @@ function resume1() {
     setNull()
     const element = e.target;
     setSelectedElement(element);
-    console.log('selected el', selectedElement);
-    console.log(resumeData)
-   
   };
 
   const handleResumeInfoClick = (e, key) => {
@@ -203,10 +200,6 @@ function resume1() {
     setSelectedElement(element);
     setselectedProjectlinkIndex(index)
   }
-
-
-
-
 
   useEffect(() => {
     if (selectedElement) {

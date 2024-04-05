@@ -8,10 +8,10 @@ import Error from "./Pages/Error";
 import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import useAppwriteStore from "./Store/AppwriteStore";
+import Dashboard from "./components/Dashboard";
+
 
 function App() {
-
-
 
   return (
     <>
@@ -22,6 +22,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<Error />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/dashboard/:id" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer /> {/* Correct component name */}

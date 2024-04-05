@@ -149,6 +149,7 @@ const useAppwriteStore = create((set) => ({
                 process.env.API_DATABASE_ID,
                 process.env.API_COLLECTION_ID
             )
+            await set({allData : newResume.documents})
         } catch (error) {
             console.log("error on getting all data from db ", error)
         }
