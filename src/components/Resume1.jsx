@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import useResumeStore from "../Store/store";
 import { Tailwind,  compile } from "@onedoc/react-print";
+import useAppwriteStore from "../Store/AppwriteStore";
+import {useParams} from 'react-router-dom'
 
 
 
@@ -33,12 +35,16 @@ function resume1() {
 
           setResumeimage,
           selectedTemplateId,
+          setResumeData,
         } = useResumeStore();
   const [selectedDivContent, setSelectedDivContent] = useState(null);
   const [selectedElements, setSelectedElements] = useState(null);
   const [selectedImage, setSelectedImage] = useState(
     "https://media.istockphoto.com/id/1473711983/photo/university-tablet-and-campus-student-typing-internet-web-or-website-search-for-college.webp?b=1&s=170667a&w=0&k=20&c=LPhIpcyCjIweAILxehKYkyWehSzc4Uf8HM0rtfqgTIk="
-  ); 
+  );
+  
+  const {singleResumeData, singleData} = useAppwriteStore()
+  const {id} = useParams()
 
   const handleImageClick = () => {
     // Trigger click event on hidden file input

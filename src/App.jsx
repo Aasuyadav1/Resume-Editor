@@ -18,7 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ResumeLanding />} />
-          <Route path="/editor" element={<ResumeEditor />} />
+          <Route path="/editor/:id?" element={<ResumeEditor />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<Error />} />
           <Route path="/login" element={<Login />} />

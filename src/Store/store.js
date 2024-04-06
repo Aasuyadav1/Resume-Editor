@@ -23,6 +23,8 @@ const useResumeStore = create(
     selectedExperienceDescriptionIndex : null,
     selectedTemplateId: 1,
 
+    setResumeData : (data) => set({ resumeData: data }),
+
     setSelectedTemplateId : (id) => set({ selectedTemplateId: id }),
 
     // functions to set selected elements index

@@ -10,20 +10,18 @@ function Template() {
         {
             id: 1,
             name : "Template 1",
-            image : "./images/resume1.png"
+            image : "../images/resume1.png"
         },
         {
             id: 2,
             name : "Template 2",
-            image : "./images/resume2.png"
+            image : "../images/resume2.png"
         }
     ]
     const handleSelectId = (id) => {
         setSelectedTemplateId(id)
     }
-    useEffect(() => {
-        console.log(selectedTemplateId)
-    },[])
+    
   return (
     <div className=' h-full w-full py-4  pb-12'>
         <div className='flex gap-4 flex-col w-full items-center mx-auto  h-full '>
@@ -39,8 +37,7 @@ function Template() {
                 </div>
                 ))
             }
-            </div>
-       
+        </div>       
     </div>
   )
 }

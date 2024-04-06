@@ -2,6 +2,7 @@ import create from "zustand";
 import { account } from "../Appwrite/Conf";
 import { databases } from "../Appwrite/Conf";
 import { ID } from "../Appwrite/Conf";
+import { Query } from "appwrite";
 
 const useAppwriteStore = create((set) => ({
     // initial state
@@ -147,7 +148,8 @@ const useAppwriteStore = create((set) => ({
         try {
             const newResume = await databases.listDocuments(
                 process.env.API_DATABASE_ID,
-                process.env.API_COLLECTION_ID
+                process.env.API_COLLECTION_ID,
+                [Query.equal("User_id", userId)]
             )
             await set({allData : newResume.documents})
         } catch (error) {
@@ -155,13 +157,14 @@ const useAppwriteStore = create((set) => ({
         }
     },
 
-    singleResumeData : async (userId) => {
+    singleResumeData : async (projectid) => {
         try {
-            const newResume = await databases.getDocument(
+            const newResume = await databases.listDocuments(
                 process.env.API_DATABASE_ID,
                 process.env.API_COLLECTION_ID,
-                userId
+                [Query.equal("$id", projectid)]
             )
+            await set({singleData : newResume.documents})
         } catch (error) {
             console.log("error on getting single data from db ", error)
         }
