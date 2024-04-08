@@ -61,7 +61,7 @@ const useAppwriteStore = create((set) => ({
     login : async (email, password) => {
         try {
             // Remember use createemailpassowrdsessin instead of createemailsession
-           const res = await account.createEmailPasswordSession(email, password);
+           const res = await account.createEmailSession(email, password);
            if(res){
              set({
             userData: {
@@ -132,13 +132,16 @@ const useAppwriteStore = create((set) => ({
         }
     },
 
-    updateResume : async (data, userId) => {
+    updateResume : async (databaseId, data, templateId) => {
        try {
         const newResume = await databases.updateDocument(
             process.env.API_DATABASE_ID,
             process.env.API_COLLECTION_ID,
-            userId,
-            { "Resume_Data": data}
+            databaseId,
+            {
+              "Resume_Data": data,
+              "Templates_Id" : templateId,
+            } 
         )
        } catch (error) {
         console.log("error on updating data to db ", error)

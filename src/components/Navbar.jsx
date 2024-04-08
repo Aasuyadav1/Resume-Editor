@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -7,14 +7,16 @@ import useResumeStore from '../Store/store';
 import { IoSaveOutline } from "react-icons/io5";
 import useAppwriteStore from '../Store/AppwriteStore';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {Modal, ModalContent, ModalHeader, ModalBody, Button as NextUIButton, ModalFooter, useDisclosure} from "@nextui-org/react";
 
 
 function Navbar() {
-  const {  addNewResume, userData } = useAppwriteStore();
+  const {  addNewResume, userData, updateResume } = useAppwriteStore();
   const {resumeData, selectedTemplateId} = useResumeStore();
   const [resumeTitle, setResumeTitle] = useState('');
   const navigate = useNavigate();
+  const {id} = useParams();
   const {isOpen, onOpen, onClose} = useDisclosure();
 
   const handleDownload = () => {
@@ -46,10 +48,10 @@ function Navbar() {
      if(userData.userStatus == true){
       const resumeDataString = JSON.stringify(resumeData);
       addNewResume(resumeDataString, userData.userID, selectedTemplateId, resumeTitle);
-      onclose();
+      onClose;
      }else{
       console.log("please login")
-      onclose();
+      onClose;
      }
   };
 
@@ -61,26 +63,63 @@ function Navbar() {
         onOpen();      
   }
 
+  const handleUpdate = () => {
+    if(id){
+      const resumeDataString = JSON.stringify(resumeData);
+      updateResume(id, resumeDataString, selectedTemplateId);
+    }
+  }
 
+  const handleLogin = () => {
+    navigate('/login')
+  }
 
+  // useEffect(() => {
+  //   if(id){
+  //     setResumeTitle()
+  //   }
+  // },[id])
   return (
     <div className='flex shadow-sm items-center border-b-2 z-50 border-solid justify-between gap-4 px-1 py-3 bg-white sticky top-0 left-0 w-full'>
      <div className='max-w-[300px] w-full text-center'>
      <p onClick={() => window.location.reload()} className='text-2xl font-[Roboto] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5] cursor-pointer'>Resume Editor</p>
      </div>
+    
       <div className='flex gap-4'>
-      <Button
+      { userData.userStatus &&  <Button
         label='Dashboard'
-        classes='text-white bg-indigo-100 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-full py-2 px-5 flex items-center gap-2'
+        classes='text-black bg-[#EDEDED] duration-150 hover:bg-[#d9d9d9] active:bg-[#cccccc] rounded-full py-2 px-5 flex items-center gap-2'
         icon={<IoSaveOutline />}
         onClick={handleDashboard}
-      />
-      <Button
-        label='Save'
-        classes='text-white bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-full py-2 px-5 flex items-center gap-2'
+      />}
+      {
+        userData.userStatus && id &&<Button
+        label='Update'
+        classes='text-black bg-[#EDEDED] duration-150 hover:bg-[#d9d9d9] active:bg-[#cccccc] rounded-full py-2 px-5 flex items-center gap-2'
         icon={<IoSaveOutline />}
-        onClick={() => handleOpen()}
+        onClick={handleUpdate}
+      /> 
+      }
+      {
+        userData.userStatus && !id && (
+          <Button
+      label='Save'
+      classes='text-black bg-[#EDEDED] duration-150 hover:bg-[#d9d9d9] active:bg-[#cccccc] rounded-full py-2 px-5 flex items-center gap-2'
+      icon={<IoSaveOutline />}
+      onClick={() => handleOpen()}
+    />
+        )
+      }
+     {
+       !userData.userStatus && (
+        <Button
+        label='Login'
+        classes='text-black bg-[#EDEDED] duration-150 hover:bg-[#d9d9d9] active:bg-[#cccccc] rounded-full py-2 px-5 flex items-center gap-2'
+        icon={<IoSaveOutline />}
+        onClick={handleLogin}
       />
+       )
+     }
       <Button
         label='Download'
         classes='text-white bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-full py-2 px-5 flex items-center gap-2'

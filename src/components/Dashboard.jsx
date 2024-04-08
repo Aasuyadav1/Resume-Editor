@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import {useParams} from 'react-router-dom'
 import useAppwriteStore from '../Store/AppwriteStore'
 import { useState } from 'react'
+import Button from './Button'
 import {useNavigate} from 'react-router-dom'
 import { MdDeleteOutline } from "react-icons/md";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
+import { Link } from 'react-router-dom'
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button as NextUIButton, useDisclosure} from "@nextui-org/react";
 
 function Dashboard() {
     const template = [
@@ -19,7 +21,7 @@ function Dashboard() {
             image : "../images/resume2.png"
         }
     ]
-    const {allResumeData, allData, deleteResume} = useAppwriteStore()
+    const {allResumeData, allData, deleteResume, logOut} = useAppwriteStore()
     const {id} = useParams()
     const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
@@ -54,6 +56,11 @@ function Dashboard() {
         setDeleteId('')
     }
 
+    const handleLogout = () => {
+        logOut()
+        navigate("/")
+    }
+
     useEffect(() => {
         if(id){
             allResumeData(id)
@@ -64,13 +71,36 @@ function Dashboard() {
     },[handleDelete])
 
     return (
-        <div className='w-full  h-screen bg-[rgb(250,247,254)] px-2 py-2'>
+        <div className='w-full  h-screen bg-[rgb(250,247,254)] '>
+            <div className='flex shadow-sm items-center  z-50  justify-between gap-1 px-1 py-3 bg-white sticky top-0 left-0 w-full'>
+     <div className=' md:max-w-[300px] md:w-full text-center'>
+     <Link to={"/"}>
+     <p className='text-2xl font-[Roboto] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5] cursor-pointer'>Resume Editor</p>
+     </Link>
+     </div>
+     <div className='flex gap-4 items-center'>
+     <Button
+        label='Logout'
+        classes='text-black bg-[#FEE7EF] duration-150 hover:bg-[#FDD0DF] active:bg-[#FAA0BF] rounded-full py-2 px-5 flex items-center gap-2'
+        
+        onClick={handleLogout}
+      /> 
+      <Link to={"/editor"}>
+      <Button
+        label='Create Resume'
+        classes='text-white bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-full py-2 px-5 flex items-center gap-2'
+      />
+      </Link>
+     </div>
+    </div>
             {isLoading ? (
                 <div className='h-full w-full grid place-content-center'>
                     <span className="loader"></span>
                 </div>
             ) : (
-                <div className='h-full w-full  flex gap-6 flex-wrap cursor-pointer'>
+                
+                <div className='h-full w-full px-2 py-2  flex gap-6 flex-wrap cursor-pointer'>
+                    
                    {
                     allData && allData.map((item) => {
                         const templateItem = template.find(t => t.id == item.Templates_Id);
@@ -79,12 +109,12 @@ function Dashboard() {
                         
                             return (
                                 <>
-                                <div key={item.id} className='bg-white max-w-[200px] w-full h-fit shadow-sm object-contain border-solid border-2 border-black rounded-md overflow-hidden' >
+                                <div key={item.id} className='bg-white max-w-[200px] mt-4 w-full h-fit shadow-sm object-contain border-solid border-2 border-black rounded-md overflow-hidden' >
                                    
                                     <img src={templateItem.image} alt={templateItem.name} className='w-[200px] border-black border-b-2  h-[300px] '
                                     onClick={() => usersResume(item.$id)}/>
-                                    <div className='flex justify-center text-black gap-2 py-2 px-1 items-center'>
-                                      <p className=' text-md truncate '>{item.Resume_Title} Resume title ye he hai to loro pudna po opo p</p>
+                                    <div className='flex justify-between text-black gap-2 py-2 px-1 items-center'>
+                                      <p className=' text-md truncate '>{item.Resum_Title}</p>
                                      <div>
                                         
                                      
@@ -112,12 +142,12 @@ function Dashboard() {
                                         
                                       </ModalBody>
                                       <ModalFooter>
-                                        <Button color="danger" variant="light" onPress={onClose}>
+                                        <NextUIButton color="danger" variant="light" onPress={onClose}>
                                           Close
-                                        </Button>
-                                        <Button color="primary" onPress={handleDelete}>
+                                        </NextUIButton>
+                                        <NextUIButton color="primary" onPress={handleDelete}>
                                         Delete
-                                        </Button>
+                                        </NextUIButton>
                                       </ModalFooter>
                                     </>
                                   )}
