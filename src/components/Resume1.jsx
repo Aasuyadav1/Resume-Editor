@@ -221,7 +221,17 @@ function resume1() {
      }
   }, [selectedElement]);
  
-
+  useEffect(()=>{
+    if(id){
+      singleResumeData(id)
+      if(singleData){
+        const resumePure = JSON.parse(singleData[0].Resume_Data)
+        setResumeData(resumePure)
+        console.log("single data",resumePure)
+      }
+    }
+  },[id])
+   
   return  (
    
       <div className="flex break-words flex-col gap-20 text-wrap">
@@ -235,7 +245,7 @@ function resume1() {
         style={{width : '100%', height : '100%', display : 'flex', alignItems : 'center', gap : '40px', paddingBlock : '20px' , paddingInline : '4px'}}
       >
         <img
-          src={resumeData.image}
+          src={`.${resumeData.image}`}
           alt="Selected"
           className= " imgess border-dashed hover:border-indigo-600 border-[2px] border-transparent cursor-pointer"
           style={{width : '100px', height : '100px', objectFit : 'cover', borderRadius : '50%', cursor : 'pointer',}}

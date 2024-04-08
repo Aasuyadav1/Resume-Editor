@@ -115,7 +115,7 @@ const useAppwriteStore = create((set) => ({
     },
 
     // functions for Databases Operations
-    addNewResume : async (data, userId, templateId) => {
+    addNewResume : async (data, userId, templateId, title) => {
         try {
             const newResume = await databases.createDocument(
                 process.env.API_DATABASE_ID,
@@ -123,7 +123,8 @@ const useAppwriteStore = create((set) => ({
                 ID.unique(),
                 { "Resume_Data": data,
                    "Templates_Id" : templateId,
-                   "User_id" : userId 
+                   "User_id" : userId,
+                   "Resum_Title" : title
                 }  
             )
         } catch (error) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -7,12 +7,15 @@ import useResumeStore from '../Store/store';
 import { IoSaveOutline } from "react-icons/io5";
 import useAppwriteStore from '../Store/AppwriteStore';
 import { useNavigate } from 'react-router-dom';
+import {Modal, ModalContent, ModalHeader, ModalBody, Button as NextUIButton, ModalFooter, useDisclosure} from "@nextui-org/react";
 
 
 function Navbar() {
   const {  addNewResume, userData } = useAppwriteStore();
   const {resumeData, selectedTemplateId} = useResumeStore();
+  const [resumeTitle, setResumeTitle] = useState('');
   const navigate = useNavigate();
+  const {isOpen, onOpen, onClose} = useDisclosure();
 
   const handleDownload = () => {
   
@@ -42,16 +45,23 @@ function Navbar() {
   const handleSave = () => {   
      if(userData.userStatus == true){
       const resumeDataString = JSON.stringify(resumeData);
-      addNewResume(resumeDataString, userData.userID, selectedTemplateId)
-      console.log("added")
+      addNewResume(resumeDataString, userData.userID, selectedTemplateId, resumeTitle);
+      onclose();
      }else{
       console.log("please login")
+      onclose();
      }
   };
 
   const handleDashboard = () => {
     navigate(`/dashboard/${userData.userID}`)
   }
+
+  const handleOpen = () => { 
+        onOpen();      
+  }
+
+
 
   return (
     <div className='flex shadow-sm items-center border-b-2 z-50 border-solid justify-between gap-4 px-1 py-3 bg-white sticky top-0 left-0 w-full'>
@@ -69,7 +79,7 @@ function Navbar() {
         label='Save'
         classes='text-white bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-full py-2 px-5 flex items-center gap-2'
         icon={<IoSaveOutline />}
-        onClick={handleSave}
+        onClick={() => handleOpen()}
       />
       <Button
         label='Download'
@@ -77,7 +87,35 @@ function Navbar() {
         icon={<BsDownload />}
         onClick={handleDownload}
       />
-      
+      <Modal 
+                                size="md" 
+                                isOpen={isOpen} 
+                                onClose={onClose}
+                                
+                              >
+                                <ModalContent>
+                                  {(onClose) => (
+                                    <>
+                                      <ModalHeader className="flex flex-col gap-1"></ModalHeader>
+                                      <ModalBody>
+                                        <p> 
+                                        Enter the project title for your resume
+                                        </p>
+                                        <input type="text" value={resumeTitle} onChange={(e)=>setResumeTitle(e.target.value)} className="w-full px-2 py-2 rounded-lg border-gray-300 border-2 border-solid mt-2" />
+                                        
+                                      </ModalBody>
+                                      <ModalFooter>
+                                        <NextUIButton color="danger" variant="light" onPress={onClose}>
+                                          Close
+                                        </NextUIButton>
+                                        <NextUIButton color="primary" onPress={handleSave}>
+                                        Save
+                                        </NextUIButton>
+                                      </ModalFooter>
+                                    </>
+                                  )}
+                                </ModalContent>
+      </Modal>
       </div>
     </div>
   );
