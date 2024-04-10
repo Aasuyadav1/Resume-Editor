@@ -21,29 +21,33 @@ function Navbar() {
   const {isOpen, onOpen, onClose} = useDisclosure();
 
   const handleDownload = () => {
-  
-      const elements = document.querySelectorAll(".clickable-element");
-      elements.forEach((element)=>{
-          element.classList.remove('activeelement');
-        })
-      
+    const elements = document.querySelectorAll(".clickable-element");
+    elements.forEach((element) => {
+        element.classList.remove('activeelement');
+    });
+
     let main;
     if (selectedTemplateId === 1) {
-      main = document.getElementById('resume1pdf');
+        main = document.getElementById('resume1pdf');
     } else if (selectedTemplateId === 2) {
-      main = document.getElementById('resume2pdf');
+        main = document.getElementById('resume2pdf');
     }
 
-    html2canvas(main, { logging: true, letterRendering: 1, allowTaint: true }).then(function (canvas) {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      const imgWidth = 210;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-      pdf.save('resume.pdf');
+    html2canvas(main, { logging: true, letterRendering: 1, allowTaint: true, dpi: 300 }).then(function (canvas) {
+        const imgData = canvas.toDataURL('image/png');
+        const divHeight = main.offsetHeight;
+        const divWidth = main.offsetWidth;
+        const aspectRatio = divWidth / divHeight;
+        const pdfHeight = 297; // A4 height in mm
+        const pdfWidth = pdfHeight * aspectRatio;
+        const pdf = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]);
+        const imgWidth = pdfWidth;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.save('resume.pdf');
     });
-  };
+};
+
 
   const handleSave = () => {   
      if(userData.userStatus == true){
