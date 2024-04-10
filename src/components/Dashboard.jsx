@@ -9,6 +9,7 @@ import useResumeStore from '../Store/store';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button as NextUIButton, useDisclosure } from "@nextui-org/react";
 import { resumeData } from '../Data/resume1';
 import {toast} from 'react-toastify'
+import { BiLogOut } from "react-icons/bi";
 
 function Dashboard() {
     const template = [
@@ -40,8 +41,8 @@ function Dashboard() {
 
     const handleOpen = (id) => {
         if (id) {
-            const filterData = allData.find((item) => item.$id === id);
-            setResumeTitle(filterData.Resume_Title);
+            const filterData = allData.find((item) => item.$id == id);
+            setResumeTitle(filterData.Resum_Title);
             setDeleteId(id); // Set the deleteId state to the id of the resume to be deleted
             onOpen(); // Open the delete confirmation modal
         }
@@ -68,8 +69,11 @@ function Dashboard() {
     };
 
     const handleCreate = () => {
-        navigate("/editor");
-        setResumeData(resumeData);
+        const navigates = async () => {
+           await navigate("/editor");
+           await setResumeData(resumeData);
+        }
+        navigates();
     }
 
     useEffect(() => {
@@ -94,6 +98,7 @@ function Dashboard() {
                         label='Logout'
                         classes='text-black bg-[#FEE7EF] duration-150 hover:bg-[#FDD0DF] active:bg-[#FAA0BF] rounded-full py-2 px-5 flex items-center gap-2'
                         onClick={handleLogout}
+                        icon ={<BiLogOut />}
                     />
                    
                         <Button
@@ -114,7 +119,7 @@ function Dashboard() {
                         {allData.length === 0 ? (
                             <div className='w-full grid place-content-center'>
                                 <p className='text-2xl text-red-400 text-center'> No matching data found</p>
-                                <p className='text-lg text-black text-center'>please create your resume</p>
+                                <p className='text-lg text-black text-center'>please create new resume</p>
                             </div>
                         ) : (
                                 allData.map((item,i) => {

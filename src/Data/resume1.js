@@ -1,8 +1,8 @@
 export const resumeData = {
-  title: "Aasu Yadav",
+  title: "Name Here",
   subtitle: "Software Developer",
   description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur illo qui deserunt vero repellat temporibus mollitia, sint eum praesentium voluptatem reprehenderit earum ullam nemo! Molestiae corrupti blanditiis ex iusto minus.",
-  image: ".././images/profile.jpg",
+  image: "../images/profile.jpg",
 
   Education: [
     {  date: "2024-2025", degree: "B.Tech", university: "University Name" },

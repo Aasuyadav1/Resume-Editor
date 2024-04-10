@@ -9,6 +9,10 @@ import useAppwriteStore from '../Store/AppwriteStore';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import {toast} from 'react-toastify';
+import { FaRegSave } from "react-icons/fa";
+import { RxDashboard } from "react-icons/rx"
+import { FiLogIn } from "react-icons/fi";;
+import { CiLogin } from "react-icons/ci";
 import {Modal, ModalContent, ModalHeader, ModalBody, Button as NextUIButton, ModalFooter, useDisclosure} from "@nextui-org/react";
 
 
@@ -103,7 +107,7 @@ function Navbar() {
       { userData.userStatus &&  <Button
         label='Dashboard'
         classes='text-black bg-[#EDEDED] duration-150 hover:bg-[#d9d9d9] active:bg-[#cccccc] rounded-full py-2 px-5 flex items-center gap-2'
-        icon={<IoSaveOutline />}
+        icon={<RxDashboard/>}
         onClick={handleDashboard}
       />}
       {
@@ -119,7 +123,7 @@ function Navbar() {
           <Button
       label='Save'
       classes='text-black bg-[#EDEDED] duration-150 hover:bg-[#d9d9d9] active:bg-[#cccccc] rounded-full py-2 px-5 flex items-center gap-2'
-      icon={<IoSaveOutline />}
+      icon={<FaRegSave /> }
       onClick={() => handleOpen()}
     />
         )
@@ -129,7 +133,7 @@ function Navbar() {
         <Button
         label='Login'
         classes='text-black bg-[#EDEDED] duration-150 hover:bg-[#d9d9d9] active:bg-[#cccccc] rounded-full py-2 px-5 flex items-center gap-2'
-        icon={<IoSaveOutline />}
+        icon={<FiLogIn /> }
         onClick={handleLogin}
       />
        )
@@ -149,12 +153,12 @@ function Navbar() {
                                 <ModalContent>
                                   {(onClose) => (
                                     <>
-                                      <ModalHeader className="flex flex-col gap-1"></ModalHeader>
+                                      <ModalHeader className="flex flex-col gap-1">Add New Project</ModalHeader>
                                       <ModalBody>
                                         <p> 
                                         Enter the project title for your resume
                                         </p>
-                                        <input type="text" value={resumeTitle} onChange={(e)=>setResumeTitle(e.target.value)} className="w-full px-2 py-2 rounded-lg border-gray-300 border-2 border-solid mt-2" />
+                                        <input type="text" value={resumeTitle} placeholder='Project Title' onChange={(e)=>setResumeTitle(e.target.value)} className="w-full px-2 py-2 rounded-lg border-gray-300 border-2 border-solid mt-2" />
                                         
                                       </ModalBody>
                                       <ModalFooter>

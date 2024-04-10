@@ -80,7 +80,7 @@ const useAppwriteStore = create((set) => ({
 
     googleLogin : async () => {
         try {
-            const res = await account.createOAuth2Session("google","http://localhost:5173/editor","http://localhost:5173/login");
+            const res = await account.createOAuth2Session("google",process.env.REDIRECT_GOOGLE_AUTH,process.env.FAILURE_ON_GOOGLE_AUTH);
             if(res){
                  set({
                     userData: {
