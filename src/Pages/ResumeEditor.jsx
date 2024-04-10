@@ -10,9 +10,9 @@ function ResumeEditor() {
   const {userData, getCurrentUser} = useAppwriteStore();
   useEffect(()=>{
     getCurrentUser();
-    if(userData.userStatus === true){
-      toast.success(`Hello , ${userData.userName}`);
-    }
+    // if(userData.userStatus === true){
+    //   toast.success(`Hello , ${userData.userName}`);
+    // }
   },[userData.userStatus])
   return (
     <div>

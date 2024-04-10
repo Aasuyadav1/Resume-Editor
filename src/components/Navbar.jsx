@@ -8,12 +8,13 @@ import { IoSaveOutline } from "react-icons/io5";
 import useAppwriteStore from '../Store/AppwriteStore';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import {toast} from 'react-toastify';
 import {Modal, ModalContent, ModalHeader, ModalBody, Button as NextUIButton, ModalFooter, useDisclosure} from "@nextui-org/react";
 
 
 function Navbar() {
   const {  addNewResume, userData, updateResume } = useAppwriteStore();
-  const {resumeData, selectedTemplateId} = useResumeStore();
+  const {resumeData, selectedTemplateId, singleResumeData} = useResumeStore();
   const [resumeTitle, setResumeTitle] = useState('');
   const navigate = useNavigate();
   const {id} = useParams();
@@ -48,10 +49,12 @@ function Navbar() {
      if(userData.userStatus == true){
       const resumeDataString = JSON.stringify(resumeData);
       addNewResume(resumeDataString, userData.userID, selectedTemplateId, resumeTitle);
-      onClose;
+      toast.success("Resume Saved Successfully");
+      onClose();
      }else{
       console.log("please login")
-      onClose;
+      toast.error("Error in Saving Resume");
+      onClose();
      }
   };
 
@@ -67,6 +70,9 @@ function Navbar() {
     if(id){
       const resumeDataString = JSON.stringify(resumeData);
       updateResume(id, resumeDataString, selectedTemplateId);
+      toast.success("Resume Updated Successfully");
+    }else{
+      toast.error("Error in Updating Resume");
     }
   }
 
@@ -75,10 +81,14 @@ function Navbar() {
   }
 
   // useEffect(() => {
-  //   if(id){
-  //     setResumeTitle()
-  //   }
+  //   singleResumeData(id)
+  //     if(singleData){
+  //       const resumePure = JSON.parse(singleData[0].Resume_Data)
+  //       setResumeTitle(resumePure)
+  //       console.log(resumeTitle)
+  //     }
   // },[id])
+
   return (
     <div className='flex shadow-sm items-center border-b-2 z-50 border-solid justify-between gap-4 px-1 py-3 bg-white sticky top-0 left-0 w-full'>
      <div className='max-w-[300px] w-full text-center'>

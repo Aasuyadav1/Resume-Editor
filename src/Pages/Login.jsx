@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {useForm} from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import useAppwriteStore from '../Store/AppwriteStore';
+import { Link } from 'react-router-dom';
 
 function Login() {
     const {signUp, googleLogin, userData, login} = useAppwriteStore();
@@ -20,7 +21,7 @@ function Login() {
     },[userData.userStatus])
 
   return (
-    <section className="rounded-md bg-black/80 p-2">
+    <section className="rounded-md w-full h-screen  p-2">
     <div className="flex items-center justify-center bg-white px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
       <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
         <div className="mb-2">
@@ -42,13 +43,13 @@ function Login() {
         </h2>
         <p className="mt-2 text-base text-gray-600">
           Don't have an account?{" "}
-          <a
-            href="#"
+          <Link
+            to="/signup"
             title=""
             className="font-medium text-black transition-all duration-200 hover:underline"
           >
             Sign up
-          </a>
+          </Link>
         </p>
         <form onSubmit={handleSubmit(onsubmit)} className="mt-8">
           <div className="space-y-5">          
