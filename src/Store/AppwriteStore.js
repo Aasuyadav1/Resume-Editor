@@ -23,6 +23,7 @@ const useAppwriteStore = create((set) => ({
     // functions for authentications
     getCurrentUser : async () => {
         try {
+            console.log("db ps",  process.env.API_DATABASE_ID,)
            const res = await account.get();
             if(res){
                 console.log(res)
@@ -42,6 +43,7 @@ const useAppwriteStore = create((set) => ({
 
     signUp : async (email, password, name) => {
         try {
+           
            const res = await account.create(ID.unique(), email, password, name);
             if(res){
                 set({
@@ -116,6 +118,7 @@ const useAppwriteStore = create((set) => ({
 
     // functions for Databases Operations
     addNewResume : async (data, userId, templateId, title) => {
+
         try {
             const newResume = await databases.createDocument(
                 process.env.API_DATABASE_ID,
