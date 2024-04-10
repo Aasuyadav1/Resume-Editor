@@ -82,7 +82,7 @@ const useAppwriteStore = create((set) => ({
 
     googleLogin : async () => {
         try {
-            const res = await account.createOAuth2Session("google",process.env.REDIRECT_GOOGLE_AUTH,process.env.FAILURE_ON_GOOGLE_AUTH);
+            const res = await account.createOAuth2Session("google","https://resume-editorr.vercel.app/editor","https://resume-editorr.vercel.app/login");
             if(res){
                  set({
                     userData: {
