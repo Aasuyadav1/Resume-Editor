@@ -11,7 +11,8 @@ function Login() {
     
     const onsubmit =async (data)=>{
      await login(data.email, data.password)
-      reset()
+     reset()
+     navigate('/editor')
     } 
 
     useEffect(()=>{
