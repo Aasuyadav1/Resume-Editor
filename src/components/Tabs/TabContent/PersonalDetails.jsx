@@ -1,37 +1,38 @@
-import React, { useEffect } from 'react'
-import InputField from '../../InputField/InputField'
-import { useState } from 'react'
-import useResumeStore from '../../../Store/store'
+import React, { useEffect, useState } from 'react';
+import InputField from '../../InputField/InputField';
+import useResumeStore from '../../../Store/store';
 
 function PersonalDetails() {
-    const [name, setName] = useState('')
-    const [profession, setProfession] = useState('')
-    const [description, setDescription] = useState('')
-    const {resumeData,setResumetitle,setResumeSubtitle, setResumedescription} = useResumeStore()
-    const handleName = (e) => {
-        setName(e.target.value)
-        setResumetitle(e.target.value)
-    }
-    const handleProfession = (e) => {
-        setProfession(e.target.value)
-        setResumeSubtitle(e.target.value)
-    }
-    const handleDescription = (e) => {
-        setDescription(e.target.value)
-        setResumedescription(e.target.value)
-    }
+    const { resumeData, setResumeData } = useResumeStore();
+    const [inputFieldData, setInputFieldData] = useState({
+        title: '',
+        subtitle: '',
+        description: ''
+    });
+
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setResumeData(name, 0, name, value);
+        console.log("the name is", name)
+        setInputFieldData({ ...inputFieldData, [name]: value });
+    };
+
     useEffect(() => {
-        setName(resumeData.title)
-        setProfession(resumeData.subtitle)
-        setDescription(resumeData.description)
-    },[resumeData])
-  return (
-    <>
-    <InputField label="Name" type="text" onChange={handleName} value={name}/>
-    <InputField label="Profession" type="text" onChange={handleProfession} value={profession}/>
-    <InputField label="Profession" type="text" onChange={handleDescription} value={description} />
-    </>
-  )
+        setInputFieldData({
+            title: resumeData.title,
+            subtitle: resumeData.subtitle,
+            description: resumeData.description
+        });
+    }, [resumeData]);
+
+    return (
+        <>
+            <InputField label="Title" type="text" name="title" onChange={handleChange} value={inputFieldData.title} />
+            <InputField label="Profession" name="subtitle" type="text" onChange={handleChange} value={inputFieldData.subtitle} />
+            <InputField label="Description" type="text" name="description" onChange={handleChange} value={inputFieldData.description} />
+        </>
+    );
 }
 
-export default PersonalDetails
+export default PersonalDetails;

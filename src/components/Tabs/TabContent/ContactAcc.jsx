@@ -4,29 +4,30 @@ import InputField from "../../InputField/InputField";
 import Button from "../../Button";
 import { LuTrash } from "react-icons/lu";
 function ContactAcc() {
-  const { resumeData, setContactLabel, setContactValue,addNewContact, removeContact } = useResumeStore();
+  // const { resumeData, setContactLabel, setContactValue,addNewContact, removeContact } = useResumeStore();
+
+  const { resumeData, setResumeData, addNewField, removeField } = useResumeStore();
+
   const [newContact, setNewContact] = useState({
     label: "",
     value: "",
   });
   const [trackAdd, setTrackAdd] = useState(true);
   const [addNew, setAddNew] = useState(false);
-  const handleContactLabel = (value, index) => {
-    setContactLabel(value, index);
-  };
-  const handleContactValue = (value, index) => {
-    setContactValue(value, index);
-  };
-  const handleAddContact = () => {
-    if (newContact.label && newContact.value ) {
-      addNewContact(
-        newContact.label,
-        newContact.value
-      );
+  
+
+  const handleChange = (section, index, name, value) => {
+    setResumeData(section, index, name, value);
+  }
+
+  const handleAdd = (section) => {
+    if(newContact.label && newContact.value){
+      addNewField(section, newContact);
       setNewContact({ label: "", value: "" });
       setAddNew(false);
     }
-  };
+  }
+
   useEffect(() => {
     if (resumeData) {
       const totalIndex = resumeData.Contact.length;
@@ -46,16 +47,18 @@ function ContactAcc() {
             <InputField
               label="Label"
               type="text"
+              name='label'
               value={data.label}
-              onChange={(e) => handleContactLabel(e.target.value, i)}
+              onChange={(e) => handleChange('Contact', i, e.target.name, e.target.value)}
             />
             <InputField
               label="Value"
               type="text"
+              name='value'
               value={data.value}
-              onChange={(e) => handleContactValue(e.target.value, i)}
+              onChange={(e) => handleChange('Contact', i, e.target.name, e.target.value)}
             />
-            <span onClick={() => removeContact(i)} className="mt-1 w-fit justify-center flex gap-1 items-center font-semibold cursor-pointer text-red-600 text-[0.9rem]"><LuTrash />
+            <span onClick={() => removeField('Contact',i)} className="mt-1 w-fit justify-center flex gap-1 items-center font-semibold cursor-pointer text-red-600 text-[0.9rem]"><LuTrash />
 Remove this</span>
           </div>
         ))}
@@ -92,7 +95,7 @@ Remove this</span>
               label="Add Now"
               bgColor="bg-black"
               color=" text-white"
-              onClick={handleAddContact}
+              onClick={() => handleAdd('Contact')}
               classes="mt-4 px-3 py-[8px] rounded-md text-sm"
             />
           </div>

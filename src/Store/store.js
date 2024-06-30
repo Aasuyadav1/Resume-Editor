@@ -1,10 +1,10 @@
 import create from "zustand";
 import { devtools } from "zustand/middleware";
-import { resumeData } from "../Data/resume1";
+import { resumeData as initialResumeData } from "../Data/resume1";
 
 const useResumeStore = create(
   devtools((set, get) => ({
-    resumeData: resumeData,
+    resumeData: initialResumeData,
     selectedElement: null,
     setSelectedElement: (section, index, key, element) => {
       set({ selectedElement: { section, index, key, element } });
@@ -18,12 +18,35 @@ const useResumeStore = create(
         section === "image"
       ) {
         set({ resumeData: { ...resumeData, [section]: value } });
-      } else {
+      } else if (Array.isArray(resumeData[section])) {
         const updatedSection = [...resumeData[section]];
         updatedSection[index] = { ...updatedSection[index], [key]: value };
         set({ resumeData: { ...resumeData, [section]: updatedSection } });
+      } else {
+        console.error(`Section ${section} is not iterable or not recognized.`);
       }
     },
+    addNewField: (section, data) => {
+      const { resumeData } = get();
+      if (Array.isArray(resumeData[section])) {
+        const updatedSection = [...resumeData[section], data];
+        set({ resumeData: { ...resumeData, [section]: updatedSection } });
+      } else {
+        console.error('something went wrong while adding new field');
+      }
+    },
+    removeField: (section, index) => {
+      const { resumeData } = get()
+      const {selectedElement} = get()
+      if(section || index){
+        if(selectedElement?.section === section && selectedElement?.index === index){
+          set({selectedElement: null})
+        }
+        const toRemoveSection = [...resumeData[section]]
+        const removeField = toRemoveSection.filter((item,i) => i !== index);
+        set({resumeData: {...resumeData, [section]:removeField}})
+      }
+    }
   }))
 );
 

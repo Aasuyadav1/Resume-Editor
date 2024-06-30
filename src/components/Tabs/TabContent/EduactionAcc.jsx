@@ -1,54 +1,32 @@
-import React, { useEffect, useState } from "react";
-import InputField from "../../InputField/InputField";
+import React, { useState, useEffect } from "react";
 import useResumeStore from "../../../Store/store";
+import InputField from "../../InputField/InputField";
 import Button from "../../Button";
 import { LuTrash } from "react-icons/lu";
 
-function EduactionAcc() {
-  const {
-    resumeData,
-    setEducationDate,
-    setEducationDegree,
-    setEducationUniversity,
-    addNewEducation,
-    removeEducation,
-  } = useResumeStore();
+function EducationAcc() {
+  const { resumeData, setResumeData, addNewField, removeField } = useResumeStore();
 
-  const [newEduction, setNewEducation] = useState({
+  const [newEducation, setNewEducation] = useState({
     date: "",
     degree: "",
     university: "",
   });
   const [trackAdd, setTrackAdd] = useState(true);
   const [addNew, setAddNew] = useState(false);
-  const handleDateChange = (date, index) => {
-    setEducationDate(date, index); // Call setEducationDate with the new date and index
-  };
-  const handleDegreeChange = (degree, index) => {
-    setEducationDegree(degree, index);
-  };
-  const handleUniversityChange = (university, index) => {
-    setEducationUniversity(university, index);
-  };
-  const handleAddEducation = () => {
-    if (newEduction.date && newEduction.degree && newEduction.university) {
-      addNewEducation(
-        newEduction.date,
-        newEduction.degree,
-        newEduction.university
-      );
-      console.log(
-        "add new education",
-        newEduction.date,
-        newEduction.degree,
-        newEduction.university
-      );
+
+  const handleChange = (section, index, name, value) => {
+    setResumeData(section, index, name, value);
+  }
+
+  const handleAdd = (section) => {
+    if (newEducation.date && newEducation.degree && newEducation.university) {
+      addNewField(section, newEducation);
       setNewEducation({ date: "", degree: "", university: "" });
-      console.log(resumeData.Education);
-      console.log("add new education", resumeData);
       setAddNew(false);
     }
-  };
+  }
+
   useEffect(() => {
     if (resumeData) {
       const totalIndex = resumeData.Education.length;
@@ -58,76 +36,79 @@ function EduactionAcc() {
         setTrackAdd(true);
       }
     }
-    console.log("resume education", resumeData.Education);
   }, [resumeData]);
+
   return (
     <div className="-mt-8 py-2">
       {resumeData &&
         resumeData.Education.map((data, i) => (
-          <div className="mt-6" key={i}>
-            <p className=" text-[#4f4e4e] text-[1rem]"> Education - {i + 1}</p>
+          <div key={i} className="mt-6">
+            <p className="text-[#4f4e4e] text-[1rem]">Education - {i + 1}</p>
             <InputField
               label="Year"
               type="text"
+              name="date"
               value={data.date}
-              onChange={(e) => handleDateChange(e.target.value, i)}
+              onChange={(e) => handleChange('Education', i, e.target.name, e.target.value)}
             />
             <InputField
               label="Degree"
               type="text"
+              name="degree"
               value={data.degree}
-              onChange={(e) => handleDegreeChange(e.target.value, i)}
+              onChange={(e) => handleChange('Education', i, e.target.name, e.target.value)}
             />
             <InputField
               label="University"
               type="text"
+              name="university"
               value={data.university}
-              onChange={(e) => handleUniversityChange(e.target.value, i)}
+              onChange={(e) => handleChange('Education', i, e.target.name, e.target.value)}
             />
-            <span onClick={() => removeEducation(i)} className="mt-1 w-fit justify-center flex gap-1 items-center font-semibold cursor-pointer text-red-600 text-[0.9rem]"><LuTrash />
-Remove this</span>
+            <span onClick={() => removeField('Education', i)} className="mt-1 w-fit justify-center flex gap-1 items-center font-semibold cursor-pointer text-red-600 text-[0.9rem]"><LuTrash />Remove this</span>
           </div>
         ))}
+
       {trackAdd && (
         <p
-          className="mt-6 mb-4 font-semibold cursor-pointer text-blue-600 text-[0.9rem]"
+          className="mt-4 font-semibold cursor-pointer text-blue-600 text-[0.9rem]"
           onClick={() => setAddNew(!addNew)}
         >
           {addNew ? "- Cancel" : "+ Add One More"}
         </p>
       )}
       {addNew && (
-        <div className="mt-4 mb-4  w-full">
+        <div className="mt-4 w-full">
           <InputField
             label="Year"
             type="text"
-            value={newEduction.date}
+            value={newEducation.date}
             onChange={(e) =>
-              setNewEducation({ ...newEduction, date: e.target.value })
+              setNewEducation({ ...newEducation, date: e.target.value })
             }
           />
           <InputField
             label="Degree"
             type="text"
-            value={newEduction.degree}
+            value={newEducation.degree}
             onChange={(e) =>
-              setNewEducation({ ...newEduction, degree: e.target.value })
+              setNewEducation({ ...newEducation, degree: e.target.value })
             }
           />
           <InputField
             label="University"
             type="text"
-            value={newEduction.university}
+            value={newEducation.university}
             onChange={(e) =>
-              setNewEducation({ ...newEduction, university: e.target.value })
+              setNewEducation({ ...newEducation, university: e.target.value })
             }
           />
           <div className="flex justify-end">
             <Button
               label="Add Now"
               bgColor="bg-black"
-              color=" text-white"
-              onClick={handleAddEducation}
+              color="text-white"
+              onClick={() => handleAdd('Education')}
               classes="mt-4 px-3 py-[8px] rounded-md text-sm"
             />
           </div>
@@ -137,4 +118,4 @@ Remove this</span>
   );
 }
 
-export default EduactionAcc;
+export default EducationAcc;

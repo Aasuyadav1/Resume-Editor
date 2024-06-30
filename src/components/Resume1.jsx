@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import useResumeStore from "../Store/store";
-import { Tailwind, compile } from "@onedoc/react-print";
 import useAppwriteStore from "../Store/AppwriteStore";
 import { useParams } from "react-router-dom";
 
 function Resume1() {
-  const { selectedElement, setSelectedElement, resumeData } = useResumeStore(
+  const { setSelectedElement, resumeData } = useResumeStore(
     (state) => state
   );
   const [selectedImage, setSelectedImage] = useState(
