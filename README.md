@@ -12,6 +12,10 @@ A user-friendly platform for creating, updating, deleting, and downloading resum
 - CRUD operations for managing stored resumes.
 - Easy customization and editing.
 
+## Deployment
+
+Check out the deployed version of Resume Editor [here](https://resume-editorr.vercel.app/).
+
 ## Getting Started
 
 To get started with Resume Editor, follow these steps:
@@ -20,5 +24,3 @@ To get started with Resume Editor, follow these steps:
 - Set up a database for storing user resumes.
 - Configure authentication for user login.
 - Run the application.
-
-
