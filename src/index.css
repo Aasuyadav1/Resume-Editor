@@ -8,15 +8,6 @@ body{
 *{
   box-sizing: border-box;
 }
-/* ::-webkit-scrollbar {
-  
-  background-color: white;
-} */
-/* ::-webkit-scrollbar-thumb{
-  background-color: #F0F0F0;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-} */
 canvas{
   width: 100%;
 }
@@ -24,7 +15,6 @@ canvas{
   border: 2px dashed rgb(79 70 229 );
 }
 
-/*loaders*/
 .loader, .loader:before, .loader:after {
   border-radius: 50%;
   width: 2.5em;

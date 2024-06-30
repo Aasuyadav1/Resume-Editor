@@ -4,8 +4,6 @@ import InputField from "../../InputField/InputField";
 import Button from "../../Button";
 import { LuTrash } from "react-icons/lu";
 function ContactAcc() {
-  // const { resumeData, setContactLabel, setContactValue,addNewContact, removeContact } = useResumeStore();
-
   const { resumeData, setResumeData, addNewField, removeField } = useResumeStore();
 
   const [newContact, setNewContact] = useState({

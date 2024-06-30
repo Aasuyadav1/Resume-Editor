@@ -126,8 +126,8 @@ function Dashboard() {
                                     const templateItem = template.find(t => t.id == item.Templates_Id);
                                     if (templateItem) {
                                         return (
-                                            <div key={i} className='bg-white max-w-[200px] mt-4 w-full h-fit shadow-sm object-contain border-solid border-2 border-black rounded-md overflow-hidden' >
-                                                <img src={templateItem.image} alt={templateItem.name} className='w-[200px] border-black border-b-2  h-[300px] ' onClick={() => usersResume(item.$id)} />
+                                            <div key={i} className='bg-white max-w-[200px] mt-4 w-full h-fit shadow-sm object-cover border-solid border-2 border-black rounded-md overflow-hidden' >
+                                                <img src={templateItem.image} alt={templateItem.name} className='w-[200px] border-black border-b-2  h-auto object-cover ' onClick={() => usersResume(item.$id)} />
                                                 <div className='flex justify-between text-black gap-2 py-2 px-1 items-center'>
                                                     <p className=' text-md truncate '>{item.Resum_Title}</p>
                                                     <div>

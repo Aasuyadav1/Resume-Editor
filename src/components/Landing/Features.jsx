@@ -1,6 +1,5 @@
 import React from "react";
-import { BsFillMenuButtonWideFill } from "react-icons/bs";
-import { AiFillThunderbolt } from "react-icons/ai";
+
 
 function Features() {
   return (

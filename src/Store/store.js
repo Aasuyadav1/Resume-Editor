@@ -4,11 +4,20 @@ import { resumeData as initialResumeData } from "../Data/resume1";
 
 const useResumeStore = create(
   devtools((set, get) => ({
+
     resumeData: initialResumeData,
     selectedElement: null,
+    selectedTemplateId: 1,
+
+    setSelectedTemplateId: (id) => {
+      const { selectedTemplateId } = get();
+      set({ selectedTemplateId: id });
+    },
+
     setSelectedElement: (section, index, key, element) => {
       set({ selectedElement: { section, index, key, element } });
     },
+
     setResumeData: (section, index, key, value) => {
       const { resumeData } = get();
       if (
@@ -26,6 +35,7 @@ const useResumeStore = create(
         console.error(`Section ${section} is not iterable or not recognized.`);
       }
     },
+
     addNewField: (section, data) => {
       const { resumeData } = get();
       if (Array.isArray(resumeData[section])) {
@@ -35,6 +45,7 @@ const useResumeStore = create(
         console.error('something went wrong while adding new field');
       }
     },
+
     removeField: (section, index) => {
       const { resumeData } = get()
       const {selectedElement} = get()
@@ -47,6 +58,7 @@ const useResumeStore = create(
         set({resumeData: {...resumeData, [section]:removeField}})
       }
     }
+
   }))
 );
 

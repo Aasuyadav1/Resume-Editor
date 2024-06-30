@@ -18,7 +18,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody, Button as NextUIButton, Mod
 
 function Navbar() {
   const {  addNewResume, userData, updateResume } = useAppwriteStore();
-  const {resumeData, selectedTemplateId, singleResumeData} = useResumeStore();
+  const {resumeData, selectedTemplateId} = useResumeStore();
   const [resumeTitle, setResumeTitle] = useState('');
   const navigate = useNavigate();
   const {id} = useParams();
@@ -87,15 +87,6 @@ function Navbar() {
   const handleLogin = () => {
     navigate('/login')
   }
-
-  // useEffect(() => {
-  //   singleResumeData(id)
-  //     if(singleData){
-  //       const resumePure = JSON.parse(singleData[0].Resume_Data)
-  //       setResumeTitle(resumePure)
-  //       console.log(resumeTitle)
-  //     }
-  // },[id])
 
   return (
     <div className='flex shadow-sm items-center border-b-2 z-50 border-solid justify-between gap-4 px-1 py-3 bg-white sticky top-0 left-0 w-full'>

@@ -5,7 +5,6 @@ import useResumeStore from '../../../Store/store';
 
 function Template() {
     const {selectedTemplateId, setSelectedTemplateId} = useResumeStore();
-
     const template = [
         {
             id: 1,
