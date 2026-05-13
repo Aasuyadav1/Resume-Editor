@@ -4,29 +4,47 @@ import { Link } from "react-router-dom";
 function Hero() {
   return (
     <section className="bg-[rgb(250,247,254)]">
-    <div className="max-w-screen-xl mx-auto px-4 py-14 md:py-28 gap-12 text-gray-600 bg-[rgb(250,247,254)] md:px-8">
-        <div className="space-y-5 max-w-4xl mx-auto text-center">
-            <h1 className="text-sm text-indigo-600 font-medium">
-                Build products for everyone
-            </h1>
-            <h2 className="text-4xl text-gray-800 font-extrabold mx-auto md:text-5xl">
-                Design your Resume faster with  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5]">the powerful editor</span>
-            </h2>
-            <p className="max-w-2xl mx-auto">
-            Edit Your Resume Content with Ease, Choose from Stunning Templates, and Download Instantly
+      <div className="max-w-screen-xl mx-auto px-4 pt-14 pb-10 md:pt-24 md:pb-20 md:px-8">
+        <div className="grid gap-12 items-center md:grid-cols-2">
+          <div className="space-y-6">
+            <p className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-700 bg-indigo-100/70 px-4 py-2 rounded-full w-fit">
+              Smart Resume Builder
             </p>
-            <div className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
-                <Link to="/editor" className="block py-2 px-8 text-white font-medium bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow-lg hover:shadow-none">
-                    Try Now editor
-                </Link>
-               
+            <h1 className="text-4xl text-gray-900 font-extrabold leading-tight md:text-5xl lg:text-6xl">
+              Build a standout resume with a
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5]">
+                modern, powerful editor
+              </span>
+            </h1>
+            <p className="text-lg text-gray-600 max-w-xl">
+              Create, edit, and style your resume in minutes. Pick a clean
+              template, customize instantly, and download when you are ready.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                to="/editor"
+                className="inline-flex py-3 px-8 text-white font-semibold bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-full shadow-lg hover:shadow-md"
+              >
+                Create Resume
+              </Link>
+              <p className="text-sm text-gray-500">
+                No design skills needed • Fast and simple
+              </p>
             </div>
+          </div>
+
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-[#4F46E5]/20 to-[#E114E5]/20 blur-2xl rounded-3xl" />
+            <img
+              src="./images/ResumeEditor.png"
+              className="relative w-full max-w-[1000px] mx-auto shadow-2xl rounded-2xl border border-indigo-100"
+              alt="Resume editor preview"
+            />
+          </div>
         </div>
-        <div className="mt-10 md:mt-20 flex justify-center">
-            <img src="./images/ResumeEditor.png" className="w-full max-w-[1000px] shadow-2xl rounded-lg border" alt="" />
-        </div>
-    </div>
-</section>
+      </div>
+    </section>
   );
 }
 
